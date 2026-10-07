@@ -1,0 +1,127 @@
+import type { ToolContent } from '../types';
+
+const updated = '2026-10-07';
+
+export const businessTools: ToolContent[] = [
+  {
+    slug: 'profit-margin-calculator', name: 'Profit Margin Calculator', category: 'business', popular: true, updated,
+    title: 'Profit Margin Calculator – Gross Margin & Markup',
+    description: 'Enter cost and selling price to get gross margin %, profit and markup instantly. Includes the formula, worked examples and margin vs markup explained.',
+    lead: 'Enter what an item costs you and what you sell it for. You get the margin, the profit and the equivalent markup in one go.',
+    keywords: ['margin', 'gross margin', 'profit percentage', 'margin formula', 'cogs', 'how much profit'],
+    about: [
+      'Profit margin tells you how much of every sale you keep after paying for the product itself. A 40% margin means that out of every $100 of revenue, $40 is gross profit and $60 went to the cost of the goods.',
+      'Margin is the number lenders, investors and most accounting software report, because it is measured against revenue. Markup is measured against cost, which is why the same price change produces two different percentages. This calculator shows both side by side so you never mix them up.',
+    ],
+    howTo: ['Choose your currency.', 'Enter the cost of the item (what you pay your supplier, or your cost to make it).', 'Enter the selling price.', 'Read the gross margin, gross profit and markup. Open “Show the working” to see the arithmetic.'],
+    formula: { expression: 'Margin % = (Price − Cost) ÷ Price × 100', explanation: ['Gross profit = Price − Cost.', 'Markup % = (Price − Cost) ÷ Cost × 100 — same profit, divided by cost instead of price.', 'A margin can never reach 100% (that would mean the product cost nothing), but a markup can be any size.'] },
+    example: { title: 'A $50 product that costs $30', steps: ['Profit: $50 − $30 = $20.', 'Margin: $20 ÷ $50 = 0.40 → 40%.', 'Markup: $20 ÷ $30 = 0.667 → 66.7%.'] },
+    faqs: [
+      { q: 'What is a good profit margin?', a: 'It depends heavily on the industry. Grocery and fuel retailers often run gross margins in the low double digits, while software, cosmetics and handmade goods can exceed 60%. Compare against businesses with a similar cost structure rather than a single “good” number.' },
+      { q: 'What is the difference between margin and markup?', a: 'Both use the same profit figure. Margin divides it by the selling price; markup divides it by the cost. A 50% markup equals a 33.3% margin, and a 50% margin equals a 100% markup.' },
+      { q: 'Is this gross or net margin?', a: 'Gross margin. It only subtracts the direct cost of the item. Net margin also subtracts overheads like rent, salaries, advertising and tax, so it is always lower.' },
+      { q: 'How do I find the price for a target margin?', a: 'Divide cost by (1 − target margin). For a $30 cost and a 40% target margin: $30 ÷ 0.60 = $50.' },
+    ],
+    related: ['markup-calculator', 'break-even-calculator', 'discount-calculator', 'stripe-fee-calculator'],
+  },
+  {
+    slug: 'markup-calculator', name: 'Markup Calculator', category: 'business', updated,
+    title: 'Markup Calculator – Find Selling Price From Cost',
+    description: 'Add a markup percentage to your cost to get the selling price, profit per unit and the margin it equals. Free markup calculator with formula and examples.',
+    lead: 'Add a percentage on top of your cost and see the selling price, the profit per unit and what that markup means as a margin.',
+    keywords: ['markup percentage', 'cost plus pricing', 'selling price', 'mark up', 'retail price', 'wholesale markup'],
+    about: [
+      'Cost-plus pricing is the simplest way to set a price: take what an item costs you and add a fixed percentage. Retailers often talk about “keystone” pricing, which is a 100% markup — doubling the wholesale cost.',
+      'The catch is that markup and margin are not interchangeable. If you plan finances around a 30% margin but price with a 30% markup, you will earn less than you expected. The calculator shows the equivalent margin under the price so you can check.',
+    ],
+    howTo: ['Enter your cost per unit.', 'Enter the markup percentage you want to add.', 'The selling price, profit per unit and equivalent gross margin appear instantly.'],
+    formula: { expression: 'Selling price = Cost × (1 + Markup % ÷ 100)', explanation: ['Profit per unit = Selling price − Cost.', 'Equivalent margin = Profit ÷ Selling price × 100.'] },
+    example: { title: 'Keystone pricing on a $40 item', steps: ['Markup 100%: $40 × 2 = $80 selling price.', 'Profit: $40 per unit.', 'Margin: $40 ÷ $80 = 50%.'] },
+    faqs: [
+      { q: 'What markup gives a 50% margin?', a: 'A 100% markup. To convert any margin to markup: markup = margin ÷ (1 − margin). For 50%: 0.5 ÷ 0.5 = 1.0 → 100%.' },
+      { q: 'What is a typical retail markup?', a: 'Many physical retail categories use 50–100% on wholesale cost; jewellery and some fashion can go well above that. Your markup also has to cover rent, staff and marketing, not just the product.' },
+      { q: 'Should I include shipping in the cost?', a: 'Yes, if you pay it. Inbound freight, packaging and payment processing fees are real per-unit costs. Leaving them out makes your markup look healthier than it is.' },
+    ],
+    related: ['profit-margin-calculator', 'discount-calculator', 'break-even-calculator', 'percentage-calculator'],
+  },
+  {
+    slug: 'discount-calculator', name: 'Discount Calculator', category: 'business', popular: true, updated,
+    title: 'Discount Calculator – Sale Price & Amount Saved',
+    description: 'Work out the sale price after a percentage discount, stack an extra discount, add sales tax and see how much you save. Fast, free and accurate.',
+    lead: 'Find the final price after a percentage off — including “extra 10% off the sale price” deals and sales tax.',
+    keywords: ['percent off', 'sale price', 'how much is 20 off', 'double discount', 'stacked discount', 'savings'],
+    about: [
+      'A percentage discount is easy in your head for round numbers, but stacked deals catch people out. “30% off, plus an extra 20% at checkout” is not 50% off — the second discount only applies to the already reduced price, so the true saving is 44%.',
+      'This calculator applies discounts in the order shops do, then optionally adds sales tax on the discounted amount, and tells you the effective total discount.',
+    ],
+    howTo: ['Enter the original price.', 'Enter the discount percentage.', 'If there is a second discount applied at checkout, add it as the extra discount.', 'Optionally add your local sales tax to see what you will actually pay.'],
+    formula: { expression: 'Sale price = Price × (1 − D1 ÷ 100) × (1 − D2 ÷ 100)', explanation: ['Amount saved = Original price − Sale price (before tax).', 'Effective discount = Amount saved ÷ Original price × 100.'] },
+    example: { title: '$120 jacket, 25% off plus an extra 10%', steps: ['After 25%: $120 × 0.75 = $90.', 'After the extra 10%: $90 × 0.90 = $81.', 'You save $39 — an effective 32.5% discount, not 35%.'] },
+    faqs: [
+      { q: 'How do I calculate 20% off?', a: 'Multiply the price by 0.80. For $65: $65 × 0.80 = $52, so you save $13.' },
+      { q: 'Are two discounts the same as adding them together?', a: 'No. Each discount applies to the price left after the previous one, so the combined saving is always a bit less than the sum. 50% + 50% off is 75% off, not free.' },
+      { q: 'Is sales tax calculated before or after the discount?', a: 'In most places, tax is charged on the discounted price, which is how this calculator handles it. Manufacturer coupons can be an exception in some US states.' },
+    ],
+    related: ['percentage-calculator', 'markup-calculator', 'profit-margin-calculator', 'percentage-change-calculator'],
+  },
+  {
+    slug: 'break-even-calculator', name: 'Break-Even Calculator', category: 'business', updated,
+    title: 'Break-Even Calculator – Units & Revenue to Break Even',
+    description: 'Find how many units you must sell to cover fixed costs, plus break-even revenue and contribution margin. Simple break-even analysis with formula and example.',
+    lead: 'See how many sales you need before a product, shop or side project stops losing money.',
+    keywords: ['break even point', 'break-even analysis', 'contribution margin', 'fixed costs', 'how many units to sell'],
+    about: [
+      'Your break-even point is the sales volume where total revenue exactly covers total costs. Below it you are losing money; every unit above it adds profit equal to its contribution margin.',
+      'The analysis is only as good as the split between fixed and variable costs. Fixed costs stay the same whether you sell one unit or a thousand (rent, software, salaries). Variable costs are paid per unit (materials, packaging, shipping, payment fees).',
+    ],
+    howTo: ['Enter fixed costs for the period you care about — usually a month.', 'Enter the selling price per unit.', 'Enter the variable cost per unit.', 'The calculator rounds break-even units up, because you cannot sell part of a unit.'],
+    formula: { expression: 'Break-even units = Fixed costs ÷ (Price − Variable cost)', explanation: ['Price − Variable cost is the contribution margin: what each sale contributes towards fixed costs.', 'Break-even revenue = Break-even units × Price.'] },
+    example: { title: 'A candle business', steps: ['Fixed costs: $5,000 per month. Price: $25. Variable cost: $10.', 'Contribution margin: $25 − $10 = $15.', '$5,000 ÷ $15 = 333.3 → 334 candles per month to break even.'] },
+    faqs: [
+      { q: 'What if my price is lower than my variable cost?', a: 'Then each sale loses money and there is no break-even point — selling more makes the loss bigger. Raise the price or cut per-unit costs first.' },
+      { q: 'How can I lower my break-even point?', a: 'Raise prices, reduce variable costs (better supplier terms, cheaper shipping), or cut fixed costs. A higher contribution margin has the biggest effect.' },
+      { q: 'Should I include my own salary?', a: 'If you want to know when the business pays you as well as its bills, yes — add your target pay to fixed costs.' },
+    ],
+    related: ['profit-margin-calculator', 'markup-calculator', 'stripe-fee-calculator', 'percentage-calculator'],
+  },
+  {
+    slug: 'stripe-fee-calculator', name: 'Stripe Fee Calculator', category: 'business', engine: 'stripe-fee-calculator', updated,
+    title: 'Stripe Fee Calculator – Fees & Net Payout',
+    description: 'Calculate Stripe fees on any payment, see what you receive, or find what to charge to net an exact amount. Rates are editable for your country and card type.',
+    lead: 'Work out the Stripe fee on a payment and your payout — or reverse it to find what to charge so you receive an exact amount.',
+    keywords: ['stripe fees', 'stripe processing fee', 'stripe 2.9 + 30', 'stripe charge calculator', 'pass fees to customer'],
+    about: [
+      'Stripe’s standard pricing for domestic online card payments in the US is 2.9% plus 30¢ per successful charge. Other countries have their own rates, and extra percentages apply to international cards and currency conversion. Because these change, every rate in this calculator is editable — check your Stripe dashboard for the exact figures on your account.',
+      'The “what to charge” mode solves a common invoicing problem: if you simply add 2.9% to your price, you still come up short, because Stripe charges its percentage on the new, larger total. The correct gross-up formula is used here.',
+    ],
+    howTo: ['Pick “What I receive” to see your payout, or “What to charge” to gross up an amount.', 'Enter the amount.', 'Check the percentage and fixed fee match your account.', 'Add an extra percentage for international cards or currency conversion if needed.'],
+    formula: { expression: 'Fee = Amount × Rate + Fixed fee', explanation: ['Amount to charge = (Target + Fixed fee) ÷ (1 − Rate).', 'Rate is the percentage written as a decimal (2.9% = 0.029).'] },
+    example: { title: 'A $100 payment at 2.9% + $0.30', steps: ['Fee: $100 × 0.029 + $0.30 = $3.20.', 'You receive $96.80.', 'To receive exactly $100: ($100 + $0.30) ÷ 0.971 = $103.30.'] },
+    faqs: [
+      { q: 'What does Stripe charge per transaction?', a: 'For standard US online card payments it is 2.9% + 30¢. In-person, international, ACH and other methods have different pricing, and businesses with large volume can negotiate custom rates.' },
+      { q: 'Does Stripe refund fees when I refund a customer?', a: 'Generally no — the original processing fee is not returned on refunds. Check Stripe’s current refund policy for your region.' },
+      { q: 'Can I pass Stripe fees on to customers?', a: 'Surcharging rules vary by country, US state and card network. Where it is allowed, use the “what to charge” mode so the surcharge actually covers the fee.' },
+    ],
+    related: ['paypal-fee-calculator', 'profit-margin-calculator', 'break-even-calculator', 'markup-calculator'],
+  },
+  {
+    slug: 'paypal-fee-calculator', name: 'PayPal Fee Calculator', category: 'business', engine: 'paypal-fee-calculator', updated,
+    title: 'PayPal Fee Calculator – What You Receive',
+    description: 'Calculate PayPal fees for goods and services or invoices, see your net amount, or find how much to request to receive an exact sum. Editable rates.',
+    lead: 'See how much PayPal keeps from a payment, or how much to invoice so you end up with the amount you need.',
+    keywords: ['paypal fees', 'paypal goods and services fee', 'paypal invoice fee', 'paypal fee for receiving money', 'freelancer paypal'],
+    about: [
+      'PayPal’s fee is a percentage of the payment plus a fixed amount that depends on the currency. The default here (3.49% + $0.49) reflects PayPal’s US rate for standard checkout payments; personal Goods & Services, invoices, cards and international payments can differ. PayPal updates these regularly, so confirm the current figure on its merchant fees page and edit the fields.',
+      'Freelancers often get paid less than they invoiced because of fees and currency conversion. Use the “what to charge” mode and add the cross-border percentage to quote a price that nets the amount you agreed.',
+    ],
+    howTo: ['Choose whether you want your net amount or the amount to request.', 'Enter the payment or target amount.', 'Set the percentage and fixed fee that apply to your account and payment type.', 'Add the extra international percentage for payments from another country.'],
+    formula: { expression: 'Fee = Amount × Rate + Fixed fee', explanation: ['To receive an exact amount: Request = (Target + Fixed fee) ÷ (1 − Rate).'] },
+    example: { title: 'A $100 payment at 3.49% + $0.49', steps: ['Fee: $3.49 + $0.49 = $3.98.', 'You receive $96.02.', 'To receive $100, request ($100 + $0.49) ÷ 0.9651 = $104.124, rounded up to $104.13.'] },
+    faqs: [
+      { q: 'Does PayPal charge to receive money from friends?', a: 'Personal payments to friends and family funded by a PayPal balance or bank account are usually free domestically. Card-funded and cross-border personal payments can carry fees.' },
+      { q: 'Why did I receive less than the calculator says?', a: 'Currency conversion is the usual reason. PayPal adds a conversion spread when it converts to your currency, on top of the transaction fee. Add that percentage in the “Extra %” field.' },
+      { q: 'Are PayPal fees tax deductible?', a: 'For a business, payment processing fees are normally a deductible expense. Check the rules for your country with an accountant.' },
+    ],
+    related: ['stripe-fee-calculator', 'profit-margin-calculator', 'percentage-calculator', 'break-even-calculator'],
+  },
+];
