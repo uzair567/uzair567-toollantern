@@ -5,7 +5,12 @@ export const site = {
   tagline: 'Free online tools that solve everyday problems',
   description:
     'Free, fast online calculators and utilities for money, home projects, energy, developers and SEO. No sign-up, works on any device.',
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://toollantern.netlify.app').replace(/\/$/, ''),
+  // Priority: explicit domain → Vercel production domain (set automatically at build) → fallback.
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '') ||
+    'https://toollantern.vercel.app'
+  ).replace(/\/$/, ''),
   locale: 'en_US',
   twitter: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '',
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || '',
