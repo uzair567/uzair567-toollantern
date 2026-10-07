@@ -5,7 +5,7 @@ export const metadata = pageMeta({ title: 'Terms of Use | ToolLantern', descript
 
 export default function Terms() {
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-6"><div className="rounded-[32px] card p-6 sm:p-10">
+    <div className="mx-auto max-w-3xl px-4 pt-6"><div className="rounded-2xl card p-6 sm:p-10">
       <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Terms', href: '/terms/' }]} />
       <div className="prose-tl">
         <h1 className="display !mt-0 text-4xl sm:text-5xl">Terms of use</h1>

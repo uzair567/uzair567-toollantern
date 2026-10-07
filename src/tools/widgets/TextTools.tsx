@@ -160,7 +160,7 @@ export function UtmBuilder() {
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={lower} onChange={(e) => setLower(e.target.checked)} /> Force lowercase (recommended — GA4 is case-sensitive)</label>
       </form>
       <div className="grid content-start gap-3">
-        <div className="rounded-[24px] bg-glow-soft p-4 dark:bg-[#2a2210]">
+        <div className="rounded-2xl bg-glow-soft p-4 dark:bg-[#2a2210]">
           <div className="mb-2 flex items-center justify-between"><span className="text-sm font-semibold">Tagged URL</span>{'out' in res && <CopyButton text={res.out!} />}</div>
           <p className="break-all font-mono text-sm">{'out' in res ? res.out : res.error}</p>
         </div>

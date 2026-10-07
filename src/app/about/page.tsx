@@ -5,7 +5,7 @@ export const metadata = pageMeta({ title: 'About ToolLantern', description: 'Why
 
 export default function About() {
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-6"><div className="rounded-[32px] card p-6 sm:p-10">
+    <div className="mx-auto max-w-3xl px-4 pt-6"><div className="rounded-2xl card p-6 sm:p-10">
       <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'About', href: '/about/' }]} />
       <div className="prose-tl">
         <h1 className="display !mt-0 text-4xl sm:text-5xl">About ToolLantern</h1>

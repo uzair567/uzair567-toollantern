@@ -21,8 +21,8 @@ export function SearchDialog({ open, onClose, index }: { open: boolean; onClose:
 
   return (
     <div className="fixed inset-0 z-[70] flex items-start justify-center p-3 pt-[10vh]" role="dialog" aria-modal="true" aria-label="Search tools">
-      <div className="absolute inset-0 bg-ink/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="menu-in relative w-full max-w-xl overflow-hidden rounded-[28px] card shadow-2xl">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div className="menu-in relative w-full max-w-xl overflow-hidden rounded-2xl card shadow-2xl">
         <div className="flex items-center gap-3 border-b border-line px-5">
           <Icon name="search" className="h-5 w-5 text-muted" />
           <input
@@ -46,7 +46,7 @@ export function SearchDialog({ open, onClose, index }: { open: boolean; onClose:
           {!q.trim() ? (
             <div className="p-3">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">Try</p>
-              <div className="flex flex-wrap gap-2">{SUGGEST.map((s) => <button key={s} type="button" onClick={() => setQ(s)} className="rounded-full surface-2 px-3 py-1.5 text-sm font-semibold hover:bg-[var(--line)]">{s}</button>)}</div>
+              <div className="flex flex-wrap gap-2">{SUGGEST.map((s) => <button key={s} type="button" onClick={() => setQ(s)} className="rounded-md border border-line px-3 py-1.5 text-sm font-semibold hover:border-glow">{s}</button>)}</div>
             </div>
           ) : results.length ? (
             <ul id="search-results" role="listbox">
