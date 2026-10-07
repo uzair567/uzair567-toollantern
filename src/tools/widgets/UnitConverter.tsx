@@ -24,7 +24,7 @@ export function UnitConverter({ kind = 'length', from, to, value = '1' }: { kind
   return (
     <div className="grid gap-6">
       <div className="grid items-end gap-3 md:grid-cols-[1fr_auto_1fr]">
-        <div className="rounded-xl surface-2 p-4">
+        <div className="rounded-3xl surface-2 p-4">
           <label htmlFor="u-from" className="text-sm font-semibold text-muted">From</label>
           <div className="mt-2 flex gap-2">
             <input id="u-val" aria-label="Value" inputMode="decimal" className="input !bg-[var(--surface)] text-2xl font-bold" value={v} onChange={(e) => setV(e.target.value)} />
@@ -33,10 +33,10 @@ export function UnitConverter({ kind = 'length', from, to, value = '1' }: { kind
             </select>
           </div>
         </div>
-        <button type="button" onClick={() => { setA(b); setB(a); }} className="mx-auto grid h-12 w-12 place-items-center rounded-lg border border-line bg-[var(--surface)] text-ink transition hover:border-glow hover:rotate-180" aria-label="Swap units">
+        <button type="button" onClick={() => { setA(b); setB(a); }} className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-ink text-white transition hover:rotate-180" aria-label="Swap units">
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M7 4v16M3 8l4-4 4 4M17 20V4m4 12l-4 4-4-4" /></svg>
         </button>
-        <div className="rounded-xl bg-glow-soft p-4 dark:bg-[#2a2210]">
+        <div className="rounded-3xl bg-glow-soft p-4 dark:bg-[#2a2210]">
           <label htmlFor="u-to" className="text-sm font-semibold text-muted">To</label>
           <div className="mt-2 flex gap-2">
             <output aria-live="polite" className="flex min-h-[52px] flex-1 items-center overflow-x-auto rounded-[14px] bg-[var(--surface)] px-4 text-2xl font-extrabold tabular-nums">{nice(out)}</output>

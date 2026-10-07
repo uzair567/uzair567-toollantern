@@ -4,7 +4,7 @@ export function ToolOutput({ out }: { out: CalcOutput }) {
   const primary = out.results.find((r) => r.primary);
   const rest = out.results.filter((r) => !r.primary);
   return (
-    <section aria-live="polite" aria-label="Result" className="rounded-xl border border-dashed border-[color-mix(in_srgb,var(--color-glow)_75%,transparent)] bg-[color-mix(in_srgb,var(--color-glow)_9%,var(--surface))] p-5 sm:p-6">
+    <section aria-live="polite" aria-label="Result" className="rounded-[24px] bg-glow-soft p-5 sm:p-6 dark:bg-[#2a2210]">
       {out.error ? (
         <p className="text-sm font-medium text-muted">{out.error}</p>
       ) : (

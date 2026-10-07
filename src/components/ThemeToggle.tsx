@@ -12,7 +12,7 @@ export function ThemeToggle() {
     try { localStorage.setItem('tl-theme', next ? 'dark' : 'light'); } catch { /* storage blocked */ }
   };
   return (
-    <button type="button" onClick={toggle} className="grid h-10 w-10 place-items-center rounded-lg border border-line bg-[var(--surface)] text-ink" aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
+    <button type="button" onClick={toggle} className="grid h-11 w-11 place-items-center rounded-full card text-ink" aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
       <Icon name={dark ? 'sun' : 'moon'} className="h-4 w-4" />
     </button>
   );

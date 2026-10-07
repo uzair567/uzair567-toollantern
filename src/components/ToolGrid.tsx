@@ -8,10 +8,10 @@ export function ToolGrid({ tools, tabs }: { tools: CardTool[]; tabs: { id: strin
   const list = tab === 'all' ? tools : tools.filter((t) => t.category === tab);
   return (
     <div>
-      <div role="tablist" aria-label="Filter tools" className="-mx-4 mb-6 flex gap-6 overflow-x-auto border-b border-line px-4">
+      <div role="tablist" aria-label="Filter tools" className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1">
         {[{ id: 'all', label: 'All' }, ...tabs].map((t) => (
           <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}
-            className={`-mb-px whitespace-nowrap border-b-2 py-3 text-sm font-semibold transition ${tab === t.id ? 'border-glow text-ink' : 'border-transparent text-muted hover:text-ink'}`}>{t.label}</button>
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${tab === t.id ? 'bg-ink text-white' : 'card hover:bg-[var(--surface-2)]'}`}>{t.label}</button>
         ))}
       </div>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{list.map((t) => <ToolCard key={t.slug} tool={t} />)}</div>

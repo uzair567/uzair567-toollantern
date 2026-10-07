@@ -132,17 +132,17 @@ export function ImageTool({ mode = 'convert', from, to = 'png' }: { mode?: Mode;
         onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
         onDragLeave={() => setDrag(false)}
         onDrop={(e) => { e.preventDefault(); setDrag(false); add(e.dataTransfer.files); }}
-        className={`relative grid place-items-center rounded-xl border-2 border-dashed px-6 py-10 text-center transition ${drag ? 'border-[var(--ink)] bg-glow-soft' : 'border-line surface-2'}`}
+        className={`relative grid place-items-center rounded-3xl border-2 border-dashed px-6 py-10 text-center transition ${drag ? 'border-[var(--ink)] bg-glow-soft' : 'border-line surface-2'}`}
       >
-        <span className="tile mb-3 h-14 w-14 bg-rose-500/10 text-rose-600"><Icon name="upload" className="h-6 w-6" /></span>
+        <span className="tile mb-3 h-14 w-14 bg-t-rose"><Icon name="upload" className="h-6 w-6" /></span>
         <p className="text-lg font-bold">Drop images here</p>
         <p className="mt-1 text-sm text-muted">or paste from clipboard · up to 30 files · {from ? `${from.toUpperCase()} files` : 'JPG, PNG, WebP, GIF, BMP, AVIF'}</p>
-        <button type="button" className="btn mt-4" onClick={() => input.current?.click()}>Choose files </button>
+        <button type="button" className="btn mt-4" onClick={() => input.current?.click()}>Choose files <span className="dot-icon h-6 w-6"><Icon name="arrow-up-right" className="h-3.5 w-3.5" /></span></button>
         <input ref={input} type="file" accept={accept} multiple hidden onChange={(e) => { if (e.target.files) add(e.target.files); e.target.value = ''; }} />
         <p className="mt-4 flex items-center gap-1.5 text-xs text-muted"><Icon name="lock" className="h-3.5 w-3.5" /> Files never leave your device — conversion happens in your browser.</p>
       </div>
 
-      <div className="grid gap-4 rounded-xl surface-2 p-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 rounded-3xl surface-2 p-4 sm:grid-cols-2 lg:grid-cols-4">
         <label className="text-sm font-semibold">Output format
           <select className="input mt-1.5 bg-[var(--surface)]" value={format} onChange={(e) => setFormat(e.target.value as Fmt | 'same')}>
               {mode !== 'convert' && <option value="same">Keep original</option>}
@@ -180,7 +180,7 @@ export function ImageTool({ mode = 'convert', from, to = 'png' }: { mode?: Mode;
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <button type="button" className="btn" disabled={!items.length || busy} onClick={process}>{busy ? 'Working…' : actionLabel}</button>
+        <button type="button" className="btn" disabled={!items.length || busy} onClick={process}>{busy ? 'Working…' : actionLabel}<span className="dot-icon h-6 w-6"><Icon name="sparkle" className="h-3.5 w-3.5" /></span></button>
         {done.length > 1 && <button type="button" className="btn-ghost" onClick={downloadAll}><Icon name="download" className="h-4 w-4" /> Download all ({done.length})</button>}
         {items.length > 0 && <button type="button" className="btn-ghost" onClick={clear}>Clear</button>}
         {done.length > 0 && <span className="ml-auto text-sm font-semibold">{kb(totalIn)} → {kb(totalOut)} <span className={totalOut <= totalIn ? 'text-emerald-600' : 'text-muted'}>({totalOut <= totalIn ? '−' : '+'}{Math.abs(Math.round((1 - totalOut / totalIn) * 100))}%)</span></span>}

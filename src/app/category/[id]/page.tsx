@@ -31,7 +31,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
         '@context': 'https://schema.org', '@type': 'CollectionPage', name: c.name, description: c.description, url: absUrl(`/category/${c.id}/`),
         mainEntity: { '@type': 'ItemList', itemListElement: list.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: absUrl(toolPath(t)), name: t.name })) },
       }]} />
-      <header className="relative overflow-hidden rounded-2xl card p-6 sm:p-10">
+      <header className="relative overflow-hidden rounded-[26px] card p-6 sm:p-10">
         <div aria-hidden className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-70 blur-2xl ${c.tint}`} />
         <div className="relative">
           <Breadcrumbs items={crumbs} />
@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       <nav aria-label="Other categories" className="mt-16">
         <h2 className="display mb-5 text-3xl">Other categories</h2>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">{categories.filter((x) => x.id !== c.id).map((x) => (
-          <Link key={x.id} href={`/category/${x.id}/`} className="flex items-center gap-3 rounded-2xl card p-4">
+          <Link key={x.id} href={`/category/${x.id}/`} className="flex items-center gap-3 rounded-[24px] card p-4">
             <span className={`tile h-11 w-11 ${x.tint}`}><Icon name={x.icon} className="h-5 w-5" /></span><span className="font-bold">{x.short}</span>
           </Link>))}</div>
       </nav>

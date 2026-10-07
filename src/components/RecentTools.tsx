@@ -23,9 +23,9 @@ export function RecentTools() {
   if (!items.length) return null;
   return (
     <section aria-labelledby="recent-h" className="mx-auto max-w-7xl px-4 pt-10">
-      <h2 id="recent-h" className="mb-3 eyebrow">Recently used</h2>
+      <h2 id="recent-h" className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">Recently used</h2>
       <div className="flex flex-wrap gap-2">
-        {items.map((i) => <Link key={i.s} href={`/${i.s}/`} className="rounded-md border border-line bg-[var(--surface)] px-3 py-1.5 text-sm font-semibold hover:border-glow">{i.n}</Link>)}
+        {items.map((i) => <Link key={i.s} href={`/${i.s}/`} className="rounded-full card px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">{i.n}</Link>)}
       </div>
     </section>
   );
