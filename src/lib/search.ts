@@ -8,10 +8,11 @@ const SYN: Record<string, string> = {
   tiles: 'tile', tiling: 'tile', painting: 'paint', floor: 'flooring', floors: 'flooring', laminate: 'flooring',
   cement: 'concrete', slab: 'concrete', stone: 'gravel', rock: 'gravel', percent: 'percentage', '%': 'percentage',
   epoch: 'timestamp', guid: 'uuid', token: 'jwt', words: 'word', characters: 'character', chars: 'character',
+  jpeg: 'jpg', photo: 'image', picture: 'image', pic: 'image', centimeter: 'cm', centimetre: 'cm', inch: 'inches', kilogram: 'kg', pound: 'lbs', pounds: 'lbs', lb: 'lbs',
   old: 'age', birthday: 'age', days: 'date', profit: 'margin', fees: 'fee', sale: 'discount', off: 'discount',
 };
 
-const norm = (t: string) => SYN[t] ?? t.replace(/s$/, '');
+const norm = (t: string) => (SYN[t] ?? t).replace(/s$/, '');
 const tokens = (q: string) => q.toLowerCase().replace(/[^a-z0-9%\s-]/g, ' ').split(/\s+/).filter((t) => t && !STOP.has(t)).map(norm);
 
 export function rank(index: SearchEntry[], q: string) {
@@ -30,6 +31,9 @@ export function rank(index: SearchEntry[], q: string) {
       }
       if (e.k.includes(q.toLowerCase().trim())) score += 3;
       if (hits && hits === qt.length) score += 4; // every meaningful word matched
+      // Prefer the page whose slug has the query words in the same order ("lbs to kg" → lbs-to-kg).
+      const st = e.s.split(/[^a-z0-9]+/).filter((t) => t && !STOP.has(t)).map(norm);
+      if (qt.length > 1 && st.join(' ').includes(qt.join(' '))) score += 3;
       return { e, score: hits ? score + hits * 2 : 0 };
     })
     .filter((r) => r.score > 0)

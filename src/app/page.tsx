@@ -1,87 +1,115 @@
 import Link from 'next/link';
 import { categories } from '@/lib/categories';
-import { searchIndex, popularTools, toolsInCategory, toolPath, tools } from '@/lib/tools';
+import { tools, toolsInCategory, primaryTools } from '@/lib/tools';
 import { pageMeta, siteSchemas } from '@/lib/seo';
 import { site } from '@/lib/site';
-import { SearchTools } from '@/components/SearchTools';
-import { ToolCard } from '@/components/ToolCard';
 import { JsonLd } from '@/components/JsonLd';
 import { Icon } from '@/components/Icon';
 import { RecentTools } from '@/components/RecentTools';
+import { ToolGrid } from '@/components/ToolGrid';
+import { ToolCard, cardOf } from '@/components/ToolCard';
 
 export const metadata = pageMeta({
-  title: `${site.name} – Free Online Calculators & Everyday Tools`,
-  description: 'Free online tools that solve everyday problems: profit margin, tile, paint and electricity cost calculators, JSON formatter, word counter and more. No sign-up.',
+  title: `${site.name} – Free Online Calculators, Converters & Tools`,
+  description: 'Free online tools that solve everyday problems: JPG to PNG and image compressor, profit margin, tile and electricity calculators, unit converters and developer tools. No sign-up.',
   path: '/',
 });
 
-const examples = [
-  { q: 'How much electricity does my AC use?', s: 'electricity-cost-calculator/ac' },
-  { q: 'How many tiles do I need?', s: 'tile-calculator' },
-  { q: 'What’s my profit margin?', s: 'profit-margin-calculator' },
-  { q: 'Format this JSON', s: 'json-formatter' },
-];
+const featured = ['jpg-to-png', 'image-compressor', 'profit-margin-calculator', 'electricity-cost-calculator/ac', 'kg-to-lbs', 'json-formatter', 'tile-calculator', 'percentage-calculator'];
 
 export default function Home() {
+  const pick = featured.map((s) => tools.find((t) => t.slug === s)!).map(cardOf);
   return (
     <>
       <JsonLd data={siteSchemas} />
-      <section className="relative overflow-hidden border-b border-line">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_50%_-10%,color-mix(in_srgb,var(--color-brand-500)_16%,transparent),transparent)]" />
-        <div className="mx-auto max-w-3xl px-4 pb-16 pt-14 text-center sm:pt-20">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full surface px-3 py-1 text-xs font-medium text-muted">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" /> {tools.length} free tools · no sign-up
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Free online tools that solve <span className="text-brand-600 dark:text-brand-200">everyday problems</span></h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted">Calculators and utilities that show their working — for pricing, home projects, energy bills, code and content.</p>
-          <div className="mx-auto mt-8 max-w-2xl"><SearchTools index={searchIndex} big /></div>
-          <div className="mt-4 flex flex-wrap justify-center gap-2 text-sm">
-            <span className="text-muted">Try:</span>
-            {examples.map((e) => <Link key={e.s} href={toolPath(e.s)} className="rounded-full surface px-3 py-1 text-muted hover:border-brand-500 hover:text-[var(--ink)]">{e.q}</Link>)}
+
+      <section className="mx-auto max-w-7xl px-4 pt-6">
+        <div className="grid gap-3 lg:grid-cols-12">
+          <div className="flex flex-col justify-between rounded-[32px] card p-7 sm:p-10 lg:col-span-7">
+            <div>
+              <span className="chip">Free · Private · No sign-up</span>
+              <h1 className="display mt-6 text-[2.6rem] sm:text-6xl lg:text-[4.1rem]">Free online tools that solve everyday problems.</h1>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">Convert images, price products, plan home projects and check your energy bill — each tool shows exactly how the answer was worked out.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/all-tools/" className="btn !py-2 !pl-5 !pr-2">Browse all tools <span className="dot-icon"><Icon name="grid" className="h-4 w-4" /></span></Link>
+                <Link href="/category/image/" className="btn-ghost !px-5 !py-3">Image converters</Link>
+              </div>
+            </div>
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-line pt-6">
+              {[['Tools live', tools.length], ['Categories', categories.length], ['Sign-ups needed', 0]].map(([k, v]) => (
+                <div key={k}><dt className="text-sm text-muted">{k}</dt><dd className="mt-1 text-3xl font-extrabold tracking-tight">{v}</dd></div>
+              ))}
+            </dl>
           </div>
+
+          <div className="grid gap-3 lg:col-span-5 lg:grid-rows-[1.25fr_1fr]">
+            <Link href="/image-converter/" className="group flex flex-col justify-between rounded-[32px] bg-glow p-7 text-ink">
+              <div className="flex items-start justify-between">
+                <span className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink/80"><Icon name="image" className="h-5 w-5" /></span>
+                <span className="rounded-full bg-ink px-3 py-1.5 text-xs font-bold text-glow">Featured tool</span>
+              </div>
+              <div className="mt-10">
+                <div className="mb-4 flex flex-wrap gap-1.5">{['JPG → PNG', 'PNG → JPG', 'WebP → JPG', 'Compress'].map((x) => <span key={x} className="rounded-full bg-white/60 px-2.5 py-1 text-xs font-bold">{x}</span>)}</div>
+                <p className="display text-4xl">Image Converter</p>
+                <p className="mt-2 max-w-sm font-medium opacity-80">Batch-convert and compress photos in your browser. Nothing is uploaded.</p>
+                <span className="mt-5 inline-flex items-center gap-2 font-bold">Open tool <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white transition group-hover:rotate-45"><Icon name="arrow-up-right" className="h-4 w-4" /></span></span>
+              </div>
+            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <Link href="/all-tools/" className="group flex flex-col justify-between rounded-[32px] bg-t-lilac p-6 text-ink">
+                <div className="flex items-start justify-between"><span className="display text-5xl">{categories.length}</span><span className="grid h-9 w-9 place-items-center rounded-full border-2 border-ink/70 transition group-hover:rotate-45"><Icon name="arrow-up-right" className="h-4 w-4" /></span></div>
+                <p className="mt-6 font-semibold">Categories to explore</p>
+              </Link>
+              <div className="flex flex-col justify-between rounded-[32px] bg-ink p-6 text-white">
+                <Icon name="lock" className="h-6 w-6 text-glow" />
+                <p className="mt-6"><span className="block text-lg font-extrabold">100% private</span><span className="text-sm text-white/65">Runs in your browser</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+          {categories.map((c) => (
+            <Link key={c.id} href={`/category/${c.id}/`} className="group flex items-center gap-3 rounded-[24px] card p-4 transition hover:shadow-[0_12px_32px_-14px_rgba(14,23,38,.2)]">
+              <span className={`tile h-12 w-12 ${c.tint}`}><Icon name={c.icon} className="h-5 w-5" /></span>
+              <span className="min-w-0"><span className="block truncate font-bold">{c.short}</span><span className="text-xs text-muted">{toolsInCategory(c.id).length} tools</span></span>
+            </Link>
+          ))}
         </div>
       </section>
 
       <RecentTools />
 
-      <section aria-labelledby="popular-h" className="mx-auto max-w-6xl px-4 pt-14">
-        <div className="mb-5 flex items-end justify-between">
-          <h2 id="popular-h" className="text-2xl font-bold tracking-tight">Popular tools</h2>
-          <Link href="/all-tools/" className="text-sm font-semibold text-brand-700 dark:text-brand-200">All tools →</Link>
+      <section aria-labelledby="pop-h" className="mx-auto max-w-7xl px-4 pt-20">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="pop-h" className="display text-4xl sm:text-5xl">Most used</h2>
+            <p className="mt-2 text-muted">The tools people open first — each one answers a single question well.</p>
+          </div>
+          <Link href="/all-tools/" className="inline-flex items-center gap-2 rounded-full card py-1.5 pl-4 pr-1.5 text-sm font-bold">View all tools <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-white"><Icon name="arrow" className="h-4 w-4" /></span></Link>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{popularTools.map((t) => <ToolCard key={t.slug} tool={t} />)}</div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{pick.map((t) => <ToolCard key={t.slug} tool={t} />)}</div>
       </section>
 
-      <section aria-labelledby="cat-h" className="mx-auto max-w-6xl px-4 pt-16">
-        <h2 id="cat-h" className="mb-5 text-2xl font-bold tracking-tight">Browse by category</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((c) => {
-            const list = toolsInCategory(c.id);
-            return (
-              <div key={c.id} className="flex flex-col rounded-2xl surface p-5">
-                <Link href={`/category/${c.id}/`} className="group flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-[#10201e] dark:text-brand-200"><Icon name={c.icon} /></span>
-                  <span><span className="block font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-200">{c.name}</span><span className="text-xs text-muted">{list.length} tools</span></span>
-                </Link>
-                <p className="mt-3 text-sm text-muted">{c.description}</p>
-                <ul className="mt-3 space-y-1 text-sm">
-                  {list.slice(0, 4).map((t) => <li key={t.slug}><Link href={toolPath(t)} className="hover:text-brand-700 dark:hover:text-brand-200">{t.name}</Link></li>)}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
+      <section aria-labelledby="all-h" className="mx-auto max-w-7xl px-4 pt-20">
+        <h2 id="all-h" className="display mb-2 text-4xl sm:text-5xl">Every tool, one place</h2>
+        <p className="mb-6 text-muted">Filter by category. New tools are added every week.</p>
+        <ToolGrid tools={primaryTools.map(cardOf)} tabs={categories.map((c) => ({ id: c.id, label: c.short }))} />
       </section>
 
-      <section aria-labelledby="why-h" className="mx-auto max-w-6xl px-4 pt-16">
+      <section aria-labelledby="why-h" className="mx-auto max-w-7xl px-4 pt-20">
         <h2 id="why-h" className="sr-only">Why ToolLantern</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-3">
           {[
-            ['Shows the working', 'Every calculator explains the formula and can show each step, so you can trust — and check — the answer.'],
-            ['Private by design', 'Developer and text tools run entirely in your browser. What you paste never leaves your device.'],
-            ['Fast on any device', 'Pages are pre-rendered and load only the code the tool needs. No pop-ups, no sign-up walls.'],
-          ].map(([h, p]) => (
-            <div key={h} className="rounded-2xl surface-2 p-5"><h3 className="font-semibold">{h}</h3><p className="mt-2 text-sm text-muted">{p}</p></div>
+            ['sparkle', 'bg-t-amber', 'Shows the working', 'Every calculator explains its formula and can show each step, so you can check the answer instead of trusting a black box.'],
+            ['lock', 'bg-t-mint', 'Private by design', 'Images, JSON, tokens and text are processed on your device. Nothing you add is uploaded or stored.'],
+            ['bolt', 'bg-t-sky', 'Fast on any device', 'Pages are pre-rendered and load only the code each tool needs. No pop-ups, no sign-up walls.'],
+          ].map(([icon, tint, h, p]) => (
+            <div key={h} className="rounded-[28px] card p-7">
+              <span className={`tile h-12 w-12 ${tint}`}><Icon name={icon} className="h-5 w-5" /></span>
+              <h3 className="mt-6 text-xl font-extrabold tracking-tight">{h}</h3>
+              <p className="mt-2 text-muted">{p}</p>
+            </div>
           ))}
         </div>
       </section>

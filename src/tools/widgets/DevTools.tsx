@@ -59,7 +59,7 @@ export function JsonFormatter() {
           <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={sort} onChange={(e) => setSort(e.target.checked)} /> Sort keys</label>
           <button className="btn-ghost" onClick={() => setInput('')}>Clear</button>
         </div>
-        {res.error ? <Err>{res.error}</Err> : input.trim() && <p className="mt-2 text-sm font-medium text-brand-700 dark:text-brand-200">✓ Valid JSON</p>}
+        {res.error ? <Err>{res.error}</Err> : input.trim() && <p className="mt-2 text-sm font-medium text-amber-800 dark:text-glow">✓ Valid JSON</p>}
       </div>
       <div>
         <div className="mb-1.5 flex items-center justify-between"><span className="text-sm font-semibold">Output</span><CopyButton text={res.out} /></div>
@@ -175,7 +175,7 @@ export function JwtDecoder() {
       {res && 'payload' in res && (
         <>
           {typeof res.payload.exp === 'number' && (
-            <p className={`rounded-lg px-3 py-2 text-sm font-semibold ${res.payload.exp < now ? 'bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200' : 'bg-brand-50 text-brand-700 dark:bg-[#10201e] dark:text-brand-200'}`}>
+            <p className={`rounded-lg px-3 py-2 text-sm font-semibold ${res.payload.exp < now ? 'bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200' : 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200'}`}>
               {res.payload.exp < now ? `Expired ${new Date(res.payload.exp * 1000).toUTCString()}` : `Valid until ${new Date(res.payload.exp * 1000).toUTCString()}`}
             </p>
           )}

@@ -1,11 +1,13 @@
-export type CategoryId = 'business' | 'everyday' | 'home' | 'energy' | 'developer' | 'text-seo';
+export type CategoryId = 'image' | 'convert' | 'business' | 'everyday' | 'home' | 'energy' | 'developer' | 'text-seo';
 
 export interface Category {
   id: CategoryId;
   name: string;
   short: string;
   description: string;
-  icon: string; // single emoji-free glyph key used by Icon component
+  icon: string; // glyph key used by Icon component
+  /** tailwind bg class for the category's icon tile */
+  tint: string;
 }
 
 export interface FAQ { q: string; a: string }

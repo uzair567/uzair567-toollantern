@@ -7,6 +7,9 @@ import { Calculator } from './Calculator';
 const loading = () => <div className="h-64 animate-pulse rounded-2xl surface-2" aria-hidden />;
 
 // Each widget is code-split so a tool page only ships the JS it needs.
+const ImageTool = dynamic(() => import('@/tools/widgets/ImageTools').then((m) => m.ImageTool), { loading });
+const UnitConverter = dynamic(() => import('@/tools/widgets/UnitConverter').then((m) => m.UnitConverter), { loading });
+
 const widgets: Record<string, React.ComponentType> = {
   'json-formatter': dynamic(() => import('@/tools/widgets/DevTools').then((m) => m.JsonFormatter), { loading }),
   'base64-encode-decode': dynamic(() => import('@/tools/widgets/DevTools').then((m) => m.Base64Tool), { loading }),
@@ -23,9 +26,13 @@ const widgets: Record<string, React.ComponentType> = {
 
 export function ToolWidget({ engine, defaults }: { engine: string; defaults?: Record<string, string | number> }) {
   if (calcDefs[engine]) return <Calculator engine={engine} defaults={defaults} />;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const d = (defaults ?? {}) as any;
+  if (engine === 'image') return <ImageTool mode={d.mode} from={d.from} to={d.to} />;
+  if (engine === 'unit') return <UnitConverter kind={d.kind} from={d.from} to={d.to} value={d.value} />;
   const W = widgets[engine];
   if (!W) throw new Error(`No widget for engine "${engine}"`);
   return <W />;
 }
 
-export const hasWidget = (engine: string) => Boolean(calcDefs[engine] || widgets[engine]);
+export const hasWidget = (engine: string) => Boolean(calcDefs[engine] || widgets[engine] || engine === 'image' || engine === 'unit');

@@ -5,10 +5,10 @@ export const metadata = pageMeta({ title: 'Privacy Policy | ToolLantern', descri
 
 export default function Privacy() {
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-6">
+    <div className="mx-auto max-w-3xl px-4 pt-6"><div className="rounded-[32px] card p-6 sm:p-10">
       <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Privacy', href: '/privacy/' }]} />
       <div className="prose-tl">
-        <h1 className="text-3xl font-bold tracking-tight">Privacy policy</h1>
+        <h1 className="display !mt-0 text-4xl sm:text-5xl">Privacy policy</h1>
         <p>Last updated 7 October 2026.</p>
         <h2>What you enter into tools</h2>
         <p>All calculators and utilities run in your web browser. Numbers, text, JSON, tokens and other input are processed on your device and are not sent to or stored on our servers.</p>
@@ -19,6 +19,6 @@ export default function Privacy() {
         <h2>Contact</h2>
         <p>Questions about privacy: <a href="mailto:contact@uzair.tech">contact@uzair.tech</a>.</p>
       </div>
-    </div>
+    </div></div>
   );
 }

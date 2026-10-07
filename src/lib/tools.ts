@@ -3,8 +3,9 @@ import { businessTools } from './content/business';
 import { everydayTools, homeTools } from './content/everyday-home';
 import { energyTools } from './content/energy';
 import { devTools, textTools } from './content/dev-text';
+import { imageTools, unitTools } from './content/convert';
 
-export const tools: ToolContent[] = [...businessTools, ...homeTools, ...energyTools, ...everydayTools, ...devTools, ...textTools];
+export const tools: ToolContent[] = [...imageTools, ...unitTools, ...businessTools, ...homeTools, ...energyTools, ...everydayTools, ...devTools, ...textTools];
 
 export const toolBySlug = new Map(tools.map((t) => [t.slug, t]));
 export const getTool = (slug: string) => toolBySlug.get(slug);

@@ -42,7 +42,7 @@ export function WordCounter() {
       <div className="grid content-start gap-3">
         <div className="grid grid-cols-2 gap-2">
           {stats.map(([k, v], i) => (
-            <div key={k} className={`rounded-xl p-3 ${i === 0 ? 'col-span-2 bg-brand-50 dark:bg-[#10201e]' : 'surface'}`}>
+            <div key={k} className={`rounded-xl p-3 ${i === 0 ? 'col-span-2 bg-glow-soft dark:bg-[#2a2210]' : 'surface'}`}>
               <p className="text-xs text-muted">{k}</p><p className={`${i === 0 ? 'text-3xl' : 'text-lg'} font-bold tabular-nums`}>{v}</p>
             </div>
           ))}
@@ -160,7 +160,7 @@ export function UtmBuilder() {
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={lower} onChange={(e) => setLower(e.target.checked)} /> Force lowercase (recommended — GA4 is case-sensitive)</label>
       </form>
       <div className="grid content-start gap-3">
-        <div className="rounded-2xl border border-line bg-brand-50 p-4 dark:bg-[#10201e]">
+        <div className="rounded-[24px] bg-glow-soft p-4 dark:bg-[#2a2210]">
           <div className="mb-2 flex items-center justify-between"><span className="text-sm font-semibold">Tagged URL</span>{'out' in res && <CopyButton text={res.out!} />}</div>
           <p className="break-all font-mono text-sm">{'out' in res ? res.out : res.error}</p>
         </div>
@@ -196,7 +196,7 @@ export function SerpPreview() {
   let crumb = url;
   try { const u = new URL(url); crumb = `${u.hostname}${u.pathname.replace(/\/$/, '').split('/').filter(Boolean).map((p) => ` › ${p}`).join('')}`; } catch { /* keep */ }
   const bar = (v: number, max: number) => (
-    <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full surface-2"><div className={`h-full ${v > max ? 'bg-red-500' : v > max * 0.9 ? 'bg-amber-glow' : 'bg-brand-500'}`} style={{ width: `${Math.min(100, (v / max) * 100)}%` }} /></div>
+    <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full surface-2"><div className={`h-full ${v > max ? 'bg-red-500' : v > max * 0.9 ? 'bg-amber-glow' : 'bg-glow'}`} style={{ width: `${Math.min(100, (v / max) * 100)}%` }} /></div>
   );
   return (
     <div className="grid gap-6 lg:grid-cols-2">
