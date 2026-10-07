@@ -52,7 +52,7 @@ export function Header({ nav, total, index }: { nav: NavCategory[]; total: numbe
   return (
     <header className="sticky top-0 z-50 pt-3" ref={wrap}>
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4">
-        <div className="flex flex-1 items-center"><Logo /></div>
+        <div className="flex flex-1 items-center"><div className="rounded-full card py-1.5 pl-1.5 pr-4 shadow-[0_1px_2px_rgba(14,23,38,.06)]"><Logo /></div></div>
 
         <nav aria-label="Main" className="hidden items-center gap-1 rounded-full card p-1.5 shadow-[0_1px_2px_rgba(14,23,38,.06)] lg:flex" onMouseLeave={hoverClose}>
           <button type="button" aria-expanded={open === 'tools'} aria-controls="mega-tools" onMouseEnter={() => hoverOpen('tools')} onClick={() => setOpen(open === 'tools' ? null : 'tools')}
