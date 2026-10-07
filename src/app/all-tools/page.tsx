@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 import { categories } from '@/lib/categories';
 import { toolsInCategory, toolPath } from '@/lib/tools';
 import { pageMeta } from '@/lib/seo';

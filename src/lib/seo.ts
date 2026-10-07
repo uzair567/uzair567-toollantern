@@ -3,6 +3,7 @@ import { site, absUrl } from './site';
 import type { ToolContent } from './types';
 import { categoryById } from './categories';
 import { getTool, toolPath } from './tools';
+import { seoOf } from './seo-data';
 
 export function pageMeta({ title, description, path, noindex = false }: { title: string; description: string; path: string; noindex?: boolean }): Metadata {
   const url = absUrl(path);
@@ -37,7 +38,7 @@ export function toolSchemas(t: ToolContent) {
   const url = absUrl(toolPath(t));
   const out: object[] = [
     {
-      '@context': 'https://schema.org', '@type': 'WebApplication', name: t.name, url, description: t.description,
+      '@context': 'https://schema.org', '@type': 'WebApplication', name: t.name, url, description: seoOf(t.slug)?.metaDescription ?? t.description,
       applicationCategory: t.category === 'developer' ? 'DeveloperApplication' : t.category === 'business' ? 'BusinessApplication' : 'UtilitiesApplication',
       operatingSystem: 'Any (runs in the browser)', browserRequirements: 'Requires JavaScript',
       isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -48,10 +49,6 @@ export function toolSchemas(t: ToolContent) {
   if (t.faqs.length) out.push({
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: t.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: strip(f.a) } })),
-  });
-  if (t.howTo.length >= 3) out.push({
-    '@context': 'https://schema.org', '@type': 'HowTo', name: `How to use the ${t.name}`,
-    step: t.howTo.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: strip(s) })),
   });
   return out;
 }

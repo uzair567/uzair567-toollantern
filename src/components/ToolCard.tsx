@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 import type { ToolContent } from '@/lib/types';
 
 export type CardTool = Pick<ToolContent, 'slug' | 'name' | 'lead' | 'category'>;

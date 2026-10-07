@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/A';
 
 const KEY = 'tl-recent';
 type Item = { s: string; n: string };

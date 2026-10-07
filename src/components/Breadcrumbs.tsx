@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 
 export interface Crumb { name: string; href: string }
 

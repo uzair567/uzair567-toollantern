@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 import { popularTools, toolPath } from '@/lib/tools';
 
 export const metadata = { title: 'Page not found | ToolLantern', robots: { index: false } };

@@ -1,10 +1,9 @@
 @import "tailwindcss";
-@import "@fontsource-variable/plus-jakarta-sans/index.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
-  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --color-ink: #0e1726;
   --color-glow: #ffb547;
@@ -114,3 +113,5 @@ body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antiali
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px) scale(.985); } to { opacity: 1; transform: none; } }
 .menu-in { animation: menu-in .16s ease-out; }
 @media (prefers-reduced-motion: reduce) { .menu-in { animation: none; } html { scroll-behavior: auto; } }
+.answer a { font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.prose-tl .not-prose table { margin: 0; }

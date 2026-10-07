@@ -1,0 +1,38 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "toollantern.vercel.app"
+        }
+      ],
+      "destination": "https://toollantern.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "toollantern-uzair23.vercel.app"
+        }
+      ],
+      "destination": "https://toollantern.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "toollantern-git-main-uzair23.vercel.app"
+        }
+      ],
+      "destination": "https://toollantern.com/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 import type { ToolContent } from '@/lib/types';
 import { getTool, toolPath, childrenOf, popularTools, engineOf } from '@/lib/tools';
 import { categoryById } from '@/lib/categories';
@@ -9,6 +9,9 @@ import { ToolCard, cardOf } from './ToolCard';
 import { ToolWidget } from './ToolWidget';
 import { TrackRecent } from './RecentTools';
 import { Icon } from './Icon';
+import { UnitTable } from './UnitTable';
+import { seoOf } from '@/lib/seo-data';
+import type { Kind } from '@/tools/units';
 
 const Html = ({ html, as: Tag = 'p' }: { html: string; as?: 'p' | 'li' }) => <Tag dangerouslySetInnerHTML={{ __html: html }} />;
 
@@ -18,6 +21,8 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
   const kids = childrenOf(tool.parent ?? tool.slug).filter((k) => k.slug !== tool.slug);
   const parent = tool.parent ? getTool(tool.parent) : undefined;
   const popular = popularTools.filter((p) => p.slug !== tool.slug && !tool.related.includes(p.slug)).slice(0, 4);
+  const seo = seoOf(tool.slug);
+  const d = (tool.defaults ?? {}) as Record<string, string>;
   const updated = new Date(tool.updated + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 
   return (
@@ -32,8 +37,14 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
           <div className="mt-2 flex flex-col gap-5 sm:flex-row sm:items-start">
             <span className={`tile h-14 w-14 ${cat.tint}`}><Icon name={cat.icon} className="h-6 w-6" /></span>
             <div className="max-w-3xl">
-              <h1 className="display text-[2.1rem] sm:text-5xl">{tool.name}</h1>
+              <h1 className="display text-[2.1rem] sm:text-5xl">{seo?.h1 ?? tool.name}</h1>
               <p className="mt-3 text-lg leading-relaxed text-muted">{tool.lead}</p>
+              {seo?.answer && (
+                <div className="answer mt-5 rounded-2xl border-l-4 border-glow surface-2 px-5 py-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-glow">Quick answer</p>
+                  <p className="mt-1 leading-relaxed" dangerouslySetInnerHTML={{ __html: seo.answer }} />
+                </div>
+              )}
               <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold">
                 <li className="chip">Free</li>
                 <li className="rounded-full surface-2 px-3 py-1.5">No sign-up</li>
@@ -64,6 +75,8 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
 
           <h2>How to use it</h2>
           <ol>{tool.howTo.map((s, i) => <Html key={i} as="li" html={s} />)}</ol>
+
+          {engineOf(tool) === 'unit' && <UnitTable kind={d.kind as Kind} from={d.from} to={d.to} />}
 
           {tool.formula && (
             <>

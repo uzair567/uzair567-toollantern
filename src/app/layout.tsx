@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import localFont from 'next/font/local';
+
+const jakarta = localFont({ src: './jakarta-latin.woff2', variable: '--font-jakarta', weight: '200 800', display: 'swap', preload: true });
 import { site } from '@/lib/site';
 import { Header, Footer } from '@/components/Chrome';
 import { themeScript } from '@/components/ThemeToggle';
@@ -23,7 +26,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

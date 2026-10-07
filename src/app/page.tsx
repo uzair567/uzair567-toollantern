@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/A';
 import { categories } from '@/lib/categories';
 import { tools, toolsInCategory, primaryTools } from '@/lib/tools';
 import { pageMeta, siteSchemas } from '@/lib/seo';
@@ -10,8 +10,8 @@ import { ToolGrid } from '@/components/ToolGrid';
 import { ToolCard, cardOf } from '@/components/ToolCard';
 
 export const metadata = pageMeta({
-  title: `${site.name} – Free Online Calculators, Converters & Tools`,
-  description: 'Free online tools that solve everyday problems: JPG to PNG and image compressor, profit margin, tile and electricity calculators, unit converters and developer tools. No sign-up.',
+  title: `${site.name} – Free Online Tools for Everyday Work`,
+  description: 'Free online tools for everyday work: image converters, unit converters, business, home and electricity cost calculators, and developer tools. No sign-up.',
   path: '/',
 });
 
@@ -28,7 +28,7 @@ export default function Home() {
           <div className="flex flex-col justify-between rounded-[26px] card p-7 sm:p-10 lg:col-span-7">
             <div>
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-muted"><span className="h-2 w-2 rounded-full bg-emerald-500" />{tools.length} tools live · no sign-up</span>
-              <h1 className="display mt-6 text-[2.6rem] sm:text-6xl lg:text-[4.1rem]">Free online tools that solve <span className="glow-mark">everyday problems.</span></h1>
+              <h1 className="display mt-6 text-[2.6rem] sm:text-6xl lg:text-[4.1rem]">Free online tools for <span className="glow-mark">everyday work.</span></h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">Convert images, price products, plan home projects and check your energy bill — each tool shows exactly how the answer was worked out.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/all-tools/" className="btn !py-2 !pl-5 !pr-2">Browse all tools <span className="dot-icon"><Icon name="grid" className="h-4 w-4" /></span></Link>
