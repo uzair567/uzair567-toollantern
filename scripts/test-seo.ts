@@ -15,6 +15,11 @@ for (const t of tools) {
   if (titles.has(title)) bad(`${t.slug}: duplicate title with ${titles.get(title)}`); titles.set(title, t.slug);
   if (metas.has(meta)) bad(`${t.slug}: duplicate meta with ${metas.get(meta)}`); metas.set(meta, t.slug);
   for (const [, href] of s.answer.matchAll(/href="\/([^"]+)\/"/g)) if (!slugs.has(href)) bad(`${t.slug}: answer links to missing /${href}/`);
+  const kw = s.primaryKeyword.toLowerCase();
+  if (!title.toLowerCase().includes(kw)) bad(`${t.slug}: focus keyword "${kw}" missing from title`);
+  if (!meta.toLowerCase().includes(kw)) bad(`${t.slug}: focus keyword "${kw}" missing from meta`);
+  if (title.length > 60) bad(`${t.slug}: title ${title.length} chars (>60)`);
+  if (meta.length > 155) bad(`${t.slug}: meta ${meta.length} chars (>155)`);
   if (s.answer.length > 420) bad(`${t.slug}: answer too long (${s.answer.replace(/<[^>]+>/g, '').length})`);
 }
 for (const k of Object.keys(toolSeo)) if (!slugs.has(k)) bad(`seo entry for unknown tool ${k}`);

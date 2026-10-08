@@ -149,7 +149,7 @@ export const toolSeo: Record<string, ToolSeo> = {
   },
   'electricity-cost-calculator/ac': {
     primaryKeyword: 'ac electricity cost calculator', secondaryKeywords: ['cost to run air conditioner', 'air conditioner electricity cost per hour', 'ac running cost'], intent: 'calculate', priority: 1,
-    title: 'AC Electricity Cost Calculator – Air Conditioner Running Cost',
+    title: 'AC Electricity Cost Calculator – Air Conditioner Cost',
     answer: `A 1,200 W window AC running 8 hours a day with the compressor on 70% of the time uses about 6.7 kWh — roughly $1.14 a day or $34 a month at $0.17/kWh. A ${a('electricity-cost-calculator/ceiling-fan', 'ceiling fan')} costs about a penny an hour by comparison.`,
   },
   'electricity-cost-calculator/refrigerator': {
@@ -295,3 +295,45 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
 };
 
 export const seoOf = (slug: string): ToolSeo | undefined => toolSeo[slug];
+
+// Title / meta overrides so every page's focus keyword (primaryKeyword) appears in both.
+const metaOverrides: Record<string, Pick<ToolSeo, 'metaDescription'> & { title?: string }> = {
+  'image-converter': { metaDescription: 'Free image converter for JPG, PNG and WebP. Batch convert, set quality and resize in your browser — no upload, no sign-up.' },
+  'image-compressor': { metaDescription: 'Free image compressor for JPG, PNG and WebP. Shrink file size without visible quality loss and batch up to 30 images — nothing is uploaded.' },
+  'image-resizer': { metaDescription: 'Free image resizer: resize photos to exact pixels or a percentage, keep the aspect ratio and batch JPG, PNG and WebP. Private, no upload.' },
+  'length-converter': { metaDescription: 'Free length converter for cm, m, km, inches, feet, yards and miles. Exact conversion factors and a quick reference table.' },
+  'weight-converter': { metaDescription: 'Free weight converter for kg, g, lbs, oz and stone using exact international definitions, with a quick reference table.' },
+  'temperature-converter': { metaDescription: 'Free temperature converter for Celsius, Fahrenheit and Kelvin with the exact formulas and a reference table for cooking and weather.' },
+  'profit-margin-calculator': { metaDescription: 'Free profit margin calculator: enter cost and price to get gross margin %, profit and markup, with the formula and worked examples.' },
+  'discount-calculator': { metaDescription: 'Free discount calculator: find the sale price after % off, stack an extra discount, add sales tax and see exactly how much you save.' },
+  'break-even-calculator': { title: 'Break Even Calculator – Units & Revenue to Break Even', metaDescription: 'Free break even calculator: find how many units you must sell to cover fixed costs, plus break-even revenue and contribution margin.' },
+  'stripe-fee-calculator': { metaDescription: "Stripe fee calculator: see Stripe's fee on any payment, what you receive, or what to charge to net an exact amount. Editable rates." },
+  'paypal-fee-calculator': { metaDescription: "PayPal fee calculator: see PayPal's fee on any payment, your net amount, or how much to request to receive an exact sum. Editable rates." },
+  'tile-calculator': { metaDescription: 'Free tile calculator: how many tiles and boxes you need for a floor or wall, with grout joints, waste and cost. Feet or metres.' },
+  'flooring-calculator': { metaDescription: 'Free flooring calculator: how much laminate, vinyl plank or hardwood to buy, how many boxes and the cost, with waste by layout.' },
+  'concrete-calculator': { metaDescription: 'Free concrete calculator for slabs, patios and footings: cubic yards, cubic metres and 80 lb, 60 lb or 25 kg bags, plus spillage.' },
+  'gravel-calculator': { metaDescription: 'Free gravel calculator: tons and cubic yards (or tonnes and m³) of gravel, crushed stone or sand for a driveway, path or garden bed.' },
+  'electricity-cost-calculator': { metaDescription: 'Free electricity cost calculator: what any appliance costs to run per hour, day, month and year from its watts and your price per kWh.' },
+  'electricity-cost-calculator/ac': { metaDescription: 'AC electricity cost calculator: see what your air conditioner costs to run per hour, day and month for window, split or central units.' },
+  'electricity-cost-calculator/refrigerator': { title: 'Refrigerator Electricity Cost Calculator – kWh per Year', metaDescription: 'Refrigerator electricity cost per day, month and year, based on real compressor cycling. Works for fridges, freezers and mini fridges.' },
+  'electricity-cost-calculator/space-heater': { title: 'Space Heater Cost per Hour – Electric Heater Calculator', metaDescription: 'Space heater cost per hour, day and month for 750 W, 1,500 W or any wattage. Enter your electricity rate to see the real cost.' },
+  'electricity-cost-calculator/ceiling-fan': { metaDescription: 'Ceiling fan electricity cost per hour, day and month. Compare AC-motor and energy-saving BLDC fans and see how cheap a fan is next to AC.' },
+  'electricity-cost-calculator/tv': { metaDescription: "TV electricity cost per day, month and year for LED, OLED and large-screen TVs. Enter your set's wattage and your price per kWh." },
+  'electricity-cost-calculator/washing-machine': { title: 'Washing Machine Cost per Load – Electricity Calculator', metaDescription: 'Washing machine cost per load, per month and per year. See why water heating drives the cost and how much cold washes save.' },
+  'percentage-change-calculator': { title: 'Percentage Increase Calculator – Increase & Decrease', metaDescription: 'Percentage increase calculator: find the % increase or decrease between two numbers, the change in value and % difference, with examples.' },
+  'age-calculator': { metaDescription: 'Free age calculator: your exact age in years, months and days from your date of birth, plus weeks and days lived and your next birthday.' },
+  'date-difference-calculator': { metaDescription: 'Count the days between dates, plus weeks, months, years and weekdays. Choose whether to include the end date. Free and instant.' },
+  'json-formatter': { metaDescription: 'Free JSON formatter and validator: beautify, minify and check JSON in your browser, with errors pinpointed by line and column. No upload.' },
+  'base64-encode-decode': { title: 'Base64 Decode & Encode Online – UTF-8 Safe', metaDescription: 'Base64 decode and encode online with full UTF-8 support and a URL-safe Base64URL option. Runs locally in your browser — nothing uploaded.' },
+  'url-encode-decode': { metaDescription: 'URL encode and decode online: percent-encode text for URLs and query strings or turn %20-style URLs back into readable text.' },
+  'jwt-decoder': { metaDescription: "Free JWT decoder: read a token's header and payload, see expiry and issued-at as plain dates and check if it expired. Decoded locally." },
+  'unix-timestamp-converter': { metaDescription: 'Unix timestamp converter: turn epoch time into UTC and local dates and back. Auto-detects seconds, milliseconds and microseconds.' },
+  'uuid-generator': { metaDescription: 'Free UUID generator: random version 4 UUIDs (GUIDs), one or hundreds at once, uppercase or without hyphens, from a secure random source.' },
+  'word-counter': { metaDescription: 'Free word counter: words, characters with and without spaces, sentences, paragraphs, reading time and most-used words as you type.' },
+  'case-converter': { metaDescription: 'Free case converter: UPPER, lower, Title, Sentence, camelCase, snake_case and kebab-case. See every format at once and copy in one click.' },
+  'slug-generator': { metaDescription: 'Free slug generator: turn titles into clean, lowercase URL slugs. Removes accents and symbols, optional stop words, bulk mode.' },
+  'utm-builder': { metaDescription: 'Free UTM builder for GA4: add source, medium, campaign, term and content to any link. Validates the URL and forces lowercase tags.' },
+  'paint-calculator': { metaDescription: 'Free paint calculator: how many gallons or litres you need for walls and ceilings, minus doors and windows, for any number of coats.' },
+  'serp-snippet-preview': { title: 'SERP Preview Tool – Google Title & Meta Description Checker', metaDescription: 'Free SERP preview tool: see how your title and meta description look in Google, measured in pixels so you know exactly what gets cut off.' },
+};
+for (const [slug, o] of Object.entries(metaOverrides)) Object.assign(toolSeo[slug], o);
