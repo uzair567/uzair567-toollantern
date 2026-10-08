@@ -239,6 +239,39 @@ export const toolSeo: Record<string, ToolSeo> = {
     primaryKeyword: 'serp preview tool', secondaryKeywords: ['google snippet preview', 'meta title length checker', 'meta description length'], intent: 'check', priority: 2,
     answer: `Google cuts titles at about 600 pixels (roughly 50–60 characters) and descriptions at about 920 pixels on desktop. Type yours to see where they truncate before you publish; build a clean URL with the ${a('slug-generator', 'slug generator')}.`,
   },
+  // ── Fitness ────────────────────────────────────────────────────────────
+  'bmi-calculator': {
+    primaryKeyword: 'bmi calculator', secondaryKeywords: ['body mass index calculator', 'bmi chart', 'healthy weight for height'], intent: 'calculate', priority: 4,
+    answer: `BMI = weight (kg) ÷ height (m)². For adults, 18.5–24.9 is the healthy range, 25–29.9 overweight and 30+ obesity. BMI can't tell muscle from fat — check the ${a('body-fat-calculator', 'body fat calculator')} too.`,
+  },
+  'bmr-calculator': {
+    primaryKeyword: 'bmr calculator', secondaryKeywords: ['basal metabolic rate calculator', 'resting metabolic rate', 'mifflin st jeor calculator'], intent: 'calculate', priority: 3,
+    answer: `Mifflin-St Jeor: BMR = 10 × kg + 6.25 × cm − 5 × age + 5 for men (−161 for women). A 30-year-old man at 80 kg and 180 cm burns about 1,780 kcal a day at rest. Add daily activity with the ${a('tdee-calculator', 'TDEE calculator')}.`,
+  },
+  'tdee-calculator': {
+    primaryKeyword: 'tdee calculator', secondaryKeywords: ['calorie calculator', 'maintenance calories calculator', 'calorie deficit calculator'], intent: 'calculate', priority: 3,
+    answer: `TDEE = BMR × activity factor (1.2 sedentary to 1.9 extra active). Eating about 500 kcal below it gives roughly 0.5 kg (1 lb) of loss a week. Split the result into protein, carbs and fat with the ${a('macro-calculator', 'macro calculator')}.`,
+  },
+  'macro-calculator': {
+    primaryKeyword: 'macro calculator', secondaryKeywords: ['macros calculator', 'macronutrient calculator', 'protein carbs fat calculator'], intent: 'calculate', priority: 3,
+    answer: `Protein and carbs have 4 kcal per gram, fat has 9. On 2,000 kcal with a 30/40/30 split that's 150 g protein, 200 g carbs and 67 g fat. No calorie target yet? Start with the ${a('tdee-calculator', 'TDEE calculator')}.`,
+  },
+  'body-fat-calculator': {
+    primaryKeyword: 'body fat calculator', secondaryKeywords: ['body fat percentage calculator', 'navy body fat calculator', 'lean body mass calculator'], intent: 'calculate', priority: 3,
+    answer: `The US Navy method estimates body fat from height, neck and waist (plus hips for women), usually within a few points of a DEXA scan. 14–24% is a typical fitness-to-average range for men, 21–31% for women. Compare with your ${a('bmi-calculator', 'BMI')}.`,
+  },
+  'one-rep-max-calculator': {
+    primaryKeyword: 'one rep max calculator', secondaryKeywords: ['1rm calculator', 'bench press max calculator', 'epley formula'], intent: 'calculate', priority: 2,
+    answer: `Epley: 1RM = weight × (1 + reps ÷ 30). Lifting 100 kg for 5 reps puts your one-rep max at about 115 kg. Most accurate from sets of 3–6 hard reps. Support training with enough protein — see the ${a('protein-calculator', 'protein calculator')}.`,
+  },
+  'protein-calculator': {
+    primaryKeyword: 'protein calculator', secondaryKeywords: ['how much protein per day', 'protein intake calculator', 'protein for muscle gain'], intent: 'calculate', priority: 3,
+    answer: `Sedentary adults need at least 0.8 g per kg of body weight; people building muscle usually aim for 1.6–2.2 g/kg. An 80 kg lifter needs about 128–176 g a day. Fit it into your day with the ${a('macro-calculator', 'macro calculator')}.`,
+  },
+  'ideal-weight-calculator': {
+    primaryKeyword: 'ideal weight calculator', secondaryKeywords: ['ideal body weight calculator', 'healthy weight for height', 'how much should i weigh'], intent: 'calculate', priority: 3,
+    answer: `The Devine formula gives 50 kg (men) or 45.5 kg (women) plus 2.3 kg per inch over 5 ft — 73 kg (161 lb) for a 5 ft 10 in man. The healthy ${a('bmi-calculator', 'BMI')} range is a broader, more useful guide.`,
+  },
 };
 
 export interface CategorySeo { title: string; metaDescription: string; h1: string; intro: string }
@@ -285,6 +318,12 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
     metaDescription: 'Format JSON, decode JWTs, convert Unix timestamps, encode Base64 and URLs, and generate UUIDs — all processed locally in your browser.',
     h1: 'Developer tools',
     intro: 'Everyday utilities for working with APIs and data. Everything runs in your browser, so tokens, payloads and config never leave your machine.',
+  },
+  fitness: {
+    title: 'Fitness & Gym Calculators – BMI, TDEE, Macros | ToolLantern',
+    metaDescription: 'Free fitness calculators: BMI, BMR, TDEE calories, macros, body fat, one-rep max, protein and ideal weight. US and metric units, formulas shown.',
+    h1: 'Fitness & gym calculators',
+    intro: 'Calculators for training and nutrition: body mass index, daily calories, macros, body fat, protein needs and strength. Each one shows the formula it uses, in US or metric units.',
   },
   'text-seo': {
     title: 'Text & SEO Tools – Word Counter, UTM, SERP Preview | ToolLantern',

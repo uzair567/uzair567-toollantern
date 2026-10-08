@@ -11,6 +11,8 @@ export const categories: Category[] = [
     description: 'Estimate tiles, paint, flooring, concrete and gravel before you buy, with waste allowances built in.' },
   { id: 'energy', name: 'Energy & Electricity', short: 'Energy', icon: 'bolt', tint: 'bg-t-sky',
     description: 'Find out what your appliances really cost to run per hour, day, month and year.' },
+  { id: 'fitness', name: 'Fitness & Gym', short: 'Fitness', icon: 'dumbbell', tint: 'bg-t-lime',
+    description: 'BMI, calories, macros, body fat, one-rep max and protein — the numbers behind training and nutrition.' },
   { id: 'everyday', name: 'Everyday Calculators', short: 'Everyday', icon: 'calc', tint: 'bg-t-lilac',
     description: 'Percentages, ages and date differences — quick answers for everyday questions.' },
   { id: 'developer', name: 'Developer Tools', short: 'Developer', icon: 'code', tint: 'bg-t-ink text-white',

@@ -15,7 +15,7 @@ export const metadata = pageMeta({
   path: '/',
 });
 
-const featured = ['jpg-to-png', 'image-compressor', 'profit-margin-calculator', 'electricity-cost-calculator/ac', 'kg-to-lbs', 'json-formatter', 'tile-calculator', 'percentage-calculator'];
+const featured = ['jpg-to-png', 'image-compressor', 'profit-margin-calculator', 'electricity-cost-calculator/ac', 'tdee-calculator', 'json-formatter', 'tile-calculator', 'percentage-calculator'];
 
 export default function Home() {
   const pick = featured.map((s) => tools.find((t) => t.slug === s)!).map(cardOf);
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
           {categories.map((c) => (
             <Link key={c.id} href={`/category/${c.id}/`} className="group flex items-center gap-3 rounded-[24px] card p-4 transition hover:shadow-[0_12px_32px_-14px_rgba(14,23,38,.2)]">
               <span className={`tile h-12 w-12 ${c.tint}`}><Icon name={c.icon} className="h-5 w-5" /></span>

@@ -41,5 +41,17 @@ check('electricity-cost-calculator', { watts: '1000', hours: '10', rate: '0.2', 
 check('electricity-cost-calculator', { watts: '1000', hours: '10', rate: '0.2', duty: '100' }, 'per month', '$60.00');
 check('flooring-calculator', { L: '10', W: '10', waste: '10' }, 'Flooring to buy', '110');
 
+check('bmi-calculator', { sys: 'metric', wt: '70', cm: '175' }, 'Your BMI', '22.9');
+check('bmi-calculator', { sys: 'us', wt: '170', ft: '5', in: '10' }, 'Your BMI', '24.4');
+check('bmr-calculator', { sys: 'metric', sex: 'male', age: '30', wt: '80', cm: '180' }, 'Mifflin', '1,780');
+check('bmr-calculator', { sys: 'metric', sex: 'female', age: '30', wt: '60', cm: '165' }, 'Mifflin', '1,320');
+check('tdee-calculator', { sys: 'metric', sex: 'male', age: '30', wt: '80', cm: '180', act: '1.55' }, 'TDEE', '2,759');
+check('macro-calculator', { kcal: '2000', split: '30-40-30' }, 'Protein', '150 g');
+check('macro-calculator', { kcal: '2000', split: '30-40-30' }, 'Fat', '67 g');
+check('body-fat-calculator', { sys: 'metric', sex: 'male', cm: '178', neck: '38', waist: '86' }, 'Body fat', '17.2%');
+check('one-rep-max-calculator', { w: '100', u: 'kg', r: '5' }, 'Estimated', '115 kg');
+check('protein-calculator', { sys: 'metric', wt: '80', goal: '1.6-2.2' }, 'Daily protein', '128–176 g');
+check('ideal-weight-calculator', { sys: 'metric', sex: 'male', cm: '177.8' }, 'Devine', '73 kg');
+
 console.log(fail ? `\n${fail} failing` : '\nAll calculator checks passed');
 process.exit(fail ? 1 : 0);

@@ -22,6 +22,7 @@ const paths: Record<string, string> = {
   download: 'M12 4v12m-5-5l5 5 5-5M4 20h16',
   sparkle: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
   check: 'M5 12l5 5L20 7',
+  dumbbell: 'M6.5 6.5v11M3.5 9v6M17.5 6.5v11M20.5 9v6M6.5 12h11',
 };
 
 export function Icon({ name, className = 'h-5 w-5' }: { name: string; className?: string }) {

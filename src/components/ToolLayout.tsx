@@ -108,7 +108,7 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
               </details>
             ))}
           </div>
-          <p className="!mt-8 text-sm text-muted">Results are estimates for planning — check critical figures with a professional or the official source.</p>
+          <p className="!mt-8 text-sm text-muted">{tool.category === 'fitness' ? 'Results are estimates for healthy adults, not medical advice. Talk to a doctor or registered dietitian before major changes to diet or training, especially if you are pregnant or have a health condition.' : 'Results are estimates for planning — check critical figures with a professional or the official source.'}</p>
         </div>
 
         <aside className="grid content-start gap-3 lg:sticky lg:top-24 lg:self-start" aria-label="More tools">

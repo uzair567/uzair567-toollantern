@@ -27,6 +27,8 @@ export interface CalcOutput { results: ResultRow[]; working?: string[]; error?: 
 export interface CalcDef {
   fields: Field[];
   compute: (v: Values) => CalcOutput;
+  /** optional hook to adjust other values when one input changes (e.g. convert units) */
+  onChange?: (id: string, next: Values, prev: Values) => Values;
 }
 
 // ---------- helpers ----------
@@ -531,3 +533,263 @@ export function ymdDiff(a: Date, b: Date) {
   if (m < 0) { y -= 1; m += 12; }
   return { y, m, dd };
 }
+
+// ---------- fitness ----------
+const sysField: Field = {
+  id: 'sys', label: 'Units', type: 'select', default: 'us',
+  options: [{ value: 'us', label: 'US (lb, ft, in)' }, { value: 'metric', label: 'Metric (kg, cm)' }],
+};
+const isUS = (v: Values) => v.sys !== 'metric';
+const sexField: Field = { id: 'sex', label: 'Sex', type: 'select', default: 'male', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], help: 'Used by the formulas; they were derived from male and female study groups.' };
+const ageField: Field = { id: 'age', label: 'Age', type: 'number', default: '30', unit: 'years', min: 15 };
+const weightField: Field = { id: 'wt', label: 'Weight', type: 'number', default: '170', unit: (v) => (isUS(v) ? 'lb' : 'kg') };
+const heightFields: Field[] = [
+  { id: 'ft', label: 'Height (feet)', type: 'number', default: '5', unit: 'ft', show: isUS },
+  { id: 'in', label: 'Height (inches)', type: 'number', default: '10', unit: 'in', show: isUS },
+  { id: 'cm', label: 'Height', type: 'number', default: '178', unit: 'cm', show: (v) => !isUS(v) },
+];
+const activityField: Field = {
+  id: 'act', label: 'Activity level', type: 'select', default: '1.55', options: [
+    { value: '1.2', label: 'Sedentary (desk job, little exercise)' },
+    { value: '1.375', label: 'Light (exercise 1–3 days/week)' },
+    { value: '1.55', label: 'Moderate (exercise 3–5 days/week)' },
+    { value: '1.725', label: 'Very active (hard exercise 6–7 days/week)' },
+    { value: '1.9', label: 'Extra active (physical job + training)' },
+  ],
+};
+/** body measurements in kg and cm, whatever the input system */
+const body = (v: Values) => {
+  const w = num(v.wt), kg = isUS(v) ? w * 0.45359237 : w;
+  const cm = isUS(v) ? (num(v.ft) * 12 + (num(v.in) || 0)) * 2.54 : num(v.cm);
+  return { kg, cm };
+};
+const wOut = (kg: number, v: Values, d = 1) => (isUS(v) ? `${fmt(kg / 0.45359237, d)} lb` : `${fmt(kg, d)} kg`);
+const mifflin = (kg: number, cm: number, age: number, male: boolean) => 10 * kg + 6.25 * cm - 5 * age + (male ? 5 : -161);
+/** Convert entered body measurements when the unit system is switched, so values stay meaningful. */
+const switchSystem = (id: string, n: Values, p: Values): Values => {
+  if (id !== 'sys' || n.sys === p.sys) return n;
+  const r = (x: number, d = 1) => (isFinite(x) ? String(Math.round(x * 10 ** d) / 10 ** d) : '');
+  const out = { ...n };
+  if (n.sys === 'metric') {
+    if (p.wt !== undefined) out.wt = r(num(p.wt) * 0.45359237);
+    if (p.ft !== undefined) out.cm = r((num(p.ft) * 12 + (num(p.in) || 0)) * 2.54, 0);
+    for (const k of ['neck', 'waist', 'hip']) if (p[k] !== undefined) out[k] = r(num(p[k]) * 2.54);
+  } else {
+    if (p.wt !== undefined) out.wt = r(num(p.wt) / 0.45359237);
+    if (p.cm !== undefined) { const inches = num(p.cm) / 2.54; out.ft = String(Math.floor(inches / 12)); out.in = r(inches - Math.floor(inches / 12) * 12); }
+    for (const k of ['neck', 'waist', 'hip']) if (p[k] !== undefined) out[k] = r(num(p[k]) / 2.54);
+  }
+  return out;
+};
+const bmiClass = (b: number) => (b < 18.5 ? 'Underweight' : b < 25 ? 'Healthy weight' : b < 30 ? 'Overweight' : 'Obesity');
+
+Object.assign(calcDefs, {
+  'bmi-calculator': {
+    onChange: switchSystem,
+    fields: [sysField, weightField, ...heightFields],
+    compute: (v: Values) => {
+      const { kg, cm } = body(v);
+      if (!need(kg, cm) || kg <= 0 || cm <= 0) return err('Enter your weight and height.');
+      const m = cm / 100, bmi = kg / (m * m);
+      return {
+        results: [
+          { label: 'Your BMI', value: fmt(bmi, 1), primary: true, note: bmiClass(bmi) },
+          { label: 'Category (adult WHO ranges)', value: bmiClass(bmi) },
+          { label: 'Healthy weight for your height', value: `${wOut(18.5 * m * m, v)} – ${wOut(24.9 * m * m, v)}`, note: 'BMI 18.5–24.9' },
+        ],
+        working: [`Weight ${fmt(kg, 2)} kg, height ${fmt(m, 3)} m`, `BMI = ${fmt(kg, 2)} ÷ ${fmt(m, 3)}² = ${fmt(bmi, 1)}`],
+      };
+    },
+  },
+
+  'bmr-calculator': {
+    onChange: switchSystem,
+    fields: [sysField, sexField, ageField, weightField, ...heightFields],
+    compute: (v: Values) => {
+      const { kg, cm } = body(v), age = num(v.age), male = v.sex !== 'female';
+      if (!need(kg, cm, age) || kg <= 0 || cm <= 0) return err('Enter age, weight and height.');
+      const ms = mifflin(kg, cm, age, male);
+      const hb = male ? 88.362 + 13.397 * kg + 4.799 * cm - 5.677 * age : 447.593 + 9.247 * kg + 3.098 * cm - 4.33 * age;
+      return {
+        results: [
+          { label: 'BMR (Mifflin-St Jeor)', value: `${fmt(ms, 0)} kcal/day`, primary: true },
+          { label: 'BMR (revised Harris-Benedict)', value: `${fmt(hb, 0)} kcal/day` },
+          { label: 'Per hour at rest', value: `${fmt(ms / 24, 0)} kcal` },
+        ],
+        working: [`Mifflin-St Jeor = 10 × ${fmt(kg, 1)} + 6.25 × ${fmt(cm, 1)} − 5 × ${age} ${male ? '+ 5' : '− 161'} = ${fmt(ms, 0)} kcal`],
+      };
+    },
+  },
+
+  'tdee-calculator': {
+    onChange: switchSystem,
+    fields: [sysField, sexField, ageField, weightField, ...heightFields, activityField],
+    compute: (v: Values) => {
+      const { kg, cm } = body(v), age = num(v.age), male = v.sex !== 'female', act = num(v.act);
+      if (!need(kg, cm, age) || kg <= 0 || cm <= 0) return err('Enter age, weight and height.');
+      const bmr = mifflin(kg, cm, age, male), tdee = bmr * act;
+      const floor = male ? 1500 : 1200;
+      const target = (d: number) => {
+        const c = tdee + d;
+        return c < floor ? `${fmt(floor, 0)} kcal/day*` : `${fmt(c, 0)} kcal/day`;
+      };
+      return {
+        results: [
+          { label: 'Maintenance calories (TDEE)', value: `${fmt(tdee, 0)} kcal/day`, primary: true },
+          { label: 'Mild weight loss (−250 kcal)', value: target(-250), note: '≈0.25 kg / 0.5 lb a week' },
+          { label: 'Weight loss (−500 kcal)', value: target(-500), note: '≈0.5 kg / 1 lb a week' },
+          { label: 'Lean muscle gain (+250 kcal)', value: target(250) },
+          { label: 'BMR (at complete rest)', value: `${fmt(bmr, 0)} kcal/day` },
+        ],
+        working: [
+          `BMR (Mifflin-St Jeor) = ${fmt(bmr, 0)} kcal`, `TDEE = ${fmt(bmr, 0)} × ${act} activity factor = ${fmt(tdee, 0)} kcal`,
+          `* Targets are not shown below ${fmt(floor, 0)} kcal/day; very low intakes should be supervised by a doctor or dietitian.`,
+        ],
+      };
+    },
+  },
+
+  'macro-calculator': {
+    fields: [
+      { id: 'kcal', label: 'Daily calories', type: 'number', default: '2200', unit: 'kcal', help: 'Not sure? Get your number from the TDEE calculator first.' },
+      { id: 'split', label: 'Macro split', type: 'select', default: '30-40-30', options: [
+        { value: '30-40-30', label: 'Balanced — 30% protein, 40% carbs, 30% fat' },
+        { value: '40-30-30', label: 'High protein — 40 / 30 / 30' },
+        { value: '25-50-25', label: 'Higher carb / endurance — 25 / 50 / 25' },
+        { value: '30-20-50', label: 'Lower carb — 30 / 20 / 50' },
+      ] },
+      { id: 'meals', label: 'Meals per day', type: 'number', default: '3', min: 1 },
+    ],
+    compute: (v: Values) => {
+      const kcal = num(v.kcal), meals = num(v.meals) || 1;
+      if (!need(kcal) || kcal <= 0) return err('Enter your daily calories.');
+      const [p, c, f] = v.split.split('-').map(Number);
+      const pg = (kcal * p) / 100 / 4, cg = (kcal * c) / 100 / 4, fg = (kcal * f) / 100 / 9;
+      return {
+        results: [
+          { label: 'Protein', value: `${fmt(pg, 0)} g/day`, primary: true, note: `${p}% · ${fmt(pg / meals, 0)} g per meal` },
+          { label: 'Carbohydrates', value: `${fmt(cg, 0)} g/day`, note: `${c}% · ${fmt(cg / meals, 0)} g per meal` },
+          { label: 'Fat', value: `${fmt(fg, 0)} g/day`, note: `${f}% · ${fmt(fg / meals, 0)} g per meal` },
+        ],
+        working: [`Protein: ${fmt(kcal)} × ${p}% ÷ 4 kcal/g = ${fmt(pg, 0)} g`, `Carbs: ${fmt(kcal)} × ${c}% ÷ 4 kcal/g = ${fmt(cg, 0)} g`, `Fat: ${fmt(kcal)} × ${f}% ÷ 9 kcal/g = ${fmt(fg, 0)} g`],
+      };
+    },
+  },
+
+  'body-fat-calculator': {
+    onChange: switchSystem,
+    fields: [
+      sysField, sexField,
+      { id: 'ft', label: 'Height (feet)', type: 'number', default: '5', unit: 'ft', show: isUS },
+      { id: 'in', label: 'Height (inches)', type: 'number', default: '10', unit: 'in', show: isUS },
+      { id: 'cm', label: 'Height', type: 'number', default: '178', unit: 'cm', show: (v: Values) => !isUS(v) },
+      { id: 'neck', label: 'Neck', type: 'number', default: '15.5', unit: (v: Values) => (isUS(v) ? 'in' : 'cm'), help: 'Just below the larynx.' },
+      { id: 'waist', label: 'Waist', type: 'number', default: '34', unit: (v: Values) => (isUS(v) ? 'in' : 'cm'), help: 'Men: at the navel. Women: at the narrowest point.' },
+      { id: 'hip', label: 'Hips', type: 'number', default: '38', unit: (v: Values) => (isUS(v) ? 'in' : 'cm'), help: 'Widest point of the hips.', show: (v: Values) => v.sex === 'female' },
+      { id: 'wt', label: 'Weight (optional)', type: 'number', default: '170', unit: (v: Values) => (isUS(v) ? 'lb' : 'kg'), optional: true, help: 'Adds fat mass and lean mass.' },
+    ],
+    compute: (v: Values) => {
+      const k = isUS(v) ? 2.54 : 1, male = v.sex !== 'female';
+      const h = isUS(v) ? (num(v.ft) * 12 + (num(v.in) || 0)) * 2.54 : num(v.cm);
+      const neck = num(v.neck) * k, waist = num(v.waist) * k, hip = num(v.hip) * k;
+      if (!need(h, neck, waist) || (!male && !need(hip))) return err('Enter height, neck and waist' + (male ? '.' : ' and hips.'));
+      const inner = male ? waist - neck : waist + hip - neck;
+      if (inner <= 0) return err('Waist must be larger than neck.');
+      const bf = male
+        ? 495 / (1.0324 - 0.19077 * Math.log10(inner) + 0.15456 * Math.log10(h)) - 450
+        : 495 / (1.29579 - 0.35004 * Math.log10(inner) + 0.221 * Math.log10(h)) - 450;
+      if (!isFinite(bf) || bf <= 0 || bf > 70) return err('These measurements give an implausible result — re-measure and check the units.');
+      const cat = male
+        ? bf < 6 ? 'Essential fat' : bf < 14 ? 'Athletes' : bf < 18 ? 'Fitness' : bf < 25 ? 'Average' : 'Obese range'
+        : bf < 14 ? 'Essential fat' : bf < 21 ? 'Athletes' : bf < 25 ? 'Fitness' : bf < 32 ? 'Average' : 'Obese range';
+      const w = num(v.wt), kg = isUS(v) ? w * 0.45359237 : w;
+      const rows = [
+        { label: 'Body fat', value: `${fmt(bf, 1)}%`, primary: true, note: cat },
+        { label: 'Category (ACE ranges)', value: cat },
+      ];
+      if (isFinite(kg) && kg > 0) rows.push({ label: 'Fat mass', value: wOut((kg * bf) / 100, v) }, { label: 'Lean mass', value: wOut(kg * (1 - bf / 100), v) });
+      return { results: rows, working: [`US Navy method, measurements in cm: height ${fmt(h, 1)}, ${male ? 'waist − neck' : 'waist + hips − neck'} = ${fmt(inner, 1)}`, `Body fat = ${fmt(bf, 1)}%`] };
+    },
+  },
+
+  'one-rep-max-calculator': {
+    fields: [
+      { id: 'w', label: 'Weight lifted', type: 'number', default: '185', unit: (v: Values) => v.u },
+      { id: 'u', label: 'Unit', type: 'select', default: 'lb', options: [{ value: 'lb', label: 'Pounds (lb)' }, { value: 'kg', label: 'Kilograms (kg)' }] },
+      { id: 'r', label: 'Reps completed', type: 'number', default: '5', min: 1, help: 'Most accurate for 2–10 reps.' },
+    ],
+    compute: (v: Values) => {
+      const w = num(v.w), r = num(v.r), u = v.u;
+      if (!need(w, r) || w <= 0 || r < 1) return err('Enter the weight and the reps you completed.');
+      if (r > 15) return err('Use a set of 15 reps or fewer — estimates get unreliable beyond that.');
+      const epley = r === 1 ? w : w * (1 + r / 30), brzycki = r === 1 ? w : (w * 36) / (37 - r), avg = (epley + brzycki) / 2;
+      const pcts = [95, 90, 85, 80, 75, 70, 65, 60];
+      return {
+        results: [
+          { label: 'Estimated one-rep max', value: `${fmt(avg, 0)} ${u}`, primary: true, note: 'Average of Epley and Brzycki' },
+          { label: 'Epley', value: `${fmt(epley, 1)} ${u}` },
+          { label: 'Brzycki', value: `${fmt(brzycki, 1)} ${u}` },
+          ...pcts.map((p) => ({ label: `${p}% of 1RM`, value: `${fmt((avg * p) / 100, 0)} ${u}` })),
+        ],
+        working: [`Epley = ${fmt(w)} × (1 + ${r} ÷ 30) = ${fmt(epley, 1)}`, `Brzycki = ${fmt(w)} × 36 ÷ (37 − ${r}) = ${fmt(brzycki, 1)}`],
+      };
+    },
+  },
+
+  'protein-calculator': {
+    onChange: switchSystem,
+    fields: [
+      sysField, weightField,
+      { id: 'goal', label: 'Goal / activity', type: 'select', default: '1.6-2.2', options: [
+        { value: '0.8-0.8', label: 'Sedentary adult (RDA minimum)' },
+        { value: '1.1-1.4', label: 'Regular exercise' },
+        { value: '1.6-2.2', label: 'Building muscle (strength training)' },
+        { value: '1.8-2.4', label: 'Losing fat while keeping muscle' },
+        { value: '1.2-1.6', label: 'Endurance training' },
+      ] },
+      { id: 'meals', label: 'Meals per day', type: 'number', default: '4', min: 1 },
+    ],
+    compute: (v: Values) => {
+      const { kg } = body(v), meals = num(v.meals) || 1;
+      if (!need(kg) || kg <= 0) return err('Enter your body weight.');
+      const [lo, hi] = v.goal.split('-').map(Number);
+      const a = kg * lo, b = kg * hi;
+      const range = lo === hi ? `${fmt(a, 0)} g/day` : `${fmt(a, 0)}–${fmt(b, 0)} g/day`;
+      return {
+        results: [
+          { label: 'Daily protein', value: range, primary: true, note: `${lo === hi ? lo : `${lo}–${hi}`} g per kg of body weight` },
+          { label: 'Per meal', value: lo === hi ? `${fmt(a / meals, 0)} g` : `${fmt(a / meals, 0)}–${fmt(b / meals, 0)} g`, note: `${meals} meals` },
+          { label: 'Calories from protein', value: lo === hi ? `${fmt(a * 4, 0)} kcal` : `${fmt(a * 4, 0)}–${fmt(b * 4, 0)} kcal` },
+        ],
+        working: [`${fmt(kg, 1)} kg × ${lo}${lo === hi ? '' : `–${hi}`} g/kg = ${range}`],
+      };
+    },
+  },
+
+  'ideal-weight-calculator': {
+    onChange: switchSystem,
+    fields: [sysField, sexField, ...heightFields],
+    compute: (v: Values) => {
+      const male = v.sex !== 'female';
+      const cm = isUS(v) ? (num(v.ft) * 12 + (num(v.in) || 0)) * 2.54 : num(v.cm);
+      if (!need(cm) || cm <= 0) return err('Enter your height.');
+      const inches = cm / 2.54, over = inches - 60, m = cm / 100;
+      if (over < 0) return err('These formulas are defined for heights of 5 ft (152 cm) and above; use the healthy BMI range instead.');
+      const f = {
+        Devine: male ? 50 + 2.3 * over : 45.5 + 2.3 * over,
+        Robinson: male ? 52 + 1.9 * over : 49 + 1.7 * over,
+        Miller: male ? 56.2 + 1.41 * over : 53.1 + 1.36 * over,
+        Hamwi: male ? 48 + 2.7 * over : 45.5 + 2.2 * over,
+      };
+      const vals = Object.values(f), lo = Math.min(...vals), hi = Math.max(...vals);
+      return {
+        results: [
+          { label: 'Ideal weight range (formulas)', value: `${wOut(lo, v)} – ${wOut(hi, v)}`, primary: true },
+          { label: 'Healthy BMI range (18.5–24.9)', value: `${wOut(18.5 * m * m, v)} – ${wOut(24.9 * m * m, v)}` },
+          ...Object.entries(f).map(([k, kg]) => ({ label: `${k} formula`, value: wOut(kg, v) })),
+        ],
+        working: [`Height ${fmt(inches, 1)} in = ${fmt(over, 1)} in over 5 ft`, `Devine: ${male ? '50' : '45.5'} + 2.3 × ${fmt(over, 1)} = ${fmt(f.Devine, 1)} kg`],
+      };
+    },
+  },
+} satisfies Record<string, CalcDef>);

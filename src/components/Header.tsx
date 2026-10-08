@@ -64,17 +64,17 @@ export function Header({ nav, total, index }: { nav: NavCategory[]; total: numbe
             Converters <Icon name="chevron" className={`h-3.5 w-3.5 transition ${open === 'convert' ? 'rotate-180' : ''}`} />
           </button>
           <Link href="/category/business/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Business</Link>
+          <Link href="/category/fitness/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Fitness</Link>
           <Link href="/category/developer/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Developers</Link>
-          <Link href="/about/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">About</Link>
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <button type="button" onClick={() => setSearch(true)} className="hidden h-11 items-center gap-2 rounded-full card px-4 text-sm text-muted sm:flex" aria-label="Search tools">
-            <Icon name="search" className="h-4 w-4" /> <span>Search</span> <kbd className="rounded-md surface-2 px-1.5 py-0.5 font-sans text-[11px] font-semibold">Ctrl K</kbd>
+          <button type="button" onClick={() => setSearch(true)} className="hidden h-11 items-center gap-2 whitespace-nowrap rounded-full card px-4 text-sm text-muted sm:flex" aria-label="Search tools">
+            <Icon name="search" className="h-4 w-4" /> <span>Search</span> <kbd className="hidden whitespace-nowrap rounded-md surface-2 px-1.5 py-0.5 font-sans text-[11px] font-semibold xl:inline">Ctrl K</kbd>
           </button>
           <button type="button" onClick={() => setSearch(true)} className="grid h-11 w-11 place-items-center rounded-full card sm:hidden" aria-label="Search tools"><Icon name="search" className="h-4 w-4" /></button>
           <ThemeToggle />
-          <Link href="/all-tools/" className="hidden items-center gap-2 rounded-full bg-gradient-to-b from-[#ffc565] to-[#f5a524] py-1.5 pl-4 pr-1.5 text-sm font-bold text-ink md:flex">
+          <Link href="/all-tools/" className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-b from-[#ffc565] to-[#f5a524] py-1.5 pl-4 pr-1.5 text-sm font-bold text-ink md:flex">
             <Icon name="grid" className="h-4 w-4" /> All tools <span className="grid h-8 min-w-8 place-items-center rounded-full bg-ink px-2 text-xs font-bold text-glow">{total}</span>
           </Link>
           <button type="button" onClick={() => setMobile(true)} className="grid h-11 w-11 place-items-center rounded-full card lg:hidden" aria-label="Open menu" aria-expanded={mobile}><Icon name="menu" className="h-5 w-5" /></button>

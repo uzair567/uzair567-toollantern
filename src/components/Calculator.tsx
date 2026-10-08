@@ -25,7 +25,10 @@ export function Calculator({ engine, defaults }: { engine: string; defaults?: Re
   }, [def]);
 
   const out = useMemo(() => def.compute(values), [def, values]);
-  const set = (id: string, val: string) => setValues((p) => ({ ...p, [id]: val }));
+  const set = (id: string, val: string) => setValues((p) => {
+    const n = { ...p, [id]: val };
+    return def.onChange ? def.onChange(id, n, p) : n;
+  });
 
   const share = async () => {
     const p = new URLSearchParams();
