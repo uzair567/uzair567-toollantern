@@ -2,9 +2,9 @@
 // environment variables so nothing sensitive is hard-coded. See SETUP.md.
 export const site = {
   name: 'ToolLantern',
-  tagline: 'Free online tools that solve everyday problems',
+  tagline: 'Free online tools for everyday work',
   description:
-    'Free, fast online calculators and utilities for money, home projects, energy, developers and SEO. No sign-up, works on any device.',
+    'Free online tools for everyday work: image converters, unit converters, business, home, energy and fitness calculators, and developer tools. No sign-up.',
   // Priority: explicit domain → Vercel production domain (set automatically at build) → fallback.
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ||

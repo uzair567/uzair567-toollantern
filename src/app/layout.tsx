@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: { default: `${site.name} – ${site.tagline}`, template: `%s` },
   description: site.description,
   applicationName: site.name,
-  icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }], apple: '/icon-512.png' },
+  icons: { icon: [{ url: '/favicon.ico', sizes: '48x48' }, { url: '/icon-192.png', type: 'image/png', sizes: '192x192' }, { url: '/favicon.svg', type: 'image/svg+xml' }], apple: '/icon-192.png' },
   manifest: '/manifest.webmanifest',
   ...(site.gscVerification ? { verification: { google: site.gscVerification } } : {}),
 };
