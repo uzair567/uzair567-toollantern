@@ -9,10 +9,12 @@ export const site = {
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '') ||
-    'https://toollantern.vercel.app'
+    'https://toollantern.com'
   ).replace(/\/$/, ''),
   locale: 'en_US',
   twitter: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '',
+  /** Official social profiles, comma-separated in NEXT_PUBLIC_SAME_AS (used in Organization schema). */
+  sameAs: (process.env.NEXT_PUBLIC_SAME_AS || '').split(',').map((u) => u.trim()).filter(Boolean),
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || '',
   gtmId: process.env.NEXT_PUBLIC_GTM_ID || '',
   gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || '',

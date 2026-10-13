@@ -54,9 +54,16 @@ export function toolSchemas(t: ToolContent) {
 }
 
 export const siteSchemas = [
-  { '@context': 'https://schema.org', '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: site.url, logo: absUrl('/icon-512.png') },
   {
-    '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: site.url,
+    '@context': 'https://schema.org', '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: site.url,
+    logo: absUrl('/icon-512.png'), image: absUrl('/og.png'), description: site.description, foundingDate: '2026-10',
+    email: 'contact@uzair.tech', slogan: site.tagline,
+    knowsAbout: ['Unit conversion', 'Image conversion', 'Electricity cost', 'Home improvement estimating', 'Business pricing', 'Fitness and nutrition calculations', 'Developer tools'],
+    ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, alternateName: 'Tool Lantern', url: site.url,
+    description: site.description, inLanguage: 'en',
     publisher: { '@id': `${site.url}/#organization` },
   },
 ];

@@ -97,6 +97,16 @@ export default function Home() {
         <ToolGrid tools={primaryTools.map(cardOf)} tabs={categories.map((c) => ({ id: c.id, label: c.short }))} />
       </section>
 
+      <section aria-labelledby="what-h" className="mx-auto max-w-7xl px-4 pt-20">
+        <div className="grid gap-6 rounded-[22px] card p-7 sm:p-10 lg:grid-cols-[1fr_1.4fr]">
+          <h2 id="what-h" className="display text-3xl sm:text-4xl">What is ToolLantern?</h2>
+          <div className="space-y-3 text-muted">
+            <p><strong className="text-ink">ToolLantern is a free website of {tools.length} online calculators and converters</strong>, launched in October 2026. It covers image conversion (JPG, PNG, WebP), unit conversion, business pricing and payment fees, home-project materials, appliance electricity costs, fitness and nutrition, and developer and SEO utilities.</p>
+            <p>Every tool is free with no sign-up, shows the formula behind its answer, and runs in your browser — images and text are never uploaded. <Link href="/about/" className="font-semibold text-ink underline decoration-glow decoration-2 underline-offset-4">More about ToolLantern</Link>.</p>
+          </div>
+        </div>
+      </section>
+
       <section aria-labelledby="why-h" className="mx-auto max-w-7xl px-4 pt-20">
         <h2 id="why-h" className="sr-only">Why ToolLantern</h2>
         <div className="grid gap-3 md:grid-cols-3">
