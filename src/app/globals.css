@@ -116,3 +116,4 @@ body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antiali
 @media (prefers-reduced-motion: reduce) { .menu-in { animation: none; } html { scroll-behavior: auto; } }
 .answer a { font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .prose-tl .not-prose table { margin: 0; }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }

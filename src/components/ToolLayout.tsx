@@ -30,35 +30,25 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
       <JsonLd data={toolSchemas(tool)} />
       <TrackRecent slug={tool.slug} name={tool.name} />
 
-      <header className="relative overflow-hidden rounded-[26px] card p-6 sm:p-9">
-        <div aria-hidden className={`pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-60 blur-2xl ${cat.tint}`} />
+      {/* Tool first: short centred heading, then the tool right away (iLovePDF-style). */}
+      <section aria-label={`${tool.name} tool`} className="relative overflow-hidden rounded-[26px] card px-4 pb-5 pt-5 sm:px-8 sm:pb-8">
+        <div aria-hidden className={`pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-50 blur-2xl ${cat.tint}`} />
         <div className="relative">
           <Breadcrumbs items={toolCrumbs(tool)} />
-          <div className="mt-2 flex flex-col gap-5 sm:flex-row sm:items-start">
-            <span className={`tile h-14 w-14 ${cat.tint}`}><Icon name={cat.icon} className="h-6 w-6" /></span>
-            <div className="max-w-3xl">
-              <h1 className="display text-[2.1rem] sm:text-5xl">{seo?.h1 ?? tool.name}</h1>
-              <p className="mt-3 text-lg leading-relaxed text-muted">{tool.lead}</p>
-              {seo?.answer && (
-                <div className="answer mt-5 rounded-2xl border-l-4 border-glow surface-2 px-5 py-4">
-                  <p className="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-glow">Quick answer</p>
-                  <p className="mt-1 leading-relaxed" dangerouslySetInnerHTML={{ __html: seo.answer }} />
-                </div>
-              )}
-              <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold">
-                <li className="chip">Free</li>
-                <li className="rounded-full surface-2 px-3 py-1.5">No sign-up</li>
-                <li className="rounded-full surface-2 px-3 py-1.5">{cat.short}</li>
-                <li className="rounded-full surface-2 px-3 py-1.5">Updated {updated}</li>
-              </ul>
-            </div>
-          </div>
+          <header className="mx-auto mb-6 mt-2 max-w-3xl text-center">
+            <h1 className="display text-[2rem] sm:text-[2.75rem]">{seo?.h1 ?? tool.name}</h1>
+            <p className="mt-2 text-base text-muted sm:text-lg">{tool.lead.split(/(?<=[.!?])\s/)[0]}</p>
+          </header>
+          <ToolWidget engine={engineOf(tool)} defaults={tool.defaults} />
         </div>
-      </header>
-
-      <section aria-label={`${tool.name} tool`} className="mt-3 rounded-[26px] card p-4 sm:p-7">
-        <ToolWidget engine={engineOf(tool)} defaults={tool.defaults} />
       </section>
+
+      {seo?.answer && (
+        <div className="answer mt-3 rounded-[26px] card border-l-4 !border-l-[var(--color-glow)] px-6 py-5 sm:px-8">
+          <p className="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-glow">Quick answer</p>
+          <p className="mt-1 leading-relaxed" dangerouslySetInnerHTML={{ __html: seo.answer }} />
+        </div>
+      )}
 
       {kids.length > 0 && (
         <nav aria-label={parent ? `More ${parent.name} pages` : `${tool.name} by appliance`} className="mt-3 flex flex-wrap items-center gap-2 rounded-[24px] card p-3">
@@ -108,7 +98,7 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
               </details>
             ))}
           </div>
-          <p className="!mt-8 text-sm text-muted">{tool.category === 'fitness' ? 'Results are estimates for healthy adults, not medical advice. Talk to a doctor or registered dietitian before major changes to diet or training, especially if you are pregnant or have a health condition.' : 'Results are estimates for planning — check critical figures with a professional or the official source.'}</p>
+          <p className="!mt-8 text-sm text-muted">{tool.category === 'fitness' ? 'Results are estimates for healthy adults, not medical advice. Talk to a doctor or registered dietitian before major changes to diet or training, especially if you are pregnant or have a health condition.' : 'Results are estimates for planning — check critical figures with a professional or the official source.'} Free, no sign-up · updated {updated}.</p>
         </div>
 
         <aside className="grid content-start gap-3 lg:sticky lg:top-24 lg:self-start" aria-label="More tools">

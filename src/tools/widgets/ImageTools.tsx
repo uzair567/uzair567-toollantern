@@ -169,7 +169,7 @@ export function ImageTool({ mode = 'convert', from, to = 'png' }: { mode?: Mode;
         onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
         onDragLeave={() => setDrag(false)}
         onDrop={(e) => { e.preventDefault(); setDrag(false); add(e.dataTransfer.files); }}
-        className={`relative grid place-items-center rounded-xl border-2 border-dashed text-center transition ${items.length ? 'px-4 py-4' : 'px-6 py-10'} ${drag ? 'border-[var(--ink)] bg-glow-soft' : 'border-line surface-2'}`}
+        className={`relative grid place-items-center rounded-xl border-2 border-dashed text-center transition ${items.length ? 'px-4 py-4' : 'px-6 py-12 sm:py-16'} ${drag ? 'border-[var(--ink)] bg-glow-soft' : 'border-line surface-2'}`}
       >
         {items.length ? (
           <div className="flex w-full flex-wrap items-center justify-center gap-3 text-sm">
@@ -179,10 +179,8 @@ export function ImageTool({ mode = 'convert', from, to = 'png' }: { mode?: Mode;
           </div>
         ) : (
           <>
-            <span className="tile mb-3 h-14 w-14 bg-t-rose"><Icon name="upload" className="h-6 w-6" /></span>
-            <p className="text-lg font-bold">Drop images here</p>
-            <p className="mt-1 text-sm text-muted">or paste from clipboard · up to 30 files · {from ? `${from.toUpperCase()} files` : 'JPG, PNG, WebP, GIF, BMP, AVIF'}</p>
-            <button type="button" className="btn mt-4" onClick={() => input.current?.click()}>Choose files <span className="dot-icon h-6 w-6"><Icon name="arrow-up-right" className="h-3.5 w-3.5" /></span></button>
+            <button type="button" className="btn whitespace-nowrap !px-7 !py-4 !text-base shadow-lg sm:!px-10 sm:!py-5 sm:!text-lg" onClick={() => input.current?.click()}><Icon name="upload" className="h-5 w-5" /> {from ? `Select ${from.toUpperCase()} images` : 'Select images'}</button>
+            <p className="mt-3 text-sm text-muted">or drop images here · paste with Ctrl+V · up to 30 files</p>
             <p className="mt-4 flex items-center gap-1.5 text-xs text-muted"><Icon name="lock" className="h-3.5 w-3.5" /> Files never leave your device — conversion happens in your browser.</p>
           </>
         )}
