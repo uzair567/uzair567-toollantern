@@ -2,9 +2,9 @@ export interface SearchEntry { s: string; n: string; c: string; l: string; k: st
 
 const STOP = new Set('a an the of to for in on my is how much many does do what whats what\'s i me can use uses using need calculate calculator tool online free and or with by it this that much your you'.split(' '));
 const SYN: Record<string, string> = {
-  aircon: 'ac', 'air-conditioner': 'ac', conditioner: 'ac', ac: 'ac', fridge: 'refrigerator', freezer: 'refrigerator',
+  aircon: 'ac', 'air-conditioner': 'ac', conditioner: 'ac', ac: 'ac', fridge: 'refrigerator',
   heater: 'heater', telly: 'tv', television: 'tv', power: 'electricity', energy: 'electricity', bill: 'electricity',
-  kwh: 'electricity', watt: 'electricity', watts: 'electricity', washer: 'washing', laundry: 'washing',
+  kwh: 'electricity', watt: 'electricity', watts: 'electricity', washer: 'washing', dryer: 'dryer', geyser: 'water', laundry: 'washing',
   tiles: 'tile', tiling: 'tile', painting: 'paint', floor: 'flooring', floors: 'flooring', laminate: 'flooring',
   cement: 'concrete', slab: 'concrete', stone: 'gravel', rock: 'gravel', percent: 'percentage', '%': 'percentage',
   epoch: 'timestamp', guid: 'uuid', token: 'jwt', words: 'word', characters: 'character', chars: 'character',

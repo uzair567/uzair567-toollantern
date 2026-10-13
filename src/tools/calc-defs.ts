@@ -793,3 +793,37 @@ Object.assign(calcDefs, {
     },
   },
 } satisfies Record<string, CalcDef>);
+
+// ---------- landscaping volume (mulch, topsoil) ----------
+function coverCalc(defDepth: string, bagSizes: number[], tonsPerYd?: number): CalcDef {
+  return {
+    fields: [
+      unitSys,
+      { id: 'L', label: 'Length', type: 'number', default: '20', unit: len },
+      { id: 'W', label: 'Width', type: 'number', default: '10', unit: len },
+      { id: 'D', label: 'Depth', type: 'number', default: defDepth, unit: small },
+    ],
+    compute: (v) => {
+      const metric = v.units === 'metric', L = num(v.L), W = num(v.W), D = num(v.D);
+      if (!need(L, W, D) || L <= 0 || W <= 0 || D <= 0) return err('Enter length, width and depth.');
+      const ft3 = metric ? L * W * (D / 100) * 35.3147 : L * W * (D / 12);
+      const yd3 = ft3 / 27, m3 = ft3 / 35.3147, litres = m3 * 1000;
+      const rows: ResultRow[] = [
+        { label: metric ? 'Volume needed' : 'Cubic yards needed', value: metric ? `${fmt(m3, 2)} m³` : `${fmt(yd3, 2)} yd³`, primary: true },
+        { label: metric ? 'In cubic yards' : 'In cubic metres', value: metric ? `${fmt(yd3, 2)} yd³` : `${fmt(m3, 2)} m³` },
+        { label: 'Cubic feet', value: `${fmt(ft3, 1)} ft³` },
+        ...bagSizes.map((b) => ({ label: `${b} cu ft bags`, value: fmt(ceil(ft3 / b), 0) })),
+        { label: '50 litre bags', value: fmt(ceil(litres / 50), 0) },
+      ];
+      if (tonsPerYd) rows.push({ label: 'Approximate weight', value: `${fmt(yd3 * tonsPerYd, 2)} tons`, note: `at ≈${tonsPerYd} tons per yd³ (dry)` });
+      return {
+        results: rows,
+        working: metric
+          ? [`${fmt(L)} × ${fmt(W)} × ${fmt(D / 100, 3)} m = ${fmt(m3, 3)} m³`]
+          : [`${fmt(L)} × ${fmt(W)} × (${fmt(D)} ÷ 12) = ${fmt(ft3, 2)} ft³`, `${fmt(ft3, 2)} ÷ 27 = ${fmt(yd3, 2)} yd³`],
+      };
+    },
+  };
+}
+calcDefs['mulch-calculator'] = coverCalc('3', [2, 3]);
+calcDefs['topsoil-calculator'] = coverCalc('4', [0.75, 1], 1.1);

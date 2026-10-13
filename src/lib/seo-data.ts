@@ -272,6 +272,40 @@ export const toolSeo: Record<string, ToolSeo> = {
     primaryKeyword: 'ideal weight calculator', secondaryKeywords: ['ideal body weight calculator', 'healthy weight for height', 'how much should i weigh'], intent: 'calculate', priority: 3,
     answer: `The Devine formula gives 50 kg (men) or 45.5 kg (women) plus 2.3 kg per inch over 5 ft — 73 kg (161 lb) for a 5 ft 10 in man. The healthy ${a('bmi-calculator', 'BMI')} range is a broader, more useful guide.`,
   },
+  // ── Energy (added Oct 13) ──────────────────────────────────────────────
+  'electricity-cost-calculator/dryer': {
+    primaryKeyword: 'dryer electricity cost', secondaryKeywords: ['clothes dryer cost per load', 'how much electricity does a dryer use', 'tumble dryer running cost'], intent: 'calculate', priority: 1,
+    answer: `A 3,000 W electric dryer with the heater on about 75% of a one-hour cycle uses 2.25 kWh — roughly 38¢ per load at $0.17/kWh, or $11.48 for 30 loads. Add the wash itself with the ${a('electricity-cost-calculator/washing-machine', 'washing machine calculator')}.`,
+  },
+  'electricity-cost-calculator/dishwasher': {
+    primaryKeyword: 'dishwasher electricity cost', secondaryKeywords: ['dishwasher cost per cycle', 'how much electricity does a dishwasher use', 'dishwasher kwh per cycle'], intent: 'calculate', priority: 1,
+    answer: `A typical 1,800 W dishwasher running a one-hour cycle averages about 1.1 kWh — around 18¢ per wash at $0.17/kWh. Most of that heats water; skipping the heated dry saves more. Compare the ${a('electricity-cost-calculator/water-heater', 'water heater')}.`,
+  },
+  'electricity-cost-calculator/gaming-pc': {
+    primaryKeyword: 'gaming pc electricity cost', secondaryKeywords: ['how much electricity does a gaming pc use', 'gaming pc power consumption', 'pc running cost per hour'], intent: 'calculate', priority: 1,
+    answer: `A mid-range gaming PC drawing about 400 W at the wall costs roughly 5–7¢ per hour of play at $0.17/kWh — about $6.50 a month at 4 hours a day. Your PSU rating is a maximum, not actual use. Add your screen with the ${a('electricity-cost-calculator/tv', 'TV calculator')}.`,
+  },
+  'electricity-cost-calculator/water-heater': {
+    primaryKeyword: 'electric water heater cost', secondaryKeywords: ['water heater electricity cost', 'cost to run water heater', 'water heater watts'], intent: 'calculate', priority: 1,
+    answer: `A 4,500 W electric tank heating for 3 hours a day uses 13.5 kWh — about $2.30 a day or $69 a month at $0.17/kWh. Hot water also drives most of the cost of ${a('electricity-cost-calculator/washing-machine', 'washing')} and ${a('electricity-cost-calculator/dishwasher', 'dishwashing')}.`,
+  },
+  'electricity-cost-calculator/dehumidifier': {
+    primaryKeyword: 'dehumidifier electricity cost', secondaryKeywords: ['how much electricity does a dehumidifier use', 'dehumidifier running cost', 'dehumidifier cost per hour'], intent: 'calculate', priority: 1,
+    answer: `A 500 W dehumidifier running 8 hours a day with the compressor on 70% of the time uses 2.8 kWh — about 48¢ a day or $14 a month at $0.17/kWh. In summer, compare with your ${a('electricity-cost-calculator/ac', 'AC running cost')}.`,
+  },
+  'electricity-cost-calculator/freezer': {
+    primaryKeyword: 'freezer electricity cost', secondaryKeywords: ['chest freezer running cost', 'how much electricity does a freezer use', 'freezer kwh per year'], intent: 'calculate', priority: 1,
+    answer: `A 120 W chest freezer whose compressor runs about 35% of the time uses roughly 1 kWh a day, 368 kWh a year — about $63 a year at $0.17/kWh. A hot garage pushes that up. Check your fridge too with the ${a('electricity-cost-calculator/refrigerator', 'refrigerator calculator')}.`,
+  },
+  // ── Home (added Oct 13) ────────────────────────────────────────────────
+  'mulch-calculator': {
+    primaryKeyword: 'mulch calculator', secondaryKeywords: ['how much mulch do i need', 'mulch cubic yards', 'bags of mulch'], intent: 'calculate', priority: 2,
+    answer: `Cubic yards = length × width (ft) × depth (in) ÷ 12 ÷ 27. A 20 × 10 ft bed at 3 inches needs 1.85 cubic yards, or 25 two-cubic-foot bags. Laying a path too? Use the ${a('gravel-calculator', 'gravel calculator')}.`,
+  },
+  'topsoil-calculator': {
+    primaryKeyword: 'topsoil calculator', secondaryKeywords: ['how much topsoil do i need', 'raised bed soil calculator', 'topsoil cubic yards'], intent: 'calculate', priority: 2,
+    answer: `An 8 × 4 ft raised bed filled 12 inches deep needs 32 cubic feet — 1.19 cubic yards, or 43 bags of 0.75 cu ft. Lawns need 4–6 inches. Finish beds with 2–3 inches from the ${a('mulch-calculator', 'mulch calculator')}.`,
+  },
 };
 
 export interface CategorySeo { title: string; metaDescription: string; h1: string; intro: string }
@@ -297,13 +331,13 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
   },
   home: {
     title: 'Home Project Calculators – Tile, Paint, Concrete | ToolLantern',
-    metaDescription: 'Estimate tiles, paint, flooring, concrete and gravel before you buy, with waste allowances built in. Free home and construction calculators.',
+    metaDescription: 'Estimate tiles, paint, flooring, concrete, gravel, mulch and topsoil before you buy, with waste allowances built in. Free home calculators.',
     h1: 'Home & construction calculators',
     intro: 'Work out how much material to buy for floors, walls, slabs and driveways — with waste allowances included, so you order once.',
   },
   energy: {
     title: 'Appliance Electricity Cost Calculators | ToolLantern',
-    metaDescription: 'See what your AC, space heater, fridge, TV, fan and washing machine cost to run per hour, day, month and year. Enter your own rate in $/kWh.',
+    metaDescription: 'See what your AC, heater, fridge, freezer, dryer, dishwasher, water heater or gaming PC costs to run per hour, day, month and year.',
     h1: 'Energy & electricity calculators',
     intro: 'Find out what each appliance really costs to run. Every calculator starts with typical wattage and usage for that appliance — change them to match yours and enter your own electricity rate.',
   },

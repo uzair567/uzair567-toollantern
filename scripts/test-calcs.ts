@@ -52,6 +52,11 @@ check('body-fat-calculator', { sys: 'metric', sex: 'male', cm: '178', neck: '38'
 check('one-rep-max-calculator', { w: '100', u: 'kg', r: '5' }, 'Estimated', '115 kg');
 check('protein-calculator', { sys: 'metric', wt: '80', goal: '1.6-2.2' }, 'Daily protein', '128–176 g');
 check('ideal-weight-calculator', { sys: 'metric', sex: 'male', cm: '177.8' }, 'Devine', '73 kg');
+check('mulch-calculator', { L: '10', W: '10', D: '3' }, 'Cubic yards', '0.93');
+check('mulch-calculator', { L: '10', W: '10', D: '3' }, '2 cu ft', '13');
+check('topsoil-calculator', { L: '10', W: '10', D: '4' }, 'Cubic yards', '1.23');
+check('topsoil-calculator', { L: '10', W: '10', D: '4' }, 'weight', '1.36 tons');
+check('electricity-cost-calculator', { watts: '3000', hours: '1', duty: '75', rate: '0.17' }, 'per day', '$0.38');
 
 console.log(fail ? `\n${fail} failing` : '\nAll calculator checks passed');
 process.exit(fail ? 1 : 0);
