@@ -138,8 +138,8 @@ export const toolSeo: Record<string, ToolSeo> = {
     answer: `Cubic yards = length (ft) × width (ft) × depth (ft) ÷ 27. A 10 × 10 ft slab 4 inches deep needs about 1.23 cubic yards. Laying a gravel base first? Use the ${a('gravel-calculator', 'gravel calculator')}.`,
   },
   'gravel-calculator': {
-    primaryKeyword: 'gravel calculator', secondaryKeywords: ['gravel calculator tons', 'how much gravel do i need', 'cubic yards of gravel'], intent: 'calculate', priority: 2,
-    answer: `Volume = length × width × depth; most gravel weighs about 1.4 tons per cubic yard. Driveways typically need 4–6 inches, paths 2–3 inches. Pouring a slab on top? Use the ${a('concrete-calculator', 'concrete calculator')}.`,
+    primaryKeyword: 'gravel calculator', secondaryKeywords: ['gravel calculator in tons', 'cubic yards to tons gravel calculator', 'how much gravel do i need', 'how many tons in a yard of gravel'], intent: 'calculate', priority: 1,
+    answer: `Tons = cubic yards × about 1.4 for typical gravel, so 1 cubic yard ≈ 1.4 tons and 10 cubic yards ≈ 14 tons (crushed stone ≈ 1.5, river rock ≈ 1.2). Already know the cubic yards? Enter them below; otherwise use length, width and depth. Pouring a slab on top? Use the ${a('concrete-calculator', 'concrete calculator')}.`,
   },
 
   // ── Energy ─────────────────────────────────────────────────────────────
@@ -385,7 +385,7 @@ const metaOverrides: Record<string, Pick<ToolSeo, 'metaDescription'> & { title?:
   'tile-calculator': { metaDescription: 'Free tile calculator: how many tiles and boxes you need for a floor or wall, with grout joints, waste and cost. Feet or metres.' },
   'flooring-calculator': { metaDescription: 'Free flooring calculator: how much laminate, vinyl plank or hardwood to buy, how many boxes and the cost, with waste by layout.' },
   'concrete-calculator': { metaDescription: 'Free concrete calculator for slabs, patios and footings: cubic yards, cubic metres and 80 lb, 60 lb or 25 kg bags, plus spillage.' },
-  'gravel-calculator': { metaDescription: 'Free gravel calculator: tons and cubic yards (or tonnes and m³) of gravel, crushed stone or sand for a driveway, path or garden bed.' },
+  'gravel-calculator': { title: 'Gravel Calculator in Tons – Cubic Yards to Tons', metaDescription: 'Free gravel calculator in tons: convert cubic yards to tons for pea gravel, crushed stone, river rock or sand, or work it out from area and depth.' },
   'electricity-cost-calculator': { metaDescription: 'Free electricity cost calculator: what any appliance costs to run per hour, day, month and year from its watts and your price per kWh.' },
   'electricity-cost-calculator/ac': { metaDescription: 'AC electricity cost calculator: see what your air conditioner costs to run per hour, day and month for window, split or central units.' },
   'electricity-cost-calculator/refrigerator': { title: 'Refrigerator Electricity Cost Calculator – kWh per Year', metaDescription: 'Refrigerator electricity cost per day, month and year, based on real compressor cycling. Works for fridges, freezers and mini fridges.' },

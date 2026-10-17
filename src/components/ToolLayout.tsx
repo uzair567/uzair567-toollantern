@@ -10,6 +10,7 @@ import { ToolWidget } from './ToolWidget';
 import { TrackRecent } from './RecentTools';
 import { Icon } from './Icon';
 import { UnitTable } from './UnitTable';
+import { GravelTable } from './GravelTable';
 import { seoOf } from '@/lib/seo-data';
 import type { Kind } from '@/tools/units';
 
@@ -66,6 +67,7 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
           <h2>How to use it</h2>
           <ol>{tool.howTo.map((s, i) => <Html key={i} as="li" html={s} />)}</ol>
 
+          {tool.slug === 'gravel-calculator' && <GravelTable />}
           {engineOf(tool) === 'unit' && <UnitTable kind={d.kind as Kind} from={d.from} to={d.to} />}
 
           {tool.formula && (

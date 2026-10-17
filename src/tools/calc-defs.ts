@@ -416,6 +416,7 @@ export const calcDefs: Record<string, CalcDef> = {
       { id: 'L', label: 'Length', type: 'number', default: '20', unit: len },
       { id: 'W', label: 'Width', type: 'number', default: '10', unit: len },
       { id: 'D', label: 'Depth', type: 'number', default: '3', unit: small, help: 'Paths: 2–3 in. Driveways: 4–6 in in layers.' },
+      { id: 'cy', label: 'Or: cubic yards you already know', type: 'number', default: '', unit: 'yd³', optional: true, help: 'Fill this to convert cubic yards straight to tons — length, width and depth are then ignored.' },
       { id: 'dens', label: 'Material', type: 'select', default: '1.4', options: [
         { value: '1.4', label: 'Pea / crushed gravel (≈1.4 t/yd³)' },
         { value: '1.5', label: 'Crushed stone #57 (≈1.5 t/yd³)' },
@@ -424,9 +425,10 @@ export const calcDefs: Record<string, CalcDef> = {
       ] },
     ],
     compute: (v) => {
-      const metric = v.units === 'metric', L = num(v.L), W = num(v.W), D = num(v.D), dens = num(v.dens);
-      if (!need(L, W, D)) return err('Enter length, width and depth.');
-      const ft3 = metric ? L * W * (D / 100) * 35.3147 : L * W * (D / 12);
+      const metric = v.units === 'metric', L = num(v.L), W = num(v.W), D = num(v.D), dens = num(v.dens), cy = num(v.cy);
+      const known = isFinite(cy) && cy > 0;
+      if (!known && !need(L, W, D)) return err('Enter length, width and depth — or the cubic yards you already know.');
+      const ft3 = known ? cy * 27 : metric ? L * W * (D / 100) * 35.3147 : L * W * (D / 12);
       const yd3 = ft3 / 27, m3 = ft3 / 35.3147;
       const shortTons = yd3 * dens;
       const tonnes = shortTons * 0.907185;
