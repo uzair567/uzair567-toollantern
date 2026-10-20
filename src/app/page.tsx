@@ -8,6 +8,7 @@ import { Icon } from '@/components/Icon';
 import { RecentTools } from '@/components/RecentTools';
 import { ToolGrid } from '@/components/ToolGrid';
 import { ToolCard, cardOf } from '@/components/ToolCard';
+import { posts, postPath } from '@/lib/blog';
 
 export const metadata = pageMeta({
   title: `${site.name} – Free Online Tools for Everyday Work`,
@@ -95,6 +96,21 @@ export default function Home() {
         <h2 id="all-h" className="display mb-2 text-4xl sm:text-5xl">Every tool, one place</h2>
         <p className="mb-6 text-muted">Filter by category. New tools are added every week.</p>
         <ToolGrid tools={primaryTools.map(cardOf)} tabs={categories.map((c) => ({ id: c.id, label: c.short }))} />
+      </section>
+
+      <section aria-labelledby="guides-h" className="mx-auto max-w-7xl px-4 pt-20">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <h2 id="guides-h" className="display text-3xl sm:text-4xl">Guides</h2>
+          <Link href="/blog/" className="text-sm font-bold text-muted hover:underline">All guides →</Link>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.slice(0, 6).map((p) => (
+            <Link key={p.slug} href={postPath(p)} className="rounded-[22px] card p-5 transition hover:-translate-y-0.5">
+              <p className="font-extrabold tracking-tight">{p.h1}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-muted">{p.summary}</p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section aria-labelledby="what-h" className="mx-auto max-w-7xl px-4 pt-20">

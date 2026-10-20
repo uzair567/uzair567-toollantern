@@ -13,6 +13,7 @@ import { UnitTable } from './UnitTable';
 import { GravelTable } from './GravelTable';
 import { MulchTable } from './MulchTable';
 import { seoOf } from '@/lib/seo-data';
+import { postsForTool, postPath } from '@/lib/blog';
 import type { Kind } from '@/tools/units';
 
 const Html = ({ html, as: Tag = 'p' }: { html: string; as?: 'p' | 'li' }) => <Tag dangerouslySetInnerHTML={{ __html: html }} />;
@@ -24,6 +25,7 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
   const parent = tool.parent ? getTool(tool.parent) : undefined;
   const popular = popularTools.filter((p) => p.slug !== tool.slug && !tool.related.includes(p.slug)).slice(0, 4);
   const seo = seoOf(tool.slug);
+  const guides = postsForTool(tool.slug);
   const d = (tool.defaults ?? {}) as Record<string, string>;
   const updated = new Date(tool.updated + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 
@@ -119,6 +121,12 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
               );
             })}</ul>
           </section>
+          {guides.length > 0 && (
+            <section className="rounded-[22px] card p-5">
+              <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-muted">Guides</h2>
+              <ul className="grid gap-2">{guides.map((g) => <li key={g.slug}><Link href={postPath(g)} className="text-sm font-bold hover:underline">{g.h1}</Link></li>)}</ul>
+            </section>
+          )}
           <Link href={`/category/${cat.id}/`} className="group flex items-center justify-between rounded-[22px] bg-glow p-5 font-bold text-ink">
             <span>More {cat.short.toLowerCase()} tools</span>
             <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white transition group-hover:rotate-45"><Icon name="arrow-up-right" className="h-4 w-4" /></span>

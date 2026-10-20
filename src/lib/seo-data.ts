@@ -326,13 +326,13 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
     intro: 'Length, weight and temperature conversions using exact international definitions, each with a reference table for the values people look up most.',
   },
   business: {
-    title: 'Free Business Calculators – Margin, Markup & Fees | ToolLantern',
+    title: 'Business Calculators – Margin, Markup & Fees | ToolLantern',
     metaDescription: 'Profit margin, markup, discount, break-even, Stripe and PayPal fee calculators with the formulas shown. Free tools for pricing and selling online.',
     h1: 'Business & e-commerce calculators',
     intro: 'The numbers behind pricing and selling online: margins, markups, discounts, break-even points and what payment processors keep from each sale.',
   },
   home: {
-    title: 'Home Project Calculators – Tile, Paint, Concrete | ToolLantern',
+    title: 'Home Calculators – Tile, Paint, Concrete | ToolLantern',
     metaDescription: 'Estimate tiles, paint, flooring, concrete, gravel, mulch and topsoil before you buy, with waste allowances built in. Free home calculators.',
     h1: 'Home & construction calculators',
     intro: 'Work out how much material to buy for floors, walls, slabs and driveways — with waste allowances included, so you order once.',
@@ -362,7 +362,7 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
     intro: 'Calculators for training and nutrition: body mass index, daily calories, macros, body fat, protein needs and strength. Each one shows the formula it uses, in US or metric units.',
   },
   'text-seo': {
-    title: 'Text & SEO Tools – Word Counter, UTM, SERP Preview | ToolLantern',
+    title: 'Text & SEO Tools – Word Counter, UTM, SERP | ToolLantern',
     metaDescription: 'Count words, change case, create URL slugs, build UTM links and preview Google snippets. Free text and SEO tools, no sign-up.',
     h1: 'Text & SEO tools',
     intro: 'Tools for writing and publishing: count words, fix capitalisation, make clean URLs, tag campaign links and check how a page will look in Google.',
@@ -372,7 +372,7 @@ export const categorySeo: Record<CategoryId, CategorySeo> = {
 export const seoOf = (slug: string): ToolSeo | undefined => toolSeo[slug];
 
 // Title / meta overrides so every page's focus keyword (primaryKeyword) appears in both.
-const metaOverrides: Record<string, Pick<ToolSeo, 'metaDescription'> & { title?: string }> = {
+const metaOverrides: Record<string, Partial<Pick<ToolSeo, 'metaDescription' | 'title' | 'h1'>>> = {
   'image-converter': { metaDescription: 'Free image converter for JPG, PNG and WebP. Batch convert, set quality and resize in your browser — no upload, no sign-up.' },
   'image-compressor': { metaDescription: 'Free image compressor for JPG, PNG and WebP. Shrink file size without visible quality loss and batch up to 30 images — nothing is uploaded.' },
   'image-resizer': { metaDescription: 'Free image resizer: resize photos to exact pixels or a percentage, keep the aspect ratio and batch JPG, PNG and WebP. Private, no upload.' },
@@ -412,3 +412,14 @@ const metaOverrides: Record<string, Pick<ToolSeo, 'metaDescription'> & { title?:
   'serp-snippet-preview': { title: 'SERP Preview Tool – Google Title & Meta Description Checker', metaDescription: 'Free SERP preview tool: see how your title and meta description look in Google, measured in pixels so you know exactly what gets cut off.' },
 };
 for (const [slug, o] of Object.entries(metaOverrides)) Object.assign(toolSeo[slug], o);
+// H1s that carry the focus keyword (searcher's wording) where the tool name doesn't.
+const h1Overrides: Record<string, string> = {
+  'base64-encode-decode': 'Base64 Decode & Encode Online',
+  'break-even-calculator': 'Break Even Calculator',
+  'date-difference-calculator': 'Days Between Dates Calculator',
+  'electricity-cost-calculator/space-heater': 'Space Heater Cost per Hour Calculator',
+  'electricity-cost-calculator/washing-machine': 'Washing Machine Cost per Load Calculator',
+  'percentage-change-calculator': 'Percentage Increase Calculator',
+  'serp-snippet-preview': 'SERP Preview Tool',
+};
+for (const [slug, h1] of Object.entries(h1Overrides)) toolSeo[slug].h1 = h1;

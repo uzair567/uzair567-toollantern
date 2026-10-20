@@ -1,0 +1,191 @@
+// Blog guides. Each post answers a question people already reach ToolLantern for (from Search Console),
+// explains the method with worked numbers, and links to the matching calculator.
+
+export type BlogPost = {
+  slug: string;
+  title: string; // <title>, ≤60 chars, contains focusKeyword
+  metaDescription: string; // 70–155 chars, contains focusKeyword
+  focusKeyword: string;
+  h1: string;
+  published: string;
+  updated: string;
+  tools: string[]; // tool slugs this guide supports (first = main CTA)
+  summary: string; // short answer shown at the top (plain text)
+  body: { h2: string; html: string }[];
+  faqs: { q: string; a: string }[];
+};
+
+const L = (slug: string, text: string) => `<a href="/${slug}/">${text}</a>`;
+const table = (head: string[], rows: (string | number)[][]) =>
+  `<div class="not-prose overflow-x-auto rounded-2xl border border-line my-4"><table class="w-full text-sm"><thead class="surface-2 text-left"><tr>${head.map((h) => `<th scope="col" class="px-4 py-2.5 font-bold">${h}</th>`).join('')}</tr></thead><tbody class="divide-y divide-[var(--line)]">${rows.map((r) => `<tr>${r.map((c, i) => `<td class="px-4 py-2 tabular-nums${i === 0 ? ' font-semibold' : ''}">${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+export const posts: BlogPost[] = [
+  {
+    slug: 'how-many-bags-of-mulch-in-a-yard',
+    title: 'How Many Bags of Mulch in a Yard? (2 & 3 cu ft)',
+    metaDescription: 'How many bags of mulch in a yard: 13.5 bags of 2 cu ft or 9 bags of 3 cu ft. Plus how to work out mulch from square feet and depth.',
+    focusKeyword: 'how many bags of mulch in a yard',
+    h1: 'How many bags of mulch are in a yard?',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['mulch-calculator', 'topsoil-calculator', 'gravel-calculator'],
+    summary: 'One cubic yard of mulch is 27 cubic feet. That is 13.5 bags of 2 cubic feet, or 9 bags of 3 cubic feet. A yard covers about 108 square feet at 3 inches deep.',
+    body: [
+      { h2: 'The short answer', html: `<p>Mulch is sold two ways: loose by the <strong>cubic yard</strong> from a landscape yard, or in <strong>bags</strong> measured in cubic feet at garden centres. The link between them is simple — one cubic yard is 3 ft × 3 ft × 3 ft = <strong>27 cubic feet</strong>. Divide 27 by the bag size and you have the number of bags in a yard.</p>
+${table(['Bag size', 'Bags in 1 cubic yard', 'Bags in 2 cubic yards', 'Bags in 3 cubic yards'], [['1.5 cu ft', 18, 36, 54], ['2 cu ft', 13.5, 27, 40.5], ['3 cu ft', 9, 18, 27]])}
+<p>Going the other way, <strong>bags to yards</strong> = number of bags × bag size ÷ 27. Twenty 2-cubic-foot bags are 40 cubic feet, which is 1.48 cubic yards.</p>` },
+      { h2: 'How much mulch do you actually need?', html: `<p>Knowing the bag count per yard only helps once you know how many yards your beds need. The volume is area × depth:</p>
+<ol><li>Measure the bed in feet and work out the area in square feet (length × width for a rectangle).</li><li>Choose a depth in inches. Two to three inches is the usual recommendation for garden beds; go thinner over existing mulch and keep it pulled back from tree trunks and stems.</li><li>Cubic feet = square feet × depth in inches ÷ 12.</li><li>Cubic yards = cubic feet ÷ 27. Bags = cubic feet ÷ bag size, rounded up.</li></ol>
+<p><strong>Example:</strong> a 20 ft × 10 ft bed is 200 sq ft. At 3 inches: 200 × 3 ÷ 12 = 50 cubic feet = 1.85 cubic yards. That is 25 bags of 2 cu ft or 17 bags of 3 cu ft.</p>
+<p>The ${L('mulch-calculator', 'mulch calculator')} does these steps for you — enter length and width, or type the total square footage if you already know it.</p>` },
+      { h2: 'Coverage per yard and per bag', html: `<p>This is the table to keep on your phone at the garden centre:</p>
+${table(['Depth', '1 cubic yard covers', 'One 2 cu ft bag covers', 'One 3 cu ft bag covers'], [['1 inch', '324 sq ft', '24 sq ft', '36 sq ft'], ['2 inches', '162 sq ft', '12 sq ft', '18 sq ft'], ['3 inches', '108 sq ft', '8 sq ft', '12 sq ft'], ['4 inches', '81 sq ft', '6 sq ft', '9 sq ft']])}` },
+      { h2: 'Round beds and odd shapes', html: `<p>For a circle around a tree, area = 3.14 × radius². A ring 6 ft across has a 3 ft radius, so 3.14 × 9 = 28.3 sq ft. At 3 inches deep that is 7.1 cubic feet — four 2-cubic-foot bags.</p>
+<p>For L-shaped or curved beds, split them into rectangles and circles, add the areas, then calculate once. Small errors in measuring matter less than people think; adding about 5–10% covers settling and uneven ground.</p>` },
+      { h2: 'Bags or bulk: which is cheaper?', html: `<p>Bulk mulch is usually cheaper per cubic yard but often has a delivery fee or a minimum order. Bags cost more per yard but you can carry them in a car and buy exactly what you need. A useful rule: compare the price of 13.5 two-cubic-foot bags (or 9 three-cubic-foot bags) with the delivered price of one yard. Above roughly 2–3 yards, bulk generally wins; for a single bed, bags are simpler.</p>
+<p>Doing a full bed refresh? Many people add soil at the same time — the ${L('topsoil-calculator', 'topsoil calculator')} uses the same area and depth method, and the ${L('gravel-calculator', 'gravel calculator')} covers stone paths and borders.</p>` },
+    ],
+    faqs: [
+      { q: 'How many 2 cubic foot bags of mulch make a yard?', a: '13.5 bags. A cubic yard is 27 cubic feet, and 27 ÷ 2 = 13.5, so buy 14 to be safe.' },
+      { q: 'How many 3 cubic foot bags of mulch are in a yard?', a: 'Exactly 9, because 27 ÷ 3 = 9.' },
+      { q: 'How many square feet does a bag of mulch cover?', a: 'A 2 cubic foot bag covers 12 sq ft at 2 inches deep or 8 sq ft at 3 inches. A 3 cubic foot bag covers 18 sq ft at 2 inches or 12 sq ft at 3 inches.' },
+      { q: 'How deep should mulch be?', a: 'Two to three inches is the common recommendation for beds. Keep it a few inches away from trunks and stems.' },
+    ],
+  },
+  {
+    slug: 'how-many-tons-of-gravel-in-a-yard',
+    title: 'How Many Tons of Gravel in a Yard? Yards to Tons',
+    metaDescription: 'How many tons of gravel in a yard: about 1.4 tons per cubic yard for typical gravel. Convert yards to tons and tons to yards with tables.',
+    focusKeyword: 'how many tons of gravel in a yard',
+    h1: 'How many tons of gravel are in a yard?',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['gravel-calculator', 'concrete-calculator', 'mulch-calculator'],
+    summary: 'A cubic yard of typical gravel weighs about 1.4 US tons (roughly 2,800 lb). Crushed stone is closer to 1.5 tons and river rock about 1.2. So one ton of gravel is about 0.71 cubic yards.',
+    body: [
+      { h2: 'Why gravel is sold in tons and yards', html: `<p>Quarries weigh trucks, so many suppliers price gravel by the <strong>ton</strong>. Your project, though, is measured in length, width and depth — a <strong>volume</strong>. To order the right amount you need to convert one into the other, and the conversion depends on how heavy the stone is.</p>
+<p>The formula is: <strong>tons = cubic yards × tons per cubic yard</strong>. And the reverse: <strong>cubic yards = tons ÷ tons per cubic yard</strong>.</p>` },
+      { h2: 'Weight per cubic yard by material', html: `<p>These are typical dry weights in US short tons (2,000 lb). Wet stone is heavier, and every quarry is a little different, so use your supplier’s figure if they give one.</p>
+${table(['Material', 'Tons per cubic yard', 'Cubic yards per ton'], [['Pea gravel / crushed gravel', '1.4', '0.71'], ['Crushed stone #57', '1.5', '0.67'], ['River rock', '1.2', '0.83'], ['Sand', '1.35', '0.74']])}` },
+      { h2: 'Cubic yards to tons', html: `${table(['Cubic yards', 'Typical gravel (1.4)', '#57 stone (1.5)', 'River rock (1.2)'], [1, 2, 3, 5, 10, 15, 20].map((y) => [y, (y * 1.4).toFixed(1) + ' t', (y * 1.5).toFixed(1) + ' t', (y * 1.2).toFixed(1) + ' t']))}
+<p>So 10 cubic yards of typical gravel is about 14 tons — a common size for a tandem dump truck load.</p>` },
+      { h2: 'Tons to cubic yards', html: `${table(['Tons', 'Typical gravel', '#57 stone', 'River rock'], [1, 2, 5, 10, 15, 20].map((t) => [t, (t / 1.4).toFixed(2) + ' yd³', (t / 1.5).toFixed(2) + ' yd³', (t / 1.2).toFixed(2) + ' yd³']))}` },
+      { h2: 'Worked example: a gravel driveway', html: `<p>A driveway 50 ft long and 10 ft wide, 4 inches deep:</p>
+<ol><li>Area: 50 × 10 = 500 sq ft.</li><li>Volume: 500 × 4 ÷ 12 = 166.7 cubic feet.</li><li>Cubic yards: 166.7 ÷ 27 = 6.17 yd³.</li><li>Tons: 6.17 × 1.4 = <strong>8.6 tons</strong> of typical gravel.</li></ol>
+<p>Order a little extra — around 5–10% — because gravel compacts and the base is rarely perfectly level. The ${L('gravel-calculator', 'gravel calculator')} does this from area and depth, or converts cubic yards you already know straight to tons.</p>
+<p>Pouring a slab next to the drive? Use the ${L('concrete-calculator', 'concrete calculator')}. For planting beds, the ${L('mulch-calculator', 'mulch calculator')} works the same way in cubic yards and bags.</p>` },
+    ],
+    faqs: [
+      { q: 'How many yards are in a ton of gravel?', a: 'About 0.71 cubic yards of typical gravel (1 ÷ 1.4). For #57 crushed stone it is about 0.67, and for river rock about 0.83.' },
+      { q: 'How much does a cubic yard of gravel weigh in pounds?', a: 'About 2,800 lb for typical gravel, 3,000 lb for #57 crushed stone and 2,400 lb for river rock, when dry.' },
+      { q: 'How many tons is 10 yards of gravel?', a: 'About 14 tons of typical gravel, 15 tons of #57 stone or 12 tons of river rock.' },
+    ],
+  },
+  {
+    slug: 'how-much-does-it-cost-to-run-an-air-conditioner',
+    title: 'How Much Does It Cost to Run an Air Conditioner?',
+    metaDescription: 'How much does it cost to run an air conditioner per hour, day and month? Formula, real examples for window, split and central AC, and savings tips.',
+    focusKeyword: 'cost to run an air conditioner',
+    h1: 'How much does it cost to run an air conditioner?',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['electricity-cost-calculator/ac', 'electricity-cost-calculator/ceiling-fan', 'electricity-cost-calculator'],
+    summary: 'Cost = watts ÷ 1,000 × hours × electricity rate. A 1,200 W split AC running 8 hours a day with the compressor on 70% of the time uses 6.7 kWh — about $1.14 a day or $34 a month at $0.17/kWh.',
+    body: [
+      { h2: 'The formula', html: `<p>Every electricity cost calculation comes down to energy used (kilowatt-hours) times what you pay per kilowatt-hour:</p>
+<p class="formula">Cost = watts ÷ 1,000 × hours used × duty cycle × price per kWh</p>
+<p>The <strong>duty cycle</strong> is the share of time the compressor actually runs. An air conditioner cycles on and off to hold the temperature, so on a mild day it might run 40% of the time and on a very hot day close to 100%. Ignoring this is the most common reason estimates come out too high.</p>
+<p>Your price per kWh is on your electricity bill. The examples below use $0.17/kWh — swap in your own rate.</p>` },
+      { h2: 'How many watts does an AC use?', html: `<p>Look on the unit’s label or manual for the rated input power in watts. If you only know the size in BTU or tons, a rough estimate is cooling capacity ÷ efficiency ratio (EER). One “ton” is 12,000 BTU/h; at an EER of 10 that is about 1,200 W. Inverter units draw much less once the room has cooled.</p>
+${table(['Type', 'Typical running power'], [['Small window unit', '500–900 W'], ['1–1.5 ton split / mini-split', '1,000–1,800 W'], ['Central air (whole house)', '3,000–5,000 W']])}` },
+      { h2: 'Real examples', html: `<p>All at 8 hours a day, 70% duty cycle, $0.17/kWh, 30 days:</p>
+${table(['AC', 'kWh per day', 'Cost per day', 'Cost per month'], [['700 W window unit', '3.9', '$0.67', '$20'], ['1,200 W split unit', '6.7', '$1.14', '$34'], ['3,500 W central air', '19.6', '$3.33', '$100']])}
+<p>Per hour of actual running, a 1,200 W unit costs 1.2 × $0.17 = about 20¢. Plug your own wattage, hours and rate into the ${L('electricity-cost-calculator/ac', 'AC electricity cost calculator')} for a figure that matches your bill.</p>` },
+      { h2: 'How to cut AC running costs', html: `<ul><li><strong>Raise the set point.</strong> The US Department of Energy says setting the thermostat back 7–10°F for 8 hours a day can save up to 10% a year on heating and cooling.</li><li><strong>Use a fan with the AC.</strong> A ceiling fan uses around 50–75 W, a fraction of an AC, and lets you feel comfortable at a higher temperature. Check it with the ${L('electricity-cost-calculator/ceiling-fan', 'ceiling fan cost calculator')}.</li><li><strong>Clean or replace filters.</strong> A clogged filter makes the compressor work longer.</li><li><strong>Block afternoon sun.</strong> Closing blinds on south and west windows reduces the heat the AC has to remove.</li><li><strong>Size matters.</strong> An oversized unit short-cycles; an undersized one runs flat out. An inverter unit sized for the room is usually the cheapest to run.</li></ul>
+<p>Want to compare other appliances? The main ${L('electricity-cost-calculator', 'electricity cost calculator')} works for anything with a watt rating.</p>` },
+    ],
+    faqs: [
+      { q: 'How much does it cost to run an AC for 1 hour?', a: 'Watts ÷ 1,000 × your rate. A 1,200 W unit at $0.17/kWh costs about 20¢ per hour while the compressor runs; less on average because it cycles.' },
+      { q: 'Is it cheaper to leave the AC on all day?', a: 'Usually not. Turning the set point up while you are out means the AC removes less heat overall, which is why the Department of Energy recommends setting it back.' },
+      { q: 'How many kWh does an AC use per month?', a: 'A 1,200 W split unit running 8 hours a day at a 70% duty cycle uses about 200 kWh a month. A central system can use 500–600 kWh or more.' },
+    ],
+  },
+  {
+    slug: 'electric-water-heater-cost-per-month',
+    title: 'Electric Water Heater Cost per Month (and vs Propane)',
+    metaDescription: 'Electric water heater cost per month, worked out from daily hot water use, plus how it compares with propane and heat pump water heaters.',
+    focusKeyword: 'electric water heater cost per month',
+    h1: 'How much does an electric water heater cost per month?',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['electricity-cost-calculator/water-heater', 'electricity-cost-calculator/washing-machine', 'electricity-cost-calculator/dishwasher'],
+    summary: 'A household using about 64 gallons of hot water a day needs roughly 11 kWh a day to heat it, which is about 357 kWh and $61 a month at $0.17/kWh for a standard electric tank. A heat pump water heater can do the same job for around $16.',
+    body: [
+      { h2: 'Two ways to estimate it', html: `<p><strong>1. From element wattage and hours.</strong> A standard 40–50 gallon electric tank has elements rated around 4,500–5,500 W. If the element runs about 3 hours a day in total: 4,500 W × 3 h = 13.5 kWh a day, or about $2.30 a day and $69 a month at $0.17/kWh. The ${L('electricity-cost-calculator/water-heater', 'water heater cost calculator')} uses this method.</p>
+<p><strong>2. From how much hot water you use.</strong> This is more accurate if you know your usage. Heating one gallon of water by 1°F takes 8.34 BTU, and 3,412 BTU equals 1 kWh.</p>` },
+      { h2: 'Worked example from hot water use', html: `<p>The US Department of Energy puts typical household hot water use at up to 64 gallons a day. Heating that from 50°F to 120°F (a 70°F rise):</p>
+<ol><li>64 × 8.34 × 70 = 37,363 BTU a day.</li><li>37,363 ÷ 3,412 = 11 kWh a day of heat.</li><li>A standard electric tank is roughly 92% efficient once standby losses are counted, so it draws about 11.9 kWh a day, or 357 kWh a month.</li><li>357 kWh × $0.17 = <strong>about $61 a month</strong>.</li></ol>
+<p>Smaller households, lower thermostat settings and warmer incoming water all bring this down.</p>` },
+      { h2: 'Electric vs propane vs heat pump', html: `<p>To compare fuels fairly, start from the same heat need (about 1.12 million BTU a month in the example) and divide by each heater’s efficiency. Fuel prices vary a lot by region, so treat the prices below as examples and use your own.</p>
+${table(['Water heater', 'Efficiency used', 'Fuel per month', 'Example price', 'Cost per month'], [['Standard electric tank', '0.92', '357 kWh', '$0.17/kWh', '$61'], ['Propane tank', '0.62', '19.8 gallons', '$2.50/gallon', '$49'], ['Heat pump (hybrid) electric', '3.5', '94 kWh', '$0.17/kWh', '$16']])}
+<p>One gallon of propane contains about 91,500 BTU. Whether propane beats standard electric depends entirely on the two prices you pay — at $3.10 a gallon the propane figure above would roughly match electric. A heat pump water heater moves heat from the air rather than creating it, which is why it uses a fraction of the electricity.</p>` },
+      { h2: 'Ways to lower the bill', html: `<ul><li>Set the tank to 120°F — hotter settings increase standby losses.</li><li>Fix dripping hot taps and fit low-flow shower heads.</li><li>Wash clothes in cold water: most of a ${L('electricity-cost-calculator/washing-machine', 'washing machine’s running cost')} is heating water.</li><li>Run the ${L('electricity-cost-calculator/dishwasher', 'dishwasher')} only when full.</li><li>Insulate the first few feet of hot water pipe from the tank.</li></ul>` },
+    ],
+    faqs: [
+      { q: 'How many kWh does an electric water heater use per day?', a: 'Commonly 10–15 kWh for a family household. The exact figure depends on how much hot water you use and the tank temperature.' },
+      { q: 'Is propane or electric cheaper for a water heater?', a: 'It depends on local prices. Divide each fuel’s price by its heat content and the heater’s efficiency; a heat pump electric model is usually cheapest to run.' },
+      { q: 'How much does it cost to run a 4,500 watt water heater?', a: '4.5 kW × hours of heating × your rate. At 3 hours a day and $0.17/kWh, about $2.30 a day or $69 a month.' },
+    ],
+  },
+  {
+    slug: 'how-much-does-it-cost-to-run-a-dryer',
+    title: 'How Much Does It Cost to Run a Dryer per Load?',
+    metaDescription: 'How much does it cost to run a dryer? The per-load formula, worked examples (including a 5 kW dryer for 90 minutes) and ways to cut the cost.',
+    focusKeyword: 'cost to run a dryer',
+    h1: 'How much does it cost to run a dryer?',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['electricity-cost-calculator/dryer', 'electricity-cost-calculator/washing-machine', 'electricity-cost-calculator'],
+    summary: 'Cost per load = kW × hours × electricity rate. A 3,000 W dryer with its heater on about 75% of a one-hour cycle uses 2.25 kWh — about 38¢ a load at $0.17/kWh, or roughly $99 a year at five loads a week.',
+    body: [
+      { h2: 'The per-load formula', html: `<p class="formula">Cost per load = watts ÷ 1,000 × cycle hours × share of time heating × price per kWh</p>
+<p>Electric dryers are rated anywhere from about 1,800 to 5,000 W, and almost all of that is the heating element. The element switches on and off to hold the drum temperature, and towards the end of a sensor-dry cycle it barely runs, so the real average draw is lower than the label.</p>` },
+      { h2: 'Worked examples', html: `${table(['Dryer and cycle', 'Energy', 'Rate', 'Cost'], [['3,000 W, 60 min, heater on 75%', '2.25 kWh', '$0.17', '$0.38'], ['5,000 W, 45 min, heater on 80%', '3.0 kWh', '$0.17', '$0.51'], ['5 kW, 90 min, heater on throughout', '7.5 kWh', '$0.18', '$1.35']])}
+<p>The last row is a common textbook question: “at 18 cents per kilowatt-hour, a 5 kW clothes dryer runs for 90 minutes — what does it cost?” The working is 5 kW × 1.5 h = 7.5 kWh, then 7.5 × $0.18 = <strong>$1.35</strong>. It assumes the heater runs the whole time; a real dryer cycling its element would cost somewhat less.</p>
+<p>Put your own dryer’s wattage and your rate into the ${L('electricity-cost-calculator/dryer', 'dryer cost calculator')} to get cost per load, month and year.</p>` },
+      { h2: 'Cost per month and per year', html: `<p>Multiply the per-load cost by how often you dry. At 38¢ a load:</p>
+${table(['Loads per week', 'Per month', 'Per year'], [[3, '$5.00', '$60'], [5, '$8.30', '$99'], [8, '$13.30', '$159']])}` },
+      { h2: 'How to dry for less', html: `<ul><li><strong>Spin faster in the washer.</strong> Water removed by spinning is far cheaper to remove than water evaporated by heat.</li><li><strong>Clean the lint filter every load</strong> and check the vent for blockages; restricted airflow lengthens cycles.</li><li><strong>Use the moisture sensor</strong> instead of a fixed timer so the dryer stops when clothes are dry.</li><li><strong>Dry full loads back to back</strong> so the drum is already warm.</li><li>Pair with cold washes — see what the wash itself costs with the ${L('electricity-cost-calculator/washing-machine', 'washing machine cost calculator')}.</li></ul>` },
+    ],
+    faqs: [
+      { q: 'How much does it cost to run a dryer for an hour?', a: 'Rated kW × your rate, times the share of time the heater is on. A 3 kW dryer at $0.17/kWh costs up to 51¢ an hour, typically closer to 38¢.' },
+      { q: 'How many kWh does a dryer use per load?', a: 'Usually 2–4 kWh for a normal electric dryer load. Heat pump dryers use roughly half that or less.' },
+      { q: 'A 5 kW dryer runs 90 minutes at 18¢/kWh — what is the cost?', a: '5 × 1.5 = 7.5 kWh, and 7.5 × $0.18 = $1.35.' },
+    ],
+  },
+  {
+    slug: 'how-to-calculate-percentage-increase',
+    title: 'How to Calculate Percentage Increase (With Examples)',
+    metaDescription: 'How to calculate percentage increase and decrease: the formula, step-by-step examples, percent vs percentage points, and common mistakes.',
+    focusKeyword: 'how to calculate percentage increase',
+    h1: 'How to calculate percentage increase',
+    published: '2026-10-20', updated: '2026-10-20',
+    tools: ['percentage-change-calculator', 'percentage-calculator', 'discount-calculator'],
+    summary: 'Percentage increase = (new value − old value) ÷ old value × 100. A price going from $80 to $100 is a (100 − 80) ÷ 80 × 100 = 25% increase. If the result is negative, it is a percentage decrease.',
+    body: [
+      { h2: 'The formula', html: `<p class="formula">Percentage change = (new − old) ÷ old × 100</p>
+<ol><li>Subtract the old value from the new value to get the change.</li><li>Divide the change by the <strong>old</strong> (starting) value.</li><li>Multiply by 100 to turn it into a percentage.</li></ol>
+<p>A positive answer is an increase; a negative answer is a decrease. The ${L('percentage-change-calculator', 'percentage increase calculator')} does this instantly and shows the working.</p>` },
+      { h2: 'Examples', html: `${table(['Old', 'New', 'Working', 'Result'], [['80', '100', '20 ÷ 80 × 100', '+25%'], ['100', '80', '−20 ÷ 100 × 100', '−20%'], ['1,250', '1,500', '250 ÷ 1,250 × 100', '+20%'], ['40,000', '43,000', '3,000 ÷ 40,000 × 100', '+7.5%'], ['0.50', '2.00', '1.50 ÷ 0.50 × 100', '+300%']])}
+<p>Notice the first two rows: going from 80 to 100 is +25%, but going back from 100 to 80 is only −20%. The percentage always uses the starting value as its base, so increases and decreases between the same two numbers are not equal.</p>` },
+      { h2: 'Reverse it: find the original value', html: `<p>If you know the final value and the percentage increase, divide instead of subtracting: <strong>original = new ÷ (1 + percent ÷ 100)</strong>. A salary of $43,000 after a 7.5% raise was $43,000 ÷ 1.075 = $40,000. A common mistake is taking 7.5% off $43,000, which gives $39,775.</p>
+<p>For a discount it works the other way: the sale price is original × (1 − percent ÷ 100). The ${L('discount-calculator', 'discount calculator')} handles that, and the ${L('percentage-calculator', 'percentage calculator')} covers “what is X% of Y”.</p>` },
+      { h2: 'Percent vs percentage points', html: `<p>If an interest rate goes from 4% to 5%, it rose by <strong>1 percentage point</strong> but by <strong>25 percent</strong> (1 ÷ 4 × 100). News reports and dashboards mix these up all the time; say which one you mean.</p>` },
+      { h2: 'Percentage change vs percentage difference', html: `<p>Percentage change has a direction — from old to new. <strong>Percentage difference</strong> compares two values with no “before” and “after”, using their average as the base: |a − b| ÷ ((a + b) ÷ 2) × 100. For 80 and 100 that is 20 ÷ 90 × 100 = 22.2%. Use it when comparing two prices from different shops, not a price over time.</p>` },
+    ],
+    faqs: [
+      { q: 'What is the formula for percentage increase?', a: '(New value − old value) ÷ old value × 100.' },
+      { q: 'How do I calculate a percentage decrease?', a: 'Use the same formula. The result is negative: from 100 to 80 is (80 − 100) ÷ 100 × 100 = −20%.' },
+      { q: 'Can a percentage increase be more than 100%?', a: 'Yes. Doubling is a 100% increase and tripling is 200%. From 0.50 to 2.00 is a 300% increase.' },
+    ],
+  },
+];
+
+export const postBySlug = new Map(posts.map((p) => [p.slug, p]));
+export const postPath = (p: BlogPost | string) => `/blog/${typeof p === 'string' ? p : p.slug}/`;
+export const postsForTool = (toolSlug: string) => posts.filter((p) => p.tools.includes(toolSlug));

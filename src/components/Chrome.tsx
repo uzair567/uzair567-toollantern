@@ -44,7 +44,7 @@ export function Footer() {
         <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/50">
           <p>© {new Date().getFullYear()} {site.name}. Free tools, no sign-up.</p>
           <nav aria-label="Legal" className="flex gap-5">
-            <Link href="/about/" className="hover:text-white">About</Link><Link href="/privacy/" className="hover:text-white">Privacy</Link><Link href="/terms/" className="hover:text-white">Terms</Link><Link href="/all-tools/" className="hover:text-white">All tools</Link>
+            <Link href="/blog/" className="hover:text-white">Blog</Link><Link href="/about/" className="hover:text-white">About</Link><Link href="/privacy/" className="hover:text-white">Privacy</Link><Link href="/terms/" className="hover:text-white">Terms</Link><Link href="/all-tools/" className="hover:text-white">All tools</Link>
           </nav>
         </div>
       </div>

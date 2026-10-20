@@ -2,6 +2,7 @@ import { categories } from './categories';
 import { tools, toolsInCategory, toolPath } from './tools';
 import { toolSeo } from './seo-data';
 import { site, absUrl } from './site';
+import { posts, postPath } from './blog';
 
 const strip = (h: string) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
@@ -26,6 +27,9 @@ export function llmsTxt(full: boolean) {
     }
     out.push('');
   }
+  out.push('## Guides', '');
+  for (const p of posts) { out.push(`- [${p.h1}](${absUrl(postPath(p))}): ${p.summary}`); if (full) for (const f of p.faqs) out.push(`  - Q: ${f.q} A: ${f.a}`); }
+  out.push('');
   if (!full) out.push('## Optional', '', `- [Full tool reference with formulas and FAQs](${absUrl('/llms-full.txt')})`, '');
   return out.join('\n');
 }
