@@ -173,6 +173,7 @@ export const energyTools: ToolContent[] = [
     formula: { expression: 'Cost per load = Watts × Cycle hours × Load ÷ 1000 × Price', explanation: ['A gas dryer still uses electricity for the drum and controls, but far less — this calculator is for electric dryers.'] },
     example: { title: 'A 3,000 W dryer, one load a day', steps: ['3,000 W × 1 h × 75% = 2.25 kWh per load.', 'At $0.17/kWh: about 38¢ per load.', 'About $11.48 over 30 loads.'] },
     faqs: [
+      { q: 'A 5 kW dryer runs for 90 minutes at 18 cents per kWh — what does the load cost?', a: '5 kW × 1.5 hours = 7.5 kWh. 7.5 kWh × $0.18 = $1.35 for the load. This assumes the heater runs the whole time; real dryers cycle the element, so actual cost is usually a little lower.' },
       { q: 'How much does it cost to run a dryer per load?', a: 'Commonly 30–60¢ per load in the US at typical electricity prices, depending on wattage, cycle length and how wet the clothes are when they go in.' },
       { q: 'Is a heat-pump dryer worth it?', a: 'It uses roughly half the electricity of a vented dryer but costs more up front and dries more slowly. It pays back fastest for large families who dry daily.' },
       { q: 'Does washing on a higher spin speed save dryer energy?', a: 'Yes. Clothes that come out of the washer drier need less time in the dryer, and the extra spin costs far less than the drying time it saves.' },

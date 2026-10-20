@@ -59,6 +59,8 @@ check('topsoil-calculator', { L: '10', W: '10', D: '4' }, 'weight', '1.36 tons')
 check('electricity-cost-calculator', { watts: '3000', hours: '1', duty: '75', rate: '0.17' }, 'per day', '$0.38');
 check('gravel-calculator', { cy: '10', dens: '1.4' }, 'Gravel needed', '14 tons');
 check('gravel-calculator', { cy: '1', dens: '1.5' }, 'Gravel needed', '1.5 tons');
+check('mulch-calculator', { A: '324', D: '1' }, 'Cubic yards', '1 yd³');
+check('mulch-calculator', { A: '108', D: '3' }, '2 cu ft', '14');
 
 console.log(fail ? `\n${fail} failing` : '\nAll calculator checks passed');
 process.exit(fail ? 1 : 0);

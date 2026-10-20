@@ -804,11 +804,13 @@ function coverCalc(defDepth: string, bagSizes: number[], tonsPerYd?: number): Ca
       { id: 'L', label: 'Length', type: 'number', default: '20', unit: len },
       { id: 'W', label: 'Width', type: 'number', default: '10', unit: len },
       { id: 'D', label: 'Depth', type: 'number', default: defDepth, unit: small },
+      { id: 'A', label: 'Or: total area', type: 'number', default: '', optional: true, unit: (v: Values) => (v.units === 'metric' ? 'm²' : 'sq ft'), help: 'Know the square footage already? Enter it here and length × width is ignored.' },
     ],
     compute: (v) => {
-      const metric = v.units === 'metric', L = num(v.L), W = num(v.W), D = num(v.D);
-      if (!need(L, W, D) || L <= 0 || W <= 0 || D <= 0) return err('Enter length, width and depth.');
-      const ft3 = metric ? L * W * (D / 100) * 35.3147 : L * W * (D / 12);
+      const metric = v.units === 'metric', L = num(v.L), W = num(v.W), D = num(v.D), A = num(v.A);
+      const area = isFinite(A) && A > 0 ? A : L * W;
+      if (!need(area, D) || area <= 0 || D <= 0) return err('Enter length and width (or total area) and depth.');
+      const ft3 = metric ? area * (D / 100) * 35.3147 : area * (D / 12);
       const yd3 = ft3 / 27, m3 = ft3 / 35.3147, litres = m3 * 1000;
       const rows: ResultRow[] = [
         { label: metric ? 'Volume needed' : 'Cubic yards needed', value: metric ? `${fmt(m3, 2)} m³` : `${fmt(yd3, 2)} yd³`, primary: true },
@@ -821,8 +823,8 @@ function coverCalc(defDepth: string, bagSizes: number[], tonsPerYd?: number): Ca
       return {
         results: rows,
         working: metric
-          ? [`${fmt(L)} × ${fmt(W)} × ${fmt(D / 100, 3)} m = ${fmt(m3, 3)} m³`]
-          : [`${fmt(L)} × ${fmt(W)} × (${fmt(D)} ÷ 12) = ${fmt(ft3, 2)} ft³`, `${fmt(ft3, 2)} ÷ 27 = ${fmt(yd3, 2)} yd³`],
+          ? [`${fmt(area)} m² × ${fmt(D / 100, 3)} m = ${fmt(m3, 3)} m³`]
+          : [`${fmt(area)} sq ft × (${fmt(D)} ÷ 12) = ${fmt(ft3, 2)} ft³`, `${fmt(ft3, 2)} ÷ 27 = ${fmt(yd3, 2)} yd³`],
       };
     },
   };

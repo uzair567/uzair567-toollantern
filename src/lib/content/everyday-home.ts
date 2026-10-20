@@ -181,6 +181,7 @@ export const homeTools: ToolContent[] = [
     example: { title: 'A 20 × 10 ft path, 3 in deep', steps: ['20 × 10 × (3 ÷ 12) = 50 cubic feet.', '50 ÷ 27 = 1.85 cubic yards.', '1.85 × 1.4 = 2.6 tons of gravel.'] },
     faqs: [
       { q: 'How many tons are in a cubic yard of gravel?', a: 'Roughly 1.4 tons for typical gravel, but anywhere from 1.2 to 1.5 depending on stone type and moisture. Ask your supplier for their figure.' },
+      { q: 'How many yards are in a ton of gravel?', a: 'About 0.71 cubic yards of typical gravel (1 ÷ 1.4). For #57 crushed stone it is about 0.67 cubic yards, and for river rock about 0.83.' },
       { q: 'How many tons is 10 cubic yards of gravel?', a: 'About 14 tons of typical gravel at 1.4 tons per cubic yard — around 15 tons of #57 crushed stone or 12 tons of river rock.' },
       { q: 'How do I convert cubic yards to tons?', a: 'Multiply cubic yards by the material’s weight per cubic yard: tons = cubic yards × density. For typical gravel that is cubic yards × 1.4. To go from tons to cubic yards, divide by the density instead.' },
       { q: 'How deep should driveway gravel be?', a: 'Plan for 4–8 inches in layers: a coarse compacted base, then a finer top layer. Soft ground may need geotextile fabric underneath.' },
@@ -198,11 +199,13 @@ export const homeTools: ToolContent[] = [
       'Mulch is sold in bulk by the cubic yard or in bags, usually 2 or 3 cubic feet in the US. One cubic yard is 27 cubic feet, so it equals about 13.5 two-cubic-foot bags or 9 three-cubic-foot bags.',
       'A 2–3 inch layer is the usual recommendation for beds: enough to suppress weeds and hold moisture without smothering roots. Keep mulch a few inches away from tree trunks and plant stems. Topping up an existing bed often needs only 1 inch.',
     ],
-    howTo: ['Choose feet or metres.', 'Enter the length and width of the bed (split odd shapes into rectangles and add them).', 'Enter the depth — 3 inches for new beds, 1–2 inches to refresh.', 'Read cubic yards for bulk delivery, or the number of bags.'],
+    howTo: ['Choose feet or metres.', 'Enter the length and width of the bed — or type the total square footage if you already know it.', 'Enter the depth — 3 inches for new beds, 1–2 inches to refresh.', 'Read cubic yards for bulk delivery, or the number of bags.'],
     formula: { expression: 'Cubic yards = Length (ft) × Width (ft) × Depth (in) ÷ 12 ÷ 27', explanation: ['Bags = cubic feet ÷ bag size, rounded up.'] },
     example: { title: 'A 20 × 10 ft bed, 3 inches deep', steps: ['20 × 10 × (3 ÷ 12) = 50 cubic feet.', '50 ÷ 27 = 1.85 cubic yards.', 'Or 25 two-cubic-foot bags.'] },
     faqs: [
       { q: 'How much does a cubic yard of mulch cover?', a: 'About 108 sq ft at 3 inches deep, 162 sq ft at 2 inches, or 324 sq ft at 1 inch.' },
+      { q: 'How many bags of mulch are in a yard?', a: 'One cubic yard is 27 cubic feet: 13.5 bags of 2 cu ft, or 9 bags of 3 cu ft. To convert bags to yards, multiply bags by the bag size in cubic feet and divide by 27.' },
+      { q: 'How do I calculate mulch from square feet?', a: 'Cubic feet = square feet × depth in inches ÷ 12. For 200 sq ft at 3 inches: 200 × 3 ÷ 12 = 50 cubic feet, which is 1.85 cubic yards or 25 two-cubic-foot bags.' },
       { q: 'Is bulk mulch cheaper than bags?', a: 'For more than a couple of cubic yards, bulk delivery is usually cheaper per yard — but check the delivery fee and that you have somewhere to tip it.' },
       { q: 'How deep should mulch be?', a: '2–3 inches for most beds. Deeper than about 4 inches can keep soil too wet and starve roots of air.' },
     ],

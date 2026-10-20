@@ -31,7 +31,26 @@ export function GravelTable() {
           </tbody>
         </table>
       </div>
-      <p>Going the other way: 1 ton of typical gravel is about {f(1 / 1.4)} cubic yards, so 10 tons is about {f(10 / 1.4)} cubic yards.</p>
+      <h2>Tons to cubic yards of gravel</h2>
+      <p>How many yards are in a ton? Divide tons by the weight per cubic yard: 1 ton of typical gravel is about {f(1 / 1.4)} cubic yards.</p>
+      <div className="not-prose overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full text-sm">
+          <thead className="surface-2 text-left">
+            <tr>
+              <th scope="col" className="px-4 py-2.5 font-bold">Tons</th>
+              {MATERIALS.map((m) => <th key={m.name} scope="col" className="px-4 py-2.5 font-bold">{m.name}</th>)}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--line)]">
+            {[1, 2, 5, 10, 15, 20, 25].map((t) => (
+              <tr key={t}>
+                <td className="px-4 py-2 font-semibold tabular-nums">{t} ton{t > 1 ? 's' : ''}</td>
+                {MATERIALS.map((m) => <td key={m.name} className="px-4 py-2 tabular-nums">{f(t / m.d)} yd³</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

@@ -299,8 +299,10 @@ export const toolSeo: Record<string, ToolSeo> = {
   },
   // ── Home (added Oct 13) ────────────────────────────────────────────────
   'mulch-calculator': {
-    primaryKeyword: 'mulch calculator', secondaryKeywords: ['how much mulch do i need', 'mulch cubic yards', 'bags of mulch'], intent: 'calculate', priority: 2,
-    answer: `Cubic yards = length × width (ft) × depth (in) ÷ 12 ÷ 27. A 20 × 10 ft bed at 3 inches needs 1.85 cubic yards, or 25 two-cubic-foot bags. Laying a path too? Use the ${a('gravel-calculator', 'gravel calculator')}.`,
+    primaryKeyword: 'mulch calculator', secondaryKeywords: ['mulch calculator bags to yards', 'mulch calculator cubic feet', 'mulch calculator square feet', 'how much mulch do i need', 'how many bags of mulch in a yard'], intent: 'calculate', priority: 1,
+    title: 'Mulch Calculator – Cubic Feet, Yards & Bags to Yards',
+    metaDescription: 'Mulch calculator: cubic feet and cubic yards from square feet and depth, plus bags to yards — 1 yard = 13.5 bags of 2 cu ft or 9 bags of 3 cu ft.',
+    answer: `1 cubic yard = 27 cubic feet = 13.5 bags of 2 cu ft or 9 bags of 3 cu ft, and covers about 108 sq ft at 3 inches deep. A 20 × 10 ft bed at 3 inches needs 50 cubic feet — 1.85 yards or 25 two-cubic-foot bags. Laying a path too? Use the ${a('gravel-calculator', 'gravel calculator')}.`,
   },
   'topsoil-calculator': {
     primaryKeyword: 'topsoil calculator', secondaryKeywords: ['how much topsoil do i need', 'raised bed soil calculator', 'topsoil cubic yards'], intent: 'calculate', priority: 2,
