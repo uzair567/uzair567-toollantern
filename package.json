@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "test": "tsx scripts/test-calcs.ts && tsx scripts/test-search.ts && tsx scripts/test-seo.ts"
+    "test": "tsx scripts/test-calcs.ts && tsx scripts/test-search.ts && tsx scripts/test-seo.ts",
+    "postbuild": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "next": "^15.5.27",
