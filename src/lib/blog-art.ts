@@ -147,6 +147,62 @@ function dehumidifier() {
     drop(880, 170) + drop(960, 280, 0.8) + drop(860, 360, 1.1) + drop(1000, 420, 0.7) + drop(250, 430, 0.8));
 }
 
+function driveway() {
+  const r = rand(23);
+  let stones = '';
+  for (let i = 0; i < 160; i++) {
+    const y = 330 + r() * 260, t = (y - 330) / 260, half = 60 + t * 260, x = 600 + (r() * 2 - 1) * half;
+    stones += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(4 + t * 7).toFixed(1)}" ry="${(3 + t * 5).toFixed(1)}" fill="${['#9aa3ad', '#c3c9cf', '#7d8691', '#b4bcc4'][i % 4]}"/>`;
+  }
+  return wrap('#dff3b8',
+    `<path d="M540 330 L660 330 L920 630 L280 630 Z" fill="#d7d2c8"/>` + stones +
+    `<path d="M540 330 L660 330 L920 630 L280 630 Z" fill="none" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>` +
+    `<rect x="470" y="170" width="260" height="160" fill="#fff" ${S}/><path d="M440 180 L600 80 L760 180 Z" fill="${AMBER}" ${S}/>` +
+    `<rect x="560" y="240" width="80" height="90" rx="6" fill="#9cc8ff" ${S}/><line x1="600" y1="240" x2="600" y2="330" stroke="${INK}" stroke-width="4"/>` +
+    `<rect x="490" y="200" width="44" height="40" rx="4" fill="#9cc8ff" stroke="${INK}" stroke-width="4"/><rect x="666" y="200" width="44" height="40" rx="4" fill="#9cc8ff" stroke="${INK}" stroke-width="4"/>` +
+    `<circle cx="300" cy="330" r="70" fill="#6ab04c" ${S}/><rect x="292" y="390" width="16" height="70" fill="#8a5a3b"/>` +
+    `<circle cx="940" cy="320" r="60" fill="#6ab04c" ${S}/><rect x="932" y="370" width="16" height="70" fill="#8a5a3b"/>` +
+    `<g transform="translate(980 470)"><rect x="0" y="0" width="120" height="70" rx="12" fill="#fff" ${S}/><path d="M18 46 L102 46 M18 26 L80 26" stroke="${INK}" stroke-width="6" stroke-linecap="round" opacity=".3"/></g>`);
+}
+
+function spaceHeater() {
+  const fins = Array.from({ length: 7 }, (_, i) => `<rect x="${430 + i * 50}" y="200" width="40" height="270" rx="20" fill="${i % 2 ? '#fff' : CREAM}" ${S}/>`).join('');
+  return wrap('#ffd9c8',
+    `<ellipse cx="600" cy="545" rx="280" ry="22" fill="${INK}" opacity=".08"/>` + fins +
+    `<rect x="420" y="470" width="360" height="30" rx="12" fill="${INK}"/><circle cx="460" cy="520" r="18" fill="${INK}"/><circle cx="740" cy="520" r="18" fill="${INK}"/>` +
+    `<rect x="760" y="250" width="70" height="110" rx="14" fill="${AMBER}" ${S}/><circle cx="795" cy="290" r="16" fill="#fff" stroke="${INK}" stroke-width="4"/><circle cx="795" cy="334" r="6" fill="#ff7a59"/>` +
+    [470, 560, 650].map((x) => `<path d="M${x} 170 q-20 -28 0 -56 t0 -56" fill="none" stroke="#ff7a59" stroke-width="12" stroke-linecap="round"/>`).join('') +
+    `<g transform="translate(240 200)"><rect x="-22" y="0" width="44" height="200" rx="22" fill="#fff" ${S}/><circle cx="0" cy="220" r="38" fill="#ff7a59" ${S}/><rect x="-8" y="70" width="16" height="140" fill="#ff7a59"/></g>` +
+    `<circle cx="960" cy="440" r="64" fill="${AMBER}" ${S}/><path d="M976 416 q-16 -11 -30 0 q-11 12 14 23 q27 11 14 25 q-14 11 -32 -2 M961 404 v74" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>`);
+}
+
+function topsoil() {
+  const r = rand(5);
+  let crumbs = '';
+  for (let i = 0; i < 40; i++) crumbs += `<circle cx="${(330 + r() * 300).toFixed(0)}" cy="${(250 + r() * 50).toFixed(0)}" r="${(4 + r() * 6).toFixed(0)}" fill="${r() > 0.5 ? '#4a3222' : '#6e4a32'}"/>`;
+  const sprout = (x: number) => `<path d="M${x} 330 v-40" stroke="#3f8f3a" stroke-width="6" stroke-linecap="round"/><path d="M${x} 300 q-26 -6 -30 -30 q26 2 30 30z M${x} 296 q24 -8 28 -32 q-26 4 -28 32z" fill="#6ab04c" stroke="${INK}" stroke-width="3"/>`;
+  return wrap('#ffe6b3',
+    `<ellipse cx="600" cy="560" rx="500" ry="24" fill="${INK}" opacity=".08"/>` +
+    `<path d="M300 300 Q480 210 660 300 Z" fill="#5a3b27" ${S}/>` + crumbs +
+    `<path d="M280 300 L680 300 L620 430 L340 430 Z" fill="${AMBER}" ${S}/>` +
+    `<path d="M300 330 L170 400" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="M320 310 L200 360" stroke="${INK}" stroke-width="12" stroke-linecap="round"/>` +
+    `<circle cx="480" cy="490" r="52" fill="${INK}"/><circle cx="480" cy="490" r="18" fill="#fff"/><path d="M400 430 L460 470 M560 430 L500 470" stroke="${INK}" stroke-width="8"/>` +
+    `<rect x="800" y="420" width="300" height="110" rx="10" fill="#b47b52" ${S}/><rect x="812" y="410" width="276" height="26" rx="6" fill="#5a3b27" stroke="${INK}" stroke-width="4"/>` +
+    `<line x1="900" y1="420" x2="900" y2="530" stroke="${INK}" stroke-width="4" opacity=".4"/><line x1="1000" y1="420" x2="1000" y2="530" stroke="${INK}" stroke-width="4" opacity=".4"/>` +
+    `<g transform="translate(0 80)">${sprout(860)}${sprout(950)}${sprout(1040)}</g>`);
+}
+
+function tdee() {
+  return wrap('#cdeee0',
+    `<ellipse cx="600" cy="560" rx="440" ry="22" fill="${INK}" opacity=".08"/>` +
+    `<circle cx="600" cy="330" r="190" fill="#fff" ${S}/><circle cx="600" cy="330" r="140" fill="${CREAM}" stroke="${INK}" stroke-width="4"/>` +
+    `<path d="M470 330 A130 130 0 0 1 730 330" fill="none" stroke="#e5e7eb" stroke-width="22"/><path d="M470 330 A130 130 0 0 1 680 230" fill="none" stroke="${AMBER}" stroke-width="22" stroke-linecap="round"/>` +
+    `<path d="M600 330 L668 262" stroke="${INK}" stroke-width="10" stroke-linecap="round"/><circle cx="600" cy="330" r="16" fill="${INK}"/>` +
+    `<path d="M560 420 Q600 380 640 420 Q630 470 600 480 Q570 470 560 420Z" fill="#ff7a59" stroke="${INK}" stroke-width="5"/><path d="M584 440 Q600 418 616 440 Q612 462 600 464 Q588 462 584 440Z" fill="${AMBER}"/>` +
+    `<g transform="translate(200 360)"><path d="M0 60 q0 -70 60 -70 q60 0 60 70 q0 60 -60 70 q-60 -10 -60 -70z" fill="#ff7a59" ${S}/><path d="M60 -10 q4 -26 24 -34" stroke="${INK}" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M66 -20 q26 -18 40 4 q-26 10 -40 -4z" fill="#6ab04c" stroke="${INK}" stroke-width="4"/></g>` +
+    `<g transform="translate(880 400)"><rect x="0" y="40" width="200" height="22" rx="8" fill="${INK}"/><rect x="10" y="0" width="36" height="102" rx="10" fill="${AMBER}" ${S}/><rect x="154" y="0" width="36" height="102" rx="10" fill="${AMBER}" ${S}/><rect x="-14" y="22" width="22" height="58" rx="8" fill="${INK}"/><rect x="192" y="22" width="22" height="58" rx="8" fill="${INK}"/></g>`);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -157,6 +213,10 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-electricity-does-a-gaming-pc-use': { svg: gamingPc, alt: 'Illustration of a gaming PC tower with RGB fans, a monitor, keyboard and a power bolt' },
   'navy-tape-test-body-fat': { svg: navy, alt: 'Illustration of a figure with a tape measure around the neck and waist for the Navy body fat method' },
   'how-much-does-it-cost-to-run-a-dehumidifier': { svg: dehumidifier, alt: 'Illustration of a dehumidifier with a water tank, a humidity gauge and water droplets' },
+  'how-much-gravel-for-a-driveway': { svg: driveway, alt: 'Illustration of a gravel driveway leading up to a house between two trees' },
+  'how-much-does-it-cost-to-run-a-space-heater': { svg: spaceHeater, alt: 'Illustration of an oil-filled space heater giving off heat beside a thermometer and a coin' },
+  'how-much-topsoil-do-i-need': { svg: topsoil, alt: 'Illustration of a wheelbarrow full of topsoil next to a raised bed with seedlings' },
+  'how-to-calculate-tdee': { svg: tdee, alt: 'Illustration of a calorie gauge with a flame, an apple and a dumbbell' },
 };
 
 /* ---------- inline figures ---------- */
@@ -235,5 +295,17 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-does-it-cost-to-run-a-dehumidifier': {
     'Cost formula and examples': { svg: barChart([{ label: '300 W, 8 h/day', value: 8.6, text: '$8.60' }, { label: '500 W, 8 h/day', value: 14.3, text: '$14.30' }, { label: '500 W, 24 h/day', value: 30.6, text: '$30.60' }], ' /mo'), caption: 'Monthly cost for each scenario at $0.17/kWh.', alt: 'Bar chart of dehumidifier monthly cost: $8.60, $14.30 and $30.60' },
+  },
+  'how-much-gravel-for-a-driveway': {
+    'Gravel for common driveway sizes': { svg: barChart([[10, 40], [12, 50], [12, 60], [12, 100], [20, 50]].map(([w, l]) => { const t = (l * w * 4) / 12 / 27 * 1.4; return { label: `${w} × ${l} ft`, value: t, text: t.toFixed(1) }; }), ' tons'), caption: 'Tons of typical gravel at 4 inches deep (1.4 t/yd³), before adding 10% extra.', alt: 'Bar chart of gravel tons for driveway sizes at 4 inches deep' },
+  },
+  'how-much-does-it-cost-to-run-a-space-heater': {
+    'What a space heater costs': { svg: barChart([{ label: '2 hours a day', value: 12.24, text: '$12' }, { label: '5 hours a day', value: 30.6, text: '$31' }, { label: '8 hours a day', value: 48.96, text: '$49' }], ' /mo'), caption: 'Monthly cost of a 1,500 W heater cycling 80% of the time, at $0.17/kWh.', alt: 'Bar chart of space heater monthly cost: $12, $31 and $49' },
+  },
+  'how-much-topsoil-do-i-need': {
+    'How deep should topsoil be?': { svg: barChart([{ label: '1 inch', value: 324, text: '324' }, { label: '2 inches', value: 162, text: '162' }, { label: '4 inches', value: 81, text: '81' }, { label: '6 inches', value: 54, text: '54' }, { label: '12 inches', value: 27, text: '27' }], ' sq ft'), caption: 'Area one cubic yard of topsoil covers at each depth.', alt: 'Bar chart of square feet covered by one cubic yard of topsoil at different depths' },
+  },
+  'how-to-calculate-tdee': {
+    'Step 2: multiply by your activity level': { svg: barChart([{ label: 'Sedentary ×1.2', value: 2091, text: '2,091' }, { label: 'Light ×1.375', value: 2396, text: '2,396' }, { label: 'Moderate ×1.55', value: 2701, text: '2,701' }, { label: 'Very active ×1.725', value: 3006, text: '3,006' }], ' kcal'), caption: 'TDEE for the example man (BMR 1,743 kcal) at each activity level.', alt: 'Bar chart of TDEE by activity level from 2,091 to 3,006 kcal' },
   },
 };

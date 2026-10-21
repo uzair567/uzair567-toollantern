@@ -270,6 +270,111 @@ ${table(['Scenario', 'kWh per day', 'Per day', 'Per month'], [['300 W, 8 h, 70% 
       { q: 'What humidity should I set a dehumidifier to?', a: 'Between 30% and 50% is the usual target. Lower settings make it run longer without much benefit.' },
     ],
   },
+  {
+    slug: 'how-much-gravel-for-a-driveway',
+    title: 'How Much Gravel for a Driveway? Tons & Yards',
+    metaDescription: 'How much gravel for a driveway: a step-by-step method, tons and cubic yards for common driveway sizes at 4 and 6 inches, and how to layer it.',
+    focusKeyword: 'how much gravel for a driveway',
+    h1: 'How much gravel do you need for a driveway?',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['gravel-calculator', 'concrete-calculator', 'mulch-calculator'],
+    summary: 'Multiply length × width in feet by depth in inches, divide by 12 for cubic feet and by 27 for cubic yards, then × 1.4 for tons. A 60 × 12 ft driveway at 4 inches needs about 8.9 cubic yards — roughly 12.4 tons of gravel.',
+    body: [
+      { h2: 'The method in four steps', html: `<ol><li><strong>Measure</strong> the length and width in feet. Split curves or a turnaround into rectangles.</li><li><strong>Pick a depth.</strong> Most gravel driveways are 4–8 inches built in layers; resurfacing an existing drive usually needs 2–3 inches.</li><li><strong>Volume:</strong> length × width × depth (in) ÷ 12 = cubic feet; ÷ 27 = cubic yards.</li><li><strong>Weight:</strong> cubic yards × about 1.4 = US tons for typical gravel (crushed stone is nearer 1.5).</li></ol>
+<p>Add around 10% for compaction and uneven ground. The ${L('gravel-calculator', 'gravel calculator')} does all four steps and lets you pick the material.</p>` },
+      { h2: 'Gravel for common driveway sizes', html: `<p>Typical gravel at 1.4 tons per cubic yard, before the extra 10%:</p>
+${table(['Driveway', '4 inches deep', '6 inches deep'], [[10, 40], [12, 50], [12, 60], [12, 100], [20, 50]].map(([w, l]) => { const y4 = (l * w * 4) / 12 / 27, y6 = (l * w * 6) / 12 / 27; return [`${w} × ${l} ft`, `${y4.toFixed(1)} yd³ · ${(y4 * 1.4).toFixed(1)} t`, `${y6.toFixed(1)} yd³ · ${(y6 * 1.4).toFixed(1)} t`]; }))}
+<p>A standard dump truck carries roughly 10–15 tons, so most single driveways are one delivery.</p>` },
+      { h2: 'How to layer a gravel driveway', html: `<p>A driveway lasts longer when it is built in layers rather than one deep pile of the same stone:</p>
+<ul><li><strong>Base:</strong> larger crushed stone, compacted, to spread the load and drain water.</li><li><strong>Middle (optional):</strong> medium crushed stone on soft ground.</li><li><strong>Top:</strong> a finer, angular gravel 2–3 inches deep. Angular stone locks together; round pea gravel rolls and ruts under tyres.</li></ul>
+<p>On soft or clay soil, geotextile fabric under the base stops stone sinking into the mud. Calculate each layer separately with its own depth, then add the tons.</p>` },
+      { h2: 'Worked example', html: `<p>A 12 × 60 ft driveway with a 4-inch base and a 2-inch top layer:</p>
+<ol><li>Base: 12 × 60 × 4 ÷ 12 ÷ 27 = 8.9 yd³ × 1.5 = 13.3 tons of crushed stone.</li><li>Top: 12 × 60 × 2 ÷ 12 ÷ 27 = 4.4 yd³ × 1.4 = 6.2 tons of gravel.</li><li>Plus 10%: about <strong>14.7 + 6.8 tons</strong>.</li></ol>
+<p>Pouring a concrete apron at the road end? Size it with the ${L('concrete-calculator', 'concrete calculator')}. For the beds along the edge, the ${L('mulch-calculator', 'mulch calculator')} uses the same area-and-depth method.</p>` },
+    ],
+    faqs: [
+      { q: 'How many tons of gravel do I need for a 100 ft driveway?', a: 'For a 12 ft wide, 100 ft driveway at 4 inches: about 14.8 cubic yards, or roughly 20.7 tons of typical gravel before adding 10% extra.' },
+      { q: 'How deep should gravel be for a driveway?', a: 'Usually 4–8 inches in total, in layers. Resurfacing a sound existing driveway often needs only 2–3 inches.' },
+      { q: 'What is the best gravel for a driveway?', a: 'Angular crushed stone that locks together, with a coarser base layer underneath. Avoid round pea gravel as the top surface on slopes.' },
+    ],
+  },
+  {
+    slug: 'how-much-does-it-cost-to-run-a-space-heater',
+    title: 'How Much Does It Cost to Run a Space Heater?',
+    metaDescription: 'How much does it cost to run a space heater per hour, night and month? Real examples for 750 W and 1,500 W heaters, and ways to heat for less.',
+    focusKeyword: 'cost to run a space heater',
+    h1: 'How much does it cost to run a space heater?',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['electricity-cost-calculator/space-heater', 'electricity-cost-calculator/ac', 'electricity-cost-calculator'],
+    summary: 'A 1,500 W space heater at full power costs about 26¢ an hour at $0.17/kWh. With the thermostat cycling it 80% of the time, 5 hours a day is about $1.02 a day or $31 a month.',
+    body: [
+      { h2: 'The formula', html: `<p class="formula">Cost = watts ÷ 1,000 × hours × share of time heating × price per kWh</p>
+<p>Almost every plug-in electric heater — fan, ceramic, oil-filled radiator or infrared — turns electricity into heat at close to 100% efficiency. So for the same wattage and running time they cost the same; the difference is how they spread the heat and how often the thermostat cuts in.</p>` },
+      { h2: 'What a space heater costs', html: `${table(['Heater and use', 'kWh', 'Cost'], [['1,500 W, 1 hour at full power', '1.5', '$0.26'], ['1,500 W, 1 hour, cycling 80%', '1.2', '$0.20'], ['1,500 W, 8 hours overnight (80%)', '9.6', '$1.63'], ['750 W low setting, 8 hours (80%)', '4.8', '$0.82'], ['1,500 W, 5 h/day for 30 days (80%)', '180', '$30.60']])}
+<p>All at $0.17/kWh. Plug in your own heater, hours and rate with the ${L('electricity-cost-calculator/space-heater', 'space heater cost calculator')}.</p>` },
+      { h2: 'Is a space heater cheaper than central heating?', html: `<p>It can be, when you heat <strong>one room</strong> and turn the central thermostat down for the rest of the house. Heating a whole home with plug-in heaters is usually more expensive than a gas furnace or a heat pump.</p>
+<p>A heat pump moves heat instead of making it, so it typically delivers 2–4 units of heat per unit of electricity. In mild weather, running a heat pump or a reverse-cycle ${L('electricity-cost-calculator/ac', 'air conditioner')} on heat mode can cost a third to half as much as a resistance heater for the same warmth.</p>` },
+      { h2: 'How to spend less (and stay safe)', html: `<ul><li>Use the <strong>thermostat</strong>, not just high/low: it switches the heater off once the room is warm.</li><li>Close the door of the room you are heating and block draughts.</li><li>Use the 750 W setting once the room is up to temperature.</li><li>Plug the heater directly into a wall outlet, not an extension lead, and keep it about 3 feet from bedding, curtains and furniture.</li><li>Pick a model with tip-over and overheat shut-off.</li></ul>` },
+    ],
+    faqs: [
+      { q: 'How much does a 1,500 watt heater cost per hour?', a: '1.5 kWh × your rate. At $0.17/kWh that is about 26¢ an hour at full power, and around 20¢ on average when the thermostat cycles.' },
+      { q: 'Do oil-filled heaters use less electricity?', a: 'Not per hour at the same wattage. They hold heat longer and feel gentler, which can mean the thermostat cycles less.' },
+      { q: 'Is it cheaper to leave a space heater on low all night?', a: 'A 750 W setting for 8 hours at 80% uses about 4.8 kWh — around 82¢ at $0.17/kWh, half the cost of 1,500 W.' },
+    ],
+  },
+  {
+    slug: 'how-much-topsoil-do-i-need',
+    title: 'How Much Topsoil Do I Need? Yards, Bags & Tons',
+    metaDescription: 'How much topsoil do I need: the formula, depths for lawns and raised beds, cubic yards to bags and tons, and worked examples you can copy.',
+    focusKeyword: 'how much topsoil do i need',
+    h1: 'How much topsoil do I need?',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['topsoil-calculator', 'mulch-calculator', 'gravel-calculator'],
+    summary: 'Square feet × depth in inches ÷ 12 = cubic feet; ÷ 27 = cubic yards. A 300 sq ft lawn area at 4 inches needs 100 cubic feet — about 3.7 cubic yards, which weighs roughly 3.7–4.8 tons.',
+    body: [
+      { h2: 'The topsoil formula', html: `<p class="formula">Cubic yards = length (ft) × width (ft) × depth (in) ÷ 12 ÷ 27</p>
+<p>Bulk topsoil is sold by the cubic yard (sometimes by the ton), and bagged topsoil usually comes in 0.75 or 1 cubic foot bags. One cubic yard is 27 cubic feet — 27 one-cubic-foot bags or 36 bags of 0.75 cu ft.</p>
+<p>The ${L('topsoil-calculator', 'topsoil calculator')} works out yards, bags and approximate tons from your measurements.</p>` },
+      { h2: 'How deep should topsoil be?', html: `${table(['Project', 'Typical depth', 'One cubic yard covers'], [['Top-dressing an existing lawn', '¼–½ inch', '650–1,300 sq ft'], ['Levelling low spots', '1–2 inches', '160–325 sq ft'], ['New lawn from seed or turf', '4–6 inches', '54–81 sq ft'], ['Flower and vegetable beds', '8–12 inches', '27–40 sq ft']])}
+<p>Less than about 2 inches for a new lawn tends to dry out quickly; deeper is better on poor or compacted subsoil.</p>` },
+      { h2: 'Worked examples', html: `<p><strong>New lawn:</strong> 15 × 20 ft = 300 sq ft at 4 inches → 300 × 4 ÷ 12 = 100 cu ft → 3.7 cubic yards. At roughly 1–1.3 tons per yard, that is 3.7–4.8 tons.</p>
+<p><strong>Raised bed:</strong> 4 × 8 ft, 12 inches deep → 4 × 8 × 1 = 32 cubic feet → 1.19 cubic yards, or 32 one-cubic-foot bags (43 bags of 0.75 cu ft). Many gardeners fill raised beds with a mix of about 60% topsoil and 40% compost — calculate the total, then split it.</p>` },
+      { h2: 'Bulk or bags, and how much it weighs', html: `<p>Dry screened topsoil is often around 1 ton per cubic yard, but wet soil can weigh far more, so suppliers that sell by the ton may deliver less volume after rain. Ask whether the price is per yard or per ton.</p>
+<p>For more than about one cubic yard, bulk delivery is usually cheaper than bags. Finishing the beds afterwards? Work out the top layer with the ${L('mulch-calculator', 'mulch calculator')}, and paths with the ${L('gravel-calculator', 'gravel calculator')}.</p>` },
+    ],
+    faqs: [
+      { q: 'How many bags of topsoil make a yard?', a: '27 bags of 1 cubic foot, or 36 bags of 0.75 cubic foot.' },
+      { q: 'How much does a yard of topsoil cover?', a: 'About 81 sq ft at 4 inches, 54 sq ft at 6 inches, or 324 sq ft at 1 inch.' },
+      { q: 'How many tons is a yard of topsoil?', a: 'Roughly 1 to 1.3 tons when dry, more when wet.' },
+    ],
+  },
+  {
+    slug: 'how-to-calculate-tdee',
+    title: 'How to Calculate TDEE (Maintenance Calories)',
+    metaDescription: 'How to calculate TDEE step by step: BMR with the Mifflin-St Jeor equation, activity multipliers, worked examples and how to adjust the result.',
+    focusKeyword: 'how to calculate tdee',
+    h1: 'How to calculate your TDEE (maintenance calories)',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['tdee-calculator', 'bmr-calculator', 'macro-calculator'],
+    summary: 'TDEE = BMR × activity factor. For a 35-year-old man, 80 kg and 178 cm: BMR (Mifflin-St Jeor) ≈ 1,743 kcal, and at a moderate activity factor of 1.55 his TDEE is about 2,700 kcal a day.',
+    body: [
+      { h2: 'What TDEE means', html: `<p><strong>Total daily energy expenditure</strong> is an estimate of the calories you burn in a day: your basal metabolic rate (BMR — energy to keep you alive at rest), plus everything you do on top. Eating around your TDEE keeps weight roughly stable, which is why it is also called maintenance calories.</p>` },
+      { h2: 'Step 1: work out your BMR', html: `<p>The Mifflin-St Jeor equation is the most widely used today:</p>
+<p class="formula">Men: 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5</p>
+<p class="formula">Women: 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161</p>
+<p>Example: a 35-year-old man, 80 kg, 178 cm → 800 + 1,112.5 − 175 + 5 = <strong>1,743 kcal</strong>. A 35-year-old woman, 65 kg, 165 cm → 650 + 1,031 − 175 − 161 = <strong>1,345 kcal</strong>. The ${L('bmr-calculator', 'BMR calculator')} does this in pounds and inches too.</p>` },
+      { h2: 'Step 2: multiply by your activity level', html: `${table(['Activity level', 'Factor', 'Man in example', 'Woman in example'], [['Sedentary (desk job, little exercise)', '1.2', '2,091', '1,614'], ['Light (exercise 1–3 days/week)', '1.375', '2,396', '1,850'], ['Moderate (3–5 days/week)', '1.55', '2,701', '2,085'], ['Very active (6–7 days/week)', '1.725', '3,006', '2,321']])}
+<p>Most people overestimate their activity. If you are unsure between two levels, start with the lower one. The ${L('tdee-calculator', 'TDEE calculator')} shows your number and the working.</p>` },
+      { h2: 'Step 3: check it against real life', html: `<p>Any formula is an estimate — individual metabolism can differ by a few hundred calories. Track your intake and weight for two to three weeks: if your weight is stable, that intake is your real maintenance. Adjust from there rather than trusting the formula to the last calorie.</p>
+<p>For a goal, many guidelines suggest a modest adjustment of a few hundred calories a day and slow, steady change. The ${L('macro-calculator', 'macro calculator')} splits a calorie target into protein, carbs and fat.</p>
+<p class="text-sm text-muted">Estimates for healthy adults, not medical advice. Talk to a doctor or registered dietitian before major diet changes, especially if you are pregnant or have a health condition.</p>` },
+    ],
+    faqs: [
+      { q: 'What is the formula for TDEE?', a: 'TDEE = BMR × activity factor, where the factor ranges from 1.2 (sedentary) to about 1.9 (very physical job plus training).' },
+      { q: 'Is TDEE the same as BMR?', a: 'No. BMR is energy at complete rest; TDEE adds daily movement and exercise, so it is always higher.' },
+      { q: 'How accurate is a TDEE calculator?', a: 'It is a starting estimate, often within about 10% for most people. Your weight trend over a few weeks is the real test.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));
