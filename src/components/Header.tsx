@@ -66,6 +66,7 @@ export function Header({ nav, total, index }: { nav: NavCategory[]; total: numbe
           <Link href="/category/business/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Business</Link>
           <Link href="/category/fitness/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Fitness</Link>
           <Link href="/category/developer/" className="rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)]">Developers</Link>
+          <Link href="/blog/" aria-current={path?.startsWith('/blog') ? 'page' : undefined} className={`rounded-full px-4 py-2 text-sm font-semibold hover:bg-[var(--surface-2)] ${path?.startsWith('/blog') ? 'bg-[var(--surface-2)]' : ''}`}>Blog</Link>
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
@@ -161,6 +162,11 @@ export function Header({ nav, total, index }: { nav: NavCategory[]; total: numbe
                 </details>
               ))}
             </div>
+            <Link href="/blog/" className="mt-2 flex items-center gap-3 rounded-3xl card p-3">
+              <span className="tile h-10 w-10 bg-t-amber"><Icon name="book" className="h-[18px] w-[18px]" /></span>
+              <span className="flex-1 font-bold">Blog<span className="block text-xs font-medium text-muted">Guides & how-tos</span></span>
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
             <Link href="/all-tools/" className="btn mt-3 w-full">Browse all {total} tools <span className="dot-icon h-7 w-7"><Icon name="grid" className="h-4 w-4" /></span></Link>
           </div>
         </div>

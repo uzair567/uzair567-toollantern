@@ -117,3 +117,8 @@ body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antiali
 .answer a { font-weight: 600; text-decoration: underline; text-decoration-color: var(--color-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .prose-tl .not-prose table { margin: 0; }
 .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Blog article typography */
+.prose-blog p, .prose-blog li { font-size: 1.0625rem; line-height: 1.8; }
+.prose-blog h2 { font-size: 1.65rem; margin-top: 2.75rem; }
+.prose-blog > section:first-of-type h2 { margin-top: 2rem; }
