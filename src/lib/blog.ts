@@ -184,6 +184,92 @@ ${table(['Loads per week', 'Per month', 'Per year'], [[3, '$5.00', '$60'], [5, '
       { q: 'Can a percentage increase be more than 100%?', a: 'Yes. Doubling is a 100% increase and tripling is 200%. From 0.50 to 2.00 is a 300% increase.' },
     ],
   },
+  {
+    slug: 'how-much-electricity-does-a-gaming-pc-use',
+    title: 'How Much Electricity Does a Gaming PC Use? (Cost)',
+    metaDescription: 'How much electricity does a gaming PC use? Typical watts while gaming and idle, cost per hour and month, and how to measure and cut your PC’s power draw.',
+    focusKeyword: 'how much electricity does a gaming pc use',
+    h1: 'How much electricity does a gaming PC use?',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['electricity-cost-calculator/gaming-pc', 'electricity-cost-calculator/tv', 'electricity-cost-calculator'],
+    summary: 'A mid-range gaming PC typically draws 300–500 W while gaming and 50–100 W at idle. At 400 W for 4 hours a day (averaging 80% of that), it uses 1.28 kWh — about 22¢ a day or $6.50 a month at $0.17/kWh.',
+    body: [
+      { h2: 'Watts while gaming, idle and asleep', html: `<p>A PC’s power use changes constantly. The graphics card does most of the work in games, so total draw depends mainly on the GPU, then the CPU, with the rest (motherboard, memory, drives, fans) adding a smaller, steadier load.</p>
+${table(['Build', 'While gaming', 'Idle / desktop', 'Sleep'], [['Entry-level (budget GPU)', '150–250 W', '40–60 W', 'under 5 W'], ['Mid-range', '300–500 W', '50–100 W', 'under 5 W'], ['High-end (top GPU)', '550–800 W', '80–150 W', 'under 5 W']])}
+<p>These are typical ranges, not specs — two PCs with the same parts can differ by 100 W depending on settings, frame rate and the game itself. Your monitor adds roughly 20–60 W on top.</p>` },
+      { h2: 'Your power supply rating is not your usage', html: `<p>A 750 W or 850 W power supply is the <strong>maximum</strong> it can deliver, not what the PC draws. Builders leave headroom for spikes and efficiency, so a PC with an 850 W supply often uses 350–500 W in games. Using the PSU rating in a cost calculation can overstate the cost by half or more.</p>
+<p>The most accurate number comes from a plug-in power meter between the wall and the PC. Software readings (GPU and CPU package power) are useful too, but leave out the rest of the system and power-supply losses.</p>` },
+      { h2: 'What it costs: worked examples', html: `<p class="formula">Cost = watts ÷ 1,000 × hours × average load × price per kWh</p>
+<p>All at 4 hours of gaming a day, an 80% average load, and $0.17/kWh:</p>
+${table(['PC while gaming', 'kWh per day', 'Per day', 'Per month (30 days)'], [['150 W', '0.48', '$0.08', '$2.45'], ['400 W', '1.28', '$0.22', '$6.50'], ['700 W', '2.24', '$0.38', '$11.40']])}
+<p>Per hour, a 400 W PC costs about 7¢ at that rate. Heavy weekend sessions or leaving the PC on overnight change the total more than the parts do — enter your own numbers in the ${L('electricity-cost-calculator/gaming-pc', 'gaming PC electricity cost calculator')}.</p>` },
+      { h2: 'How to lower your PC’s power use', html: `<ul><li><strong>Cap the frame rate</strong> at your monitor’s refresh rate (or use V-Sync/adaptive sync). Rendering frames you can’t see wastes power.</li><li><strong>Set a GPU power limit or undervolt.</strong> Many cards lose only a few percent of performance at 80–90% of their stock power.</li><li><strong>Let it sleep.</strong> Sleep uses a few watts; idling on the desktop overnight can use 50–100 W for hours.</li><li><strong>Use a balanced power plan</strong> rather than maximum performance when you are not gaming.</li></ul>
+<p>Gaming on a TV? Add the screen with the ${L('electricity-cost-calculator/tv', 'TV electricity cost calculator')}.</p>` },
+    ],
+    faqs: [
+      { q: 'Does a gaming PC use a lot of electricity?', a: 'More than a laptop or console, but usually less than people expect: a mid-range PC gaming 4 hours a day costs around $5–8 a month at $0.17/kWh.' },
+      { q: 'Does a 750 W power supply use 750 W?', a: 'No. That is the maximum it can supply. The PC only draws what its parts need, often 300–500 W while gaming.' },
+      { q: 'Is it expensive to leave a gaming PC on 24/7?', a: 'At 80 W idle, 24 hours a day is about 1.9 kWh — roughly 33¢ a day or $10 a month at $0.17/kWh. Sleep mode cuts that to almost nothing.' },
+    ],
+  },
+  {
+    slug: 'navy-tape-test-body-fat',
+    title: 'Navy Tape Test: How the Navy Body Fat Method Works',
+    metaDescription: 'The Navy tape test explained: where to measure your neck, waist and hips, the US Navy body fat formula, a worked example and how accurate it is.',
+    focusKeyword: 'navy tape test',
+    h1: 'The Navy tape test: how the Navy body fat method works',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['body-fat-calculator', 'bmi-calculator', 'ideal-weight-calculator'],
+    summary: 'The Navy tape test estimates body fat from height and a few tape measurements: neck and waist for men, plus hips for women. A man 178 cm tall with a 38 cm neck and 86 cm waist comes out at about 17% body fat.',
+    body: [
+      { h2: 'What the Navy tape test is', html: `<p>The US Navy method (sometimes called the circumference or “tape” method) estimates body fat percentage without scales, calipers or a scan. The idea is simple: fat tends to collect around the waist and hips, while the neck mostly reflects frame size, so the difference between them — scaled for height — tracks body fat reasonably well.</p>
+<p>It is used by the US military for body composition screening, and widely by people tracking progress at home because it only needs a flexible tape measure.</p>` },
+      { h2: 'How to take the measurements', html: `<ol><li><strong>Height:</strong> barefoot, standing straight against a wall.</li><li><strong>Neck:</strong> just below the larynx (Adam’s apple), with the tape sloping slightly downward to the front. Don’t flare the neck.</li><li><strong>Waist — men:</strong> horizontally around the abdomen at the level of the navel, relaxed, at the end of a normal breath out.</li><li><strong>Waist — women:</strong> at the narrowest point of the natural waist.</li><li><strong>Hips — women only:</strong> around the widest part of the buttocks.</li></ol>
+<p>Keep the tape snug but not compressing the skin, take each measurement twice, and use the average. Measuring at the same time of day each time makes changes easier to trust.</p>` },
+      { h2: 'The Navy body fat formula', html: `<p>With measurements in inches:</p>
+<p class="formula">Men: 86.010 × log10(waist − neck) − 70.041 × log10(height) + 36.76</p>
+<p class="formula">Women: 163.205 × log10(waist + hip − neck) − 97.684 × log10(height) − 78.387</p>
+<p>The metric version, used by the ${L('body-fat-calculator', 'Navy body fat calculator')}, gives the same results from centimetres. You don’t need to do the logarithms by hand — enter your measurements and the calculator shows the working, plus fat mass and lean mass if you add your weight.</p>` },
+      { h2: 'Worked example', html: `<p>A man 178 cm (70.1 in) tall with a 38 cm (15.0 in) neck and an 86 cm (33.9 in) waist:</p>
+<ol><li>Waist − neck = 18.9 in; log10(18.9) = 1.277.</li><li>log10(70.1) = 1.846.</li><li>86.010 × 1.277 − 70.041 × 1.846 + 36.76 ≈ <strong>17.3% body fat</strong>.</li></ol>
+<p>A one-inch error in the waist measurement shifts this by roughly 2 percentage points, which is why careful, repeated measuring matters more than anything else.</p>` },
+      { h2: 'How accurate is it?', html: `<p>For most people the tape method lands within about 3–4 percentage points of lab methods such as DEXA. It tends to be less accurate for very muscular people (a thick neck lowers the estimate) and for people who carry fat mainly outside the waist. Its real strength is <strong>consistency</strong>: the same person measuring the same way every few weeks gets a reliable trend.</p>
+<p>For a second view, compare with your ${L('bmi-calculator', 'BMI')}, which ignores body composition, or a target from the ${L('ideal-weight-calculator', 'ideal weight calculator')}. Military standards and allowable limits vary by service, age and sex and are revised from time to time, so check the current official guidance if you are preparing for an assessment.</p>
+<p class="text-sm text-muted">This is an estimate for healthy adults, not medical advice.</p>` },
+    ],
+    faqs: [
+      { q: 'What do they measure in the Navy tape test?', a: 'Height and neck circumference for everyone, waist at the navel for men, and waist at its narrowest plus hips at their widest for women.' },
+      { q: 'Is the Navy method accurate?', a: 'It is usually within about 3–4 percentage points of DEXA and is most useful for tracking change over time.' },
+      { q: 'Can I do the Navy tape test at home?', a: 'Yes — you only need a flexible tape measure. Enter your measurements in a Navy body fat calculator to get the result.' },
+    ],
+  },
+  {
+    slug: 'how-much-does-it-cost-to-run-a-dehumidifier',
+    title: 'How Much Does It Cost to Run a Dehumidifier?',
+    metaDescription: 'How much does it cost to run a dehumidifier per hour, day and month? Typical watts, worked examples, running it 24/7 and how to spend less.',
+    focusKeyword: 'cost to run a dehumidifier',
+    h1: 'How much does it cost to run a dehumidifier?',
+    published: '2026-10-21', updated: '2026-10-21',
+    tools: ['electricity-cost-calculator/dehumidifier', 'electricity-cost-calculator/ac', 'electricity-cost-calculator'],
+    summary: 'A 500 W dehumidifier running 8 hours a day with the compressor on 70% of the time uses 2.8 kWh — about 48¢ a day or $14 a month at $0.17/kWh. Run around the clock at a 50% duty cycle, it is about $31 a month.',
+    body: [
+      { h2: 'How many watts does a dehumidifier use?', html: `<p>Most home dehumidifiers are compressor models that work like a small air conditioner. Power draw rises with capacity (pints of water removed per day):</p>
+${table(['Type', 'Typical power'], [['Small compressor unit (20–35 pint)', '250–400 W'], ['Large compressor unit (50–70 pint)', '450–700 W'], ['Desiccant unit', '300–650 W']])}
+<p>The exact figure is on the label or in the manual. Like an AC, a compressor dehumidifier switches off when it reaches the humidity you set, so it rarely draws full power all day.</p>` },
+      { h2: 'Cost formula and examples', html: `<p class="formula">Cost = watts ÷ 1,000 × hours × duty cycle × price per kWh</p>
+${table(['Scenario', 'kWh per day', 'Per day', 'Per month'], [['300 W, 8 h, 70% on', '1.7', '$0.29', '$8.60'], ['500 W, 8 h, 70% on', '2.8', '$0.48', '$14.30'], ['500 W, 24 h, 50% on', '6.0', '$1.02', '$30.60']])}
+<p>All at $0.17/kWh. Swap in your own wattage, hours and rate with the ${L('electricity-cost-calculator/dehumidifier', 'dehumidifier electricity cost calculator')}.</p>` },
+      { h2: 'Is it expensive to run a dehumidifier all day?', html: `<p>Running 24 hours a day doesn’t mean the compressor runs 24 hours. In a damp basement in summer it may run most of the time; in a dry spell it may cycle on only occasionally. That is why the duty cycle matters — a reasonable starting point is 50–70%, then adjust once you see how often yours actually runs.</p>
+<p>Desiccant models are different: they use a heater to dry their absorbent wheel, keep running more steadily, and work better in cold spaces such as unheated garages, where compressor units lose efficiency.</p>` },
+      { h2: 'How to spend less', html: `<ul><li><strong>Set a sensible target.</strong> The US EPA recommends keeping indoor humidity below 60%, ideally 30–50%. Setting 35% instead of 50% makes the unit run far longer.</li><li><strong>Close doors and windows</strong> in the room you are drying.</li><li><strong>Clean the filter</strong> regularly so air moves freely over the coils.</li><li><strong>Use a drain hose</strong> so the unit doesn’t stop when the bucket fills and then work extra hard later.</li><li><strong>Choose an efficient model</strong> — look for the energy factor (litres per kWh) when buying.</li></ul>
+<p>In summer, an air conditioner also removes moisture; compare with the ${L('electricity-cost-calculator/ac', 'AC electricity cost calculator')}.</p>` },
+    ],
+    faqs: [
+      { q: 'How much does a dehumidifier cost to run per hour?', a: 'Watts ÷ 1,000 × your rate while the compressor runs. A 500 W unit at $0.17/kWh costs about 8.5¢ an hour, less on average because it cycles.' },
+      { q: 'Do dehumidifiers use a lot of electricity?', a: 'Moderately. A typical unit uses 1.5–6 kWh a day depending on size and how damp the room is — roughly $8–31 a month at $0.17/kWh.' },
+      { q: 'What humidity should I set a dehumidifier to?', a: 'Between 30% and 50% is the usual target. Lower settings make it run longer without much benefit.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

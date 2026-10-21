@@ -100,6 +100,8 @@ export const fitnessTools: ToolContent[] = [
       { q: 'How accurate is the Navy method?', a: 'It usually lands within about 3–4 percentage points of DEXA scans, and is more consistent when the same person takes the measurements the same way.' },
       { q: 'What is a healthy body fat percentage?', a: 'The American Council on Exercise lists 14–24% as fitness-to-average for men and 21–31% for women. Essential fat is about 2–5% for men and 10–13% for women.' },
       { q: 'Where exactly do I measure my waist?', a: 'Men measure horizontally at the navel; women at the narrowest point of the waist. Don’t pull the tape tight or hold your breath.' },
+      { q: 'What is the Navy tape test?', a: 'It is the US Navy’s body composition assessment: height plus neck and waist (and hips for women) are measured with a tape and put into a formula to estimate body fat percentage. This calculator uses the same equations.' },
+      { q: 'How do I do the Navy tape measure method?', a: 'Stand relaxed. Measure the neck just below the larynx, sloping slightly down to the front. Men measure the waist at the navel; women at the narrowest point and the hips at the widest point of the buttocks. Take each twice, average them, then enter them with your height.' },
     ],
     related: ['bmi-calculator', 'ideal-weight-calculator', 'tdee-calculator', 'protein-calculator'],
   },

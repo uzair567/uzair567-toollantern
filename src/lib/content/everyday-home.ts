@@ -181,6 +181,7 @@ export const homeTools: ToolContent[] = [
     example: { title: 'A 20 × 10 ft path, 3 in deep', steps: ['20 × 10 × (3 ÷ 12) = 50 cubic feet.', '50 ÷ 27 = 1.85 cubic yards.', '1.85 × 1.4 = 2.6 tons of gravel.'] },
     faqs: [
       { q: 'How many tons are in a cubic yard of gravel?', a: 'Roughly 1.4 tons for typical gravel, but anywhere from 1.2 to 1.5 depending on stone type and moisture. Ask your supplier for their figure.' },
+      { q: 'How many yards of gravel do I need?', a: 'Multiply length × width in feet by the depth in inches, divide by 12 to get cubic feet, then by 27 for cubic yards. A 20 × 10 ft area 3 inches deep needs 50 cubic feet, about 1.85 cubic yards or 2.6 tons of typical gravel.' },
       { q: 'How many yards are in a ton of gravel?', a: 'About 0.71 cubic yards of typical gravel (1 ÷ 1.4). For #57 crushed stone it is about 0.67 cubic yards, and for river rock about 0.83.' },
       { q: 'How many tons is 10 cubic yards of gravel?', a: 'About 14 tons of typical gravel at 1.4 tons per cubic yard — around 15 tons of #57 crushed stone or 12 tons of river rock.' },
       { q: 'How do I convert cubic yards to tons?', a: 'Multiply cubic yards by the material’s weight per cubic yard: tons = cubic yards × density. For typical gravel that is cubic yards × 1.4. To go from tons to cubic yards, divide by the density instead.' },

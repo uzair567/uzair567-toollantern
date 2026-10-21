@@ -216,6 +216,7 @@ export const energyTools: ToolContent[] = [
     formula: { expression: 'Cost per hour = Watts × Load ÷ 1000 × Price', explanation: ['Do not use the power supply rating — it is a ceiling, not actual use.'] },
     example: { title: 'A 400 W gaming PC, 4 hours a day', steps: ['400 W × 4 h × 80% = 1.28 kWh per day.', 'At $0.17/kWh: about 22¢ per day.', 'About $6.53 per month.'] },
     faqs: [
+      { q: 'How much does a gaming PC cost in electricity per month?', a: 'A PC drawing about 400 W while gaming for 4 hours a day, averaging 80% of that, uses 1.28 kWh a day — about 22¢ a day or $6.50 a month at $0.17/kWh. A high-end 700 W rig at the same hours is closer to $11.'},
       { q: 'Does a 750 W power supply use 750 W?', a: 'No. The PSU only delivers what the parts demand. A system with a 750 W PSU might draw 350 W while gaming and 60 W at the desktop.' },
       { q: 'Is it expensive to leave a PC on overnight?', a: 'At idle, a desktop typically draws 50–100 W, so 8 hours overnight is roughly 0.4–0.8 kWh. Sleep mode cuts that to a few watts.' },
       { q: 'Do consoles use less than a gaming PC?', a: 'Usually. Current consoles typically draw around 150–220 W while gaming, less than most mid-range gaming PCs.' },

@@ -389,7 +389,8 @@ const metaOverrides: Record<string, Partial<Pick<ToolSeo, 'metaDescription' | 't
   'concrete-calculator': { metaDescription: 'Free concrete calculator for slabs, patios and footings: cubic yards, cubic metres and 80 lb, 60 lb or 25 kg bags, plus spillage.' },
   'gravel-calculator': { title: 'Gravel Calculator in Tons – Cubic Yards to Tons', metaDescription: 'Free gravel calculator in tons: convert cubic yards to tons for pea gravel, crushed stone, river rock or sand, or work it out from area and depth.' },
   'electricity-cost-calculator': { metaDescription: 'Free electricity cost calculator: what any appliance costs to run per hour, day, month and year from its watts and your price per kWh.' },
-  'electricity-cost-calculator/ac': { metaDescription: 'AC electricity cost calculator: see what your air conditioner costs to run per hour, day and month for window, split or central units.' },
+  'electricity-cost-calculator/ac': { metaDescription: 'AC electricity cost calculator: what your air conditioner costs per hour, day and month, and adds to your electric bill — window, split or central.' },
+  'electricity-cost-calculator/dryer': { title: 'Clothes Dryer Electricity Cost Calculator – Energy Cost', metaDescription: 'Dryer electricity cost per load, month and year. A clothes dryer energy cost calculator: enter wattage, cycle time and your price per kWh.' },
   'electricity-cost-calculator/refrigerator': { title: 'Refrigerator Electricity Cost Calculator – kWh per Year', metaDescription: 'Refrigerator electricity cost per day, month and year, based on real compressor cycling. Works for fridges, freezers and mini fridges.' },
   'electricity-cost-calculator/space-heater': { title: 'Space Heater Cost per Hour – Electric Heater Calculator', metaDescription: 'Space heater cost per hour, day and month for 750 W, 1,500 W or any wattage. Enter your electricity rate to see the real cost.' },
   'electricity-cost-calculator/ceiling-fan': { metaDescription: 'Ceiling fan electricity cost per hour, day and month. Compare AC-motor and energy-saving BLDC fans and see how cheap a fan is next to AC.' },
@@ -421,5 +422,7 @@ const h1Overrides: Record<string, string> = {
   'electricity-cost-calculator/washing-machine': 'Washing Machine Cost per Load Calculator',
   'percentage-change-calculator': 'Percentage Increase Calculator',
   'serp-snippet-preview': 'SERP Preview Tool',
+  'body-fat-calculator': 'Body Fat Calculator – US Navy Method',
+  'gravel-calculator': 'Gravel Calculator (Tons & Cubic Yards)',
 };
 for (const [slug, h1] of Object.entries(h1Overrides)) toolSeo[slug].h1 = h1;
