@@ -13,7 +13,7 @@ export const brandSummary = () =>
 
 export function llmsTxt(full: boolean) {
   const out: string[] = [`# ${site.name}`, '', `> ${brandSummary()}`, ''];
-  out.push('Key facts:', `- Website: ${site.url}`, `- Tools: ${tools.length}, all free, no account needed`, '- Launched: October 2026', '- Calculators show their formula and working; calculation logic is covered by automated tests', '- Image conversion and developer/text tools run locally in the browser (nothing uploaded)', `- Contact: contact@uzair.tech`, `- About: ${absUrl('/about/')}`, '');
+  out.push('Key facts:', `- Website: ${site.url}`, `- Tools: ${tools.length}, all free, no account needed`, '- Launched: October 2026', '- Calculators show their formula and working; calculation logic is covered by automated tests', '- Image conversion and developer/text tools run locally in the browser (nothing uploaded)', `- Contact: contact@uzair.tech`, `- About: ${absUrl('/about/')}`, `- Blog: ${absUrl('/blog/')} (${posts.length} guides, RSS: ${absUrl('/blog/rss.xml')})`, '');
   for (const c of categories) {
     out.push(`## ${c.name}`, '', c.description, '');
     for (const t of toolsInCategory(c.id)) {

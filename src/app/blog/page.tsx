@@ -9,11 +9,12 @@ import { covers } from '@/lib/blog-art';
 import { topicOf, topics, readMins, fmtDate, coverPath } from '@/lib/blog-meta';
 import { absUrl } from '@/lib/site';
 
-export const metadata = pageMeta({
+const baseMeta = pageMeta({
   title: 'ToolLantern Blog – Calculator Guides & How-Tos',
   description: 'Practical guides with worked examples: mulch and gravel quantities, appliance running costs, percentages and more — each paired with a free calculator.',
   path: '/blog/',
 });
+export const metadata = { ...baseMeta, alternates: { ...baseMeta.alternates, types: { 'application/rss+xml': absUrl('/blog/rss.xml') } } };
 
 const crumbs = [{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }];
 const sorted = [...posts].sort((a, b) => b.updated.localeCompare(a.updated) || posts.indexOf(a) - posts.indexOf(b));
