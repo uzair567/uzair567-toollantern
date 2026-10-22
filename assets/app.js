@@ -4,7 +4,7 @@
    e.g. 'https://formsubmit.co/ajax/hello@blewspace.com'
    Empty = forms show the success screen but send nothing.
    ============================================================ */
-var SUBMIT_URL = '';
+var SUBMIT_URL = 'https://formsubmit.co/ajax/uzair.mansur33@gmail.com';
 
 document.documentElement.classList.add('js');
 var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -184,6 +184,7 @@ document.addEventListener('click',function(){ document.querySelectorAll('.dd.ope
 /* shared */
 function sendForm(payload,ok,fail){
   if(!SUBMIT_URL){ ok(); return; }
+  payload._template='table'; payload._captcha='false'; if(payload.email) payload._replyto=payload.email;
   fetch(SUBMIT_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
     .then(function(r){ if(!r.ok) throw 0; ok(); }).catch(fail);
 }
