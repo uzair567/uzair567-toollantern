@@ -63,7 +63,7 @@ export const toolSeo: Record<string, ToolSeo> = {
   },
   'cm-to-inches': {
     primaryKeyword: 'cm to inches', secondaryKeywords: ['centimeters to inches', 'convert cm to inches', 'cm to in'], intent: 'convert', priority: 4,
-    answer: `1 centimetre = 0.3937 inches. Divide centimetres by 2.54 to get inches — for example 30 cm ÷ 2.54 = 11.81 in. Going the other way? Use ${a('inches-to-cm', 'inches to cm')}.`,
+    answer: `1 centimetre = 0.3937 inches. Divide centimetres by 2.54 to get inches — for example 30 cm ÷ 2.54 = 11.81 in, and US Letter paper (21.59 × 27.94 cm) is exactly 8.5 × 11 in. Going the other way? Use ${a('inches-to-cm', 'inches to cm')}.`,
   },
   'inches-to-cm': {
     primaryKeyword: 'inches to cm', secondaryKeywords: ['inches to centimeters', 'convert inches to cm', 'in to cm'], intent: 'convert', priority: 4,

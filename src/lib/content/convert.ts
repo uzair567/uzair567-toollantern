@@ -187,6 +187,8 @@ export const unitTools: ToolContent[] = [
     faqs: [
       { q: 'How many inches is 1 cm?', a: 'About 0.3937 inches.' },
       { q: 'What is 170 cm in feet and inches?', a: '170 ÷ 2.54 = 66.93 inches, which is 5 feet 6.9 inches.' },
+      { q: 'What is 21.59 × 27.94 cm in inches?', a: 'Exactly 8.5 × 11 inches — US Letter paper. 21.59 ÷ 2.54 = 8.5 and 27.94 ÷ 2.54 = 11. A4 paper, 21 × 29.7 cm, is about 8.27 × 11.69 inches.' },
+      { q: 'How many inches is 7 cm?', a: '7 ÷ 2.54 = 2.76 inches — a little under 2¾ inches.' },
     ],
     related: ['inches-to-cm', 'length-converter', 'kg-to-lbs', 'tile-calculator'],
   },
