@@ -208,6 +208,7 @@ export const unitTools: ToolContent[] = [
     faqs: [
       { q: 'How many cm is 1 inch?', a: 'Exactly 2.54 cm.' },
       { q: 'How many cm is a foot?', a: '12 inches × 2.54 = 30.48 cm.' },
+      { q: 'How many cm is 2 inches?', a: '2 inches = 5.08 cm (2 × 2.54). Half an inch is 1.27 cm, a quarter inch is 0.635 cm and three quarters of an inch is 1.905 cm.' },
     ],
     related: ['cm-to-inches', 'length-converter', 'lbs-to-kg', 'flooring-calculator'],
   },

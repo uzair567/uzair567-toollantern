@@ -67,7 +67,7 @@ export const toolSeo: Record<string, ToolSeo> = {
   },
   'inches-to-cm': {
     primaryKeyword: 'inches to cm', secondaryKeywords: ['inches to centimeters', 'convert inches to cm', 'in to cm'], intent: 'convert', priority: 4,
-    answer: `1 inch = 2.54 cm exactly. Multiply inches by 2.54 — for example a 12-inch ruler is 30.48 cm. For the reverse, use ${a('cm-to-inches', 'cm to inches')}.`,
+    answer: `1 inch = 2.54 cm exactly. Multiply inches by 2.54: 2 inches = 5.08 cm, ½ inch = 1.27 cm, and a 12-inch ruler is 30.48 cm. For the reverse, use ${a('cm-to-inches', 'cm to inches')}.`,
   },
   'weight-converter': {
     primaryKeyword: 'weight converter', secondaryKeywords: ['kg to stone', 'grams to ounces', 'pounds to kg', 'weight conversion'], intent: 'convert', priority: 4,
