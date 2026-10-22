@@ -122,3 +122,4 @@ body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antiali
 .prose-blog p, .prose-blog li { font-size: 1.0625rem; line-height: 1.8; }
 .prose-blog h2 { font-size: 1.65rem; margin-top: 2.75rem; }
 .prose-blog > section:first-of-type h2 { margin-top: 2rem; }
+.prose-tl p, .prose-tl li { overflow-wrap: break-word; }

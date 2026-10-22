@@ -62,8 +62,8 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
         </nav>
       )}
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_340px]">
-        <div className="prose-tl rounded-[26px] card p-6 sm:p-10">
+      <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="prose-tl min-w-0 rounded-[26px] card p-6 sm:p-10">
           <h2 className="!mt-0">About the {tool.name.replace(/ (Calculator|Converter)$/, (m) => m.toLowerCase())}</h2>
           {tool.about.map((p, i) => <Html key={i} html={p} />)}
 

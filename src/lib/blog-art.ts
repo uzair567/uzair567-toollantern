@@ -203,6 +203,20 @@ function tdee() {
     `<g transform="translate(880 400)"><rect x="0" y="40" width="200" height="22" rx="8" fill="${INK}"/><rect x="10" y="0" width="36" height="102" rx="10" fill="${AMBER}" ${S}/><rect x="154" y="0" width="36" height="102" rx="10" fill="${AMBER}" ${S}/><rect x="-14" y="22" width="22" height="58" rx="8" fill="${INK}"/><rect x="192" y="22" width="22" height="58" rx="8" fill="${INK}"/></g>`);
 }
 
+function dishwasher() {
+  const plates = [0, 1, 2, 3, 4].map((i) => `<ellipse cx="${480 + i * 60}" cy="250" rx="14" ry="56" fill="#fff" stroke="${INK}" stroke-width="5"/>`).join('');
+  const bubble = (x: number, y: number, r: number) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${BLUE}" stroke-width="5" opacity=".9"/>`;
+  return wrap('#d3e6ff',
+    `<ellipse cx="600" cy="560" rx="300" ry="22" fill="${INK}" opacity=".08"/>` +
+    `<rect x="400" y="110" width="400" height="330" rx="30" fill="#fff" ${S}/><rect x="400" y="110" width="400" height="56" rx="30" fill="${CREAM}" ${S}/>` +
+    `<circle cx="740" cy="138" r="12" fill="${AMBER}" stroke="${INK}" stroke-width="4"/><rect x="440" y="130" width="120" height="16" rx="8" fill="${INK}" opacity=".15"/>` +
+    `<rect x="430" y="190" width="340" height="230" rx="16" fill="#e8efff" stroke="${INK}" stroke-width="4"/>` + plates +
+    `<path d="M440 320 L760 320" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M450 330 L470 400 M750 330 L730 400" stroke="${INK}" stroke-width="5"/>` +
+    `<path d="M400 440 L800 440 L860 540 L340 540 Z" fill="${AMBER}" ${S}/><path d="M420 470 L780 470" stroke="${INK}" stroke-width="5" opacity=".25"/>` +
+    bubble(880, 200, 34) + bubble(950, 290, 22) + bubble(900, 360, 14) + bubble(320, 240, 26) + bubble(270, 320, 16) +
+    `<path d="M1000 380 L960 470 L995 470 L975 560 L1050 440 L1012 440 L1035 380 Z" fill="${AMBER}" ${S}/>`);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -217,6 +231,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-does-it-cost-to-run-a-space-heater': { svg: spaceHeater, alt: 'Illustration of an oil-filled space heater giving off heat beside a thermometer and a coin' },
   'how-much-topsoil-do-i-need': { svg: topsoil, alt: 'Illustration of a wheelbarrow full of topsoil next to a raised bed with seedlings' },
   'how-to-calculate-tdee': { svg: tdee, alt: 'Illustration of a calorie gauge with a flame, an apple and a dumbbell' },
+  'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
 /* ---------- inline figures ---------- */
@@ -307,5 +322,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-to-calculate-tdee': {
     'Step 2: multiply by your activity level': { svg: barChart([{ label: 'Sedentary ×1.2', value: 2091, text: '2,091' }, { label: 'Light ×1.375', value: 2396, text: '2,396' }, { label: 'Moderate ×1.55', value: 2701, text: '2,701' }, { label: 'Very active ×1.725', value: 3006, text: '3,006' }], ' kcal'), caption: 'TDEE for the example man (BMR 1,743 kcal) at each activity level.', alt: 'Bar chart of TDEE by activity level from 2,091 to 3,006 kcal' },
+  },
+  'how-much-electricity-does-a-dishwasher-use': {
+    'What each load costs': { svg: barChart([{ label: '3 loads a week', value: 2.39, text: '$2.39' }, { label: '5 loads a week', value: 3.98, text: '$3.98' }, { label: '7 loads a week', value: 5.57, text: '$5.57' }], ' /mo'), caption: 'Monthly cost at 1.08 kWh per cycle and $0.17/kWh.', alt: 'Bar chart of dishwasher monthly cost: $2.39, $3.98 and $5.57' },
   },
 };

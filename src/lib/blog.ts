@@ -375,6 +375,31 @@ ${table(['Driveway', '4 inches deep', '6 inches deep'], [[10, 40], [12, 50], [12
       { q: 'How accurate is a TDEE calculator?', a: 'It is a starting estimate, often within about 10% for most people. Your weight trend over a few weeks is the real test.' },
     ],
   },
+  {
+    slug: 'how-much-electricity-does-a-dishwasher-use',
+    title: 'How Much Electricity Does a Dishwasher Use?',
+    metaDescription: 'How much electricity does a dishwasher use per cycle, month and year? Typical kWh, what each load costs, and how eco mode and air-dry cut the bill.',
+    focusKeyword: 'how much electricity does a dishwasher use',
+    h1: 'How much electricity does a dishwasher use?',
+    published: '2026-10-22', updated: '2026-10-22',
+    tools: ['electricity-cost-calculator/dishwasher', 'electricity-cost-calculator/water-heater', 'electricity-cost-calculator/washing-machine'],
+    summary: 'A typical dishwasher uses about 1–1.5 kWh per normal cycle. At $0.17/kWh that is roughly 17–26¢ a load — about $4 a month if you run it five times a week.',
+    body: [
+      { h2: 'kWh per cycle', html: `<p>A dishwasher’s heating element is rated around 1,200–2,400 W, but it only runs for part of the cycle: to heat the wash water and, if you choose it, to dry the dishes. The motor and pump use far less. That is why a full one- to two-hour programme usually adds up to about <strong>1–1.5 kWh</strong>.</p>
+<p>In the US, the yellow EnergyGuide label lists estimated yearly kWh, based on a standard number of loads a year (215 in the test). Divide the yearly figure by 215 for a per-cycle estimate — 270 kWh a year works out to about 1.26 kWh per load.</p>` },
+      { h2: 'What each load costs', html: `<p class="formula">Cost per load = kWh per cycle × price per kWh</p>
+${table(['Energy per cycle', 'Per load', 'Per month (30 loads)', 'Per year (365 loads)'], [['1.0 kWh', '$0.17', '$5.10', '$62'], ['1.3 kWh', '$0.22', '$6.63', '$81'], ['1.5 kWh', '$0.26', '$7.65', '$93']])}
+<p>All at $0.17/kWh. If you know the wattage and cycle length instead, the ${L('electricity-cost-calculator/dishwasher', 'dishwasher electricity cost calculator')} estimates cost per cycle, month and year — the default 1,800 W, one-hour cycle at a 60% average load comes to about 1.1 kWh, or 18¢.</p>` },
+      { h2: 'Where the energy goes', html: `<ul><li><strong>Heating water</strong> is the biggest share. Most dishwashers heat their own water internally; if yours fills with hot water from the tap, part of the cost moves to your ${L('electricity-cost-calculator/water-heater', 'water heater')}.</li><li><strong>Heated dry</strong> runs the element again at the end of the cycle. Air-dry or “no heat” options skip it.</li><li><strong>Pump and motor</strong> use a small, steady amount for the whole cycle.</li></ul>` },
+      { h2: 'How to use less', html: `<ul><li><strong>Run full loads.</strong> A half-empty machine uses nearly the same energy.</li><li><strong>Use eco mode.</strong> It runs longer but at a lower temperature, which usually uses less energy overall.</li><li><strong>Turn off heated dry</strong> or open the door at the end and let the dishes air-dry.</li><li><strong>Skip the pre-rinse</strong> under hot water — scrape plates instead. Modern detergents handle the rest.</li><li><strong>Run it off-peak</strong> if your tariff is cheaper at night.</li></ul>
+<p>The same habits apply to laundry: most of a ${L('electricity-cost-calculator/washing-machine', 'washing machine’s running cost')} is heating water too.</p>` },
+    ],
+    faqs: [
+      { q: 'How many kWh does a dishwasher use per load?', a: 'Usually about 1–1.5 kWh for a normal cycle, less on eco programmes and without heated dry.' },
+      { q: 'Does a dishwasher use a lot of electricity?', a: 'Not much: at five loads a week and 1.08 kWh per cycle, it is about $4 a month at $0.17/kWh.' },
+      { q: 'Is it cheaper to run a dishwasher at night?', a: 'Only if your electricity tariff is cheaper at night. The energy used is the same; the price per kWh changes.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

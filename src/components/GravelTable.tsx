@@ -51,6 +51,20 @@ export function GravelTable() {
           </tbody>
         </table>
       </div>
+      <h2>How much does a ton of gravel cover?</h2>
+      <p>One ton of typical gravel (about {f(1 / 1.4)} cubic yards) spread at common depths:</p>
+      <div className="not-prose overflow-x-auto rounded-2xl border border-line">
+        <table className="w-full text-sm">
+          <thead className="surface-2 text-left">
+            <tr><th scope="col" className="px-4 py-2.5 font-bold">Depth</th><th scope="col" className="px-4 py-2.5 font-bold">1 ton covers</th><th scope="col" className="px-4 py-2.5 font-bold">Tons per 100 sq ft</th></tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--line)]">
+            {[2, 3, 4, 6].map((d) => (
+              <tr key={d}><td className="px-4 py-2 font-semibold">{d} inches</td><td className="px-4 py-2 tabular-nums">{Math.round(27 / 1.4 / (d / 12))} sq ft</td><td className="px-4 py-2 tabular-nums">{f((100 * d) / 12 / 27 * 1.4)} t</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

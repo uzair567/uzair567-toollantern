@@ -80,6 +80,7 @@ export const everydayTools: ToolContent[] = [
       { q: 'Should I include the end date?', a: 'Include it when both the first and last day count, like a rental of 1–5 June (5 days). Exclude it for durations, like the time from one date to another (4 days).' },
       { q: 'Does it handle leap years?', a: 'Yes. Dates are calculated from the real calendar, so 29 February is counted in leap years.' },
       { q: 'Can I count backwards?', a: 'Yes — if the end date is before the start date, the dates are swapped and the result is marked.' },
+      { q: 'How do I count business days between two dates?', a: 'The result includes the number of weekdays (Monday to Friday) in the range. Subtract any public holidays that fall on weekdays to get working days.' },
     ],
     related: ['age-calculator', 'unix-timestamp-converter', 'percentage-calculator', 'electricity-cost-calculator'],
   },
