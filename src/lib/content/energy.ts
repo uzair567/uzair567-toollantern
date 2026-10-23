@@ -43,6 +43,7 @@ export const energyTools: ToolContent[] = [
     example: { title: 'A 1.5 ton split AC', steps: ['1,500 W × 8 h × 70% = 8.4 kWh per day.', 'At $0.17/kWh: about $1.43 per day.', 'About $42.84 over a 30-day month.'] },
     faqs: [
       { q: 'How many watts does a 1.5 ton AC use?', a: 'Usually 1,300–1,800 W while the compressor runs, depending on efficiency. Inverter models draw less on average because they slow the compressor rather than switching it off and on.' },
+      { q: 'How much does central air add to my electric bill?', a: 'A 3-ton central AC drawing about 3,500 W, running 8 hours a day with the compressor on 70% of the time, uses 19.6 kWh a day — about $3.33 a day or $100 a month at $0.17/kWh. Enter your unit’s wattage and your rate above for your own bill.' },
       { q: 'Is it cheaper to leave the AC on all day?', a: 'Usually not. Raising the set point or switching off while you’re out uses less energy overall than holding a low temperature in an empty home, even though cooling back down takes some extra work.' },
       { q: 'Does a higher star or SEER rating really save money?', a: 'Yes — a more efficient unit delivers the same cooling for fewer watts. The saving is largest in hot climates where the AC runs many hours a day.' },
     ],
@@ -224,7 +225,7 @@ export const energyTools: ToolContent[] = [
     related: ['electricity-cost-calculator/tv', 'electricity-cost-calculator', 'electricity-cost-calculator/ac', 'electricity-cost-calculator/dehumidifier'],
   },
   {
-    slug: 'electricity-cost-calculator/water-heater', parent, engine, name: 'Electric Water Heater Cost Calculator', category: 'energy', updated: '2026-10-13',
+    slug: 'electricity-cost-calculator/water-heater', parent, engine, name: 'Electric Water Heater Cost Calculator', category: 'energy', updated: '2026-10-23',
     defaults: { watts: 4500, hours: 3, duty: 100, rate: 0.17 },
     title: 'Electric Water Heater Cost Calculator – Monthly Running Cost',
     description: 'Electric water heater cost per day, month and year. Enter element wattage, daily heating hours and your price per kWh to see your hot-water bill.',
@@ -238,6 +239,7 @@ export const energyTools: ToolContent[] = [
     formula: { expression: 'Daily cost = Watts × Heating hours ÷ 1000 × Price', explanation: ['Heat-pump water heaters deliver the same hot water for a fraction of the electricity.'] },
     example: { title: 'A 4,500 W tank heating 3 hours a day', steps: ['4,500 W × 3 h = 13.5 kWh per day.', 'At $0.17/kWh: about $2.30 per day.', 'About $68.85 per month.'] },
     faqs: [
+      { q: 'How much does an electric water heater cost per month?', a: 'For a 4,500 W tank at $0.17/kWh: about $46 a month at 2 heating hours a day (9 kWh/day), $69 at 3 hours (13.5 kWh/day) and $92 at 4 hours (18 kWh/day). Your own figure depends on how much hot water the household uses and your electricity rate.' },
       { q: 'How long does an electric water heater run each day?', a: 'It depends on hot-water use. A household of 3–4 commonly has 2–4 hours of element run time a day; a heavy-use home can be higher.' },
       { q: 'Does turning down the temperature save money?', a: 'Yes. Around 120 °F (49 °C) is a common recommendation; each step down reduces standby losses and the energy needed to reheat the tank.' },
       { q: 'Is a heat-pump water heater cheaper?', a: 'Typically it uses well under half the electricity of a standard electric tank for the same hot water, though it costs more to buy.' },
