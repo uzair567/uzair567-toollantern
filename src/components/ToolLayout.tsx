@@ -12,6 +12,7 @@ import { Icon } from './Icon';
 import { UnitTable } from './UnitTable';
 import { GravelTable } from './GravelTable';
 import { MulchTable } from './MulchTable';
+import { EmbedCode } from './EmbedCode';
 import { seoOf } from '@/lib/seo-data';
 import { postsForTool, postPath } from '@/lib/blog';
 import type { Kind } from '@/tools/units';
@@ -104,6 +105,7 @@ export function ToolLayout({ tool }: { tool: ToolContent }) {
               </details>
             ))}
           </div>
+          {engineOf(tool) !== 'image' && <EmbedCode slug={tool.slug} name={tool.name} />}
           <p className="!mt-8 text-sm text-muted">{tool.category === 'fitness' ? 'Results are estimates for healthy adults, not medical advice. Talk to a doctor or registered dietitian before major changes to diet or training, especially if you are pregnant or have a health condition.' : 'Results are estimates for planning — check critical figures with a professional or the official source.'} Free, no sign-up · updated {updated}.</p>
         </div>
 

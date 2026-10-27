@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 const jakarta = localFont({ src: './jakarta-latin.woff2', variable: '--font-jakarta', weight: '200 800', display: 'swap', preload: true });
 import { site } from '@/lib/site';
 import { Header, Footer } from '@/components/Chrome';
+import { HideOnEmbed } from '@/components/HideOnEmbed';
 import { themeScript } from '@/components/ThemeToggle';
 import { Analytics } from '@/components/Analytics';
 
@@ -32,9 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen font-sans">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ink focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
-        <Header />
+        <HideOnEmbed><Header /></HideOnEmbed>
         <main id="main">{children}</main>
-        <Footer />
+        <HideOnEmbed><Footer /></HideOnEmbed>
         <Analytics />
       </body>
     </html>

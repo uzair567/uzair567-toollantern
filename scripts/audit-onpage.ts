@@ -28,7 +28,7 @@ for (const p of pages.sort()) {
     !h1 && 'no h1', !canon && 'no canonical',
     kw && !has(title) && 'kw!title', kw && !has(meta) && 'kw!meta', kw && !has(h1) && 'kw!h1',
   ].filter(Boolean);
-  if (url.startsWith('/404')) continue;
+  if (url.startsWith('/404') || url.startsWith('/embed/')) continue;
   if (issues.length) bad++;
   rows.push([url, kw ?? '-', title.length, meta.length, issues.join(', ') || 'OK'].join(' | '));
 }
