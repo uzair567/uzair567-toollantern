@@ -26,7 +26,7 @@ export const posts: BlogPost[] = [
     metaDescription: 'How many bags of mulch in a yard: 13.5 bags of 2 cu ft or 9 bags of 3 cu ft. Plus how to work out mulch from square feet and depth.',
     focusKeyword: 'how many bags of mulch in a yard',
     h1: 'How many bags of mulch are in a yard?',
-    published: '2026-10-20', updated: '2026-10-20',
+    published: '2026-10-20', updated: '2026-10-27',
     tools: ['mulch-calculator', 'topsoil-calculator', 'gravel-calculator'],
     summary: 'One cubic yard of mulch is 27 cubic feet. That is 13.5 bags of 2 cubic feet, or 9 bags of 3 cubic feet. A yard covers about 108 square feet at 3 inches deep.',
     body: [
@@ -45,6 +45,7 @@ ${table(['Depth', '1 cubic yard covers', 'One 2 cu ft bag covers', 'One 3 cu ft 
 <p>Doing a full bed refresh? Many people add soil at the same time — the ${L('topsoil-calculator', 'topsoil calculator')} uses the same area and depth method, and the ${L('gravel-calculator', 'gravel calculator')} covers stone paths and borders.</p>` },
     ],
     faqs: [
+      { q: 'How many yards are in a bag of mulch?', a: 'A 2 cubic foot bag is 0.074 cubic yards and a 3 cubic foot bag is 0.111 cubic yards (bag size ÷ 27).' },
       { q: 'How many 2 cubic foot bags of mulch make a yard?', a: '13.5 bags. A cubic yard is 27 cubic feet, and 27 ÷ 2 = 13.5, so buy 14 to be safe.' },
       { q: 'How many 3 cubic foot bags of mulch are in a yard?', a: 'Exactly 9, because 27 ÷ 3 = 9.' },
       { q: 'How many square feet does a bag of mulch cover?', a: 'A 2 cubic foot bag covers 12 sq ft at 2 inches deep or 8 sq ft at 3 inches. A 3 cubic foot bag covers 18 sq ft at 2 inches or 12 sq ft at 3 inches.' },
@@ -190,11 +191,11 @@ ${table(['Loads per week', 'Per month', 'Per year'], [[3, '$5.00', '$60'], [5, '
     metaDescription: 'How much electricity does a gaming PC use? Typical watts while gaming and idle, cost per hour and month, and how to measure and cut your PC’s power draw.',
     focusKeyword: 'how much electricity does a gaming pc use',
     h1: 'How much electricity does a gaming PC use?',
-    published: '2026-10-21', updated: '2026-10-21',
+    published: '2026-10-21', updated: '2026-10-27',
     tools: ['electricity-cost-calculator/gaming-pc', 'electricity-cost-calculator/tv', 'electricity-cost-calculator'],
     summary: 'A mid-range gaming PC typically draws 300–500 W while gaming and 50–100 W at idle. At 400 W for 4 hours a day (averaging 80% of that), it uses 1.28 kWh — about 22¢ a day or $6.50 a month at $0.17/kWh.',
     body: [
-      { h2: 'Watts while gaming, idle and asleep', html: `<p>A PC’s power use changes constantly. The graphics card does most of the work in games, so total draw depends mainly on the GPU, then the CPU, with the rest (motherboard, memory, drives, fans) adding a smaller, steadier load.</p>
+      { h2: 'Gaming PC power consumption: gaming, idle and sleep', html: `<p>A PC’s power use changes constantly. The graphics card does most of the work in games, so total draw depends mainly on the GPU, then the CPU, with the rest (motherboard, memory, drives, fans) adding a smaller, steadier load.</p>
 ${table(['Build', 'While gaming', 'Idle / desktop', 'Sleep'], [['Entry-level (budget GPU)', '150–250 W', '40–60 W', 'under 5 W'], ['Mid-range', '300–500 W', '50–100 W', 'under 5 W'], ['High-end (top GPU)', '550–800 W', '80–150 W', 'under 5 W']])}
 <p>These are typical ranges, not specs — two PCs with the same parts can differ by 100 W depending on settings, frame rate and the game itself. Your monitor adds roughly 20–60 W on top.</p>` },
       { h2: 'Your power supply rating is not your usage', html: `<p>A 750 W or 850 W power supply is the <strong>maximum</strong> it can deliver, not what the PC draws. Builders leave headroom for spikes and efficiency, so a PC with an 850 W supply often uses 350–500 W in games. Using the PSU rating in a cost calculation can overstate the cost by half or more.</p>
@@ -207,6 +208,7 @@ ${table(['PC while gaming', 'kWh per day', 'Per day', 'Per month (30 days)'], [[
 <p>Gaming on a TV? Add the screen with the ${L('electricity-cost-calculator/tv', 'TV electricity cost calculator')}.</p>` },
     ],
     faqs: [
+      { q: 'How much power does a gaming PC use per hour?', a: 'Its wattage ÷ 1,000 in kWh. A PC drawing 400 W while gaming uses 0.4 kWh an hour — about 7¢ at $0.17/kWh, or about 10p at 25p/kWh in the UK.' },
       { q: 'Does a gaming PC use a lot of electricity?', a: 'More than a laptop or console, but usually less than people expect: a mid-range PC gaming 4 hours a day costs around $5–8 a month at $0.17/kWh.' },
       { q: 'Does a 750 W power supply use 750 W?', a: 'No. That is the maximum it can supply. The PC only draws what its parts need, often 300–500 W while gaming.' },
       { q: 'Is it expensive to leave a gaming PC on 24/7?', a: 'At 80 W idle, 24 hours a day is about 1.9 kWh — roughly 33¢ a day or $10 a month at $0.17/kWh. Sleep mode cuts that to almost nothing.' },
@@ -218,7 +220,7 @@ ${table(['PC while gaming', 'kWh per day', 'Per day', 'Per month (30 days)'], [[
     metaDescription: 'The Navy tape test explained: where to measure your neck, waist and hips, the US Navy body fat formula, a worked example and how accurate it is.',
     focusKeyword: 'navy tape test',
     h1: 'The Navy tape test: how the Navy body fat method works',
-    published: '2026-10-21', updated: '2026-10-21',
+    published: '2026-10-21', updated: '2026-10-27',
     tools: ['body-fat-calculator', 'bmi-calculator', 'ideal-weight-calculator'],
     summary: 'The Navy tape test estimates body fat from height and a few tape measurements: neck and waist for men, plus hips for women. A man 178 cm tall with a 38 cm neck and 86 cm waist comes out at about 17% body fat.',
     body: [
@@ -238,6 +240,7 @@ ${table(['PC while gaming', 'kWh per day', 'Per day', 'Per month (30 days)'], [[
 <p class="text-sm text-muted">This is an estimate for healthy adults, not medical advice.</p>` },
     ],
     faqs: [
+      { q: 'What does it mean to get taped in the Navy?', a: 'Being “taped” means a body composition assessment with a tape measure: if a sailor is over the screening limit, neck and waist (plus hips for women) are measured and run through the Navy formula to estimate body fat percentage against the standard for their age and sex.' },
       { q: 'What do they measure in the Navy tape test?', a: 'Height and neck circumference for everyone, waist at the navel for men, and waist at its narrowest plus hips at their widest for women.' },
       { q: 'Is the Navy method accurate?', a: 'It is usually within about 3–4 percentage points of DEXA and is most useful for tracking change over time.' },
       { q: 'Can I do the Navy tape test at home?', a: 'Yes — you only need a flexible tape measure. Enter your measurements in a Navy body fat calculator to get the result.' },
@@ -328,7 +331,7 @@ ${table(['Driveway', '4 inches deep', '6 inches deep'], [[10, 40], [12, 50], [12
     metaDescription: 'How much topsoil do I need: the formula, depths for lawns and raised beds, cubic yards to bags and tons, and worked examples you can copy.',
     focusKeyword: 'how much topsoil do i need',
     h1: 'How much topsoil do I need?',
-    published: '2026-10-21', updated: '2026-10-21',
+    published: '2026-10-21', updated: '2026-10-27',
     tools: ['topsoil-calculator', 'mulch-calculator', 'gravel-calculator'],
     summary: 'Square feet × depth in inches ÷ 12 = cubic feet; ÷ 27 = cubic yards. A 300 sq ft lawn area at 4 inches needs 100 cubic feet — about 3.7 cubic yards, which weighs roughly 3.7–4.8 tons.',
     body: [
@@ -343,6 +346,8 @@ ${table(['Driveway', '4 inches deep', '6 inches deep'], [[10, 40], [12, 50], [12
 <p>For more than about one cubic yard, bulk delivery is usually cheaper than bags. Finishing the beds afterwards? Work out the top layer with the ${L('mulch-calculator', 'mulch calculator')}, and paths with the ${L('gravel-calculator', 'gravel calculator')}.</p>` },
     ],
     faqs: [
+      { q: 'How many cubic yards are in a ton of topsoil?', a: 'Roughly 0.75–1 cubic yard, because a yard of topsoil weighs about 1–1.3 tons dry. Wet soil is heavier, so a ton covers less volume.' },
+      { q: 'How much topsoil do I need for a lawn?', a: 'For a new lawn, plan on 4–6 inches: about 1.2–1.9 cubic yards per 100 sq ft. Top-dressing an existing lawn needs only ¼–½ inch.' },
       { q: 'How many bags of topsoil make a yard?', a: '27 bags of 1 cubic foot, or 36 bags of 0.75 cubic foot.' },
       { q: 'How much does a yard of topsoil cover?', a: 'About 81 sq ft at 4 inches, 54 sq ft at 6 inches, or 324 sq ft at 1 inch.' },
       { q: 'How many tons is a yard of topsoil?', a: 'Roughly 1 to 1.3 tons when dry, more when wet.' },

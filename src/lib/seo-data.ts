@@ -373,6 +373,7 @@ export const seoOf = (slug: string): ToolSeo | undefined => toolSeo[slug];
 
 // Title / meta overrides so every page's focus keyword (primaryKeyword) appears in both.
 const metaOverrides: Record<string, Partial<Pick<ToolSeo, 'metaDescription' | 'title' | 'h1'>>> = {
+  'body-fat-calculator': { title: 'Navy Body Fat Calculator – US Navy Tape Test Method', metaDescription: 'Navy body fat calculator: estimate body fat percentage with the US Navy tape test (height, neck, waist, hips), plus fat mass and lean mass.' },
   'image-converter': { metaDescription: 'Free image converter for JPG, PNG and WebP. Batch convert, set quality and resize in your browser — no upload, no sign-up.' },
   'image-compressor': { metaDescription: 'Free image compressor for JPG, PNG and WebP. Shrink file size without visible quality loss and batch up to 30 images — nothing is uploaded.' },
   'image-resizer': { metaDescription: 'Free image resizer: resize photos to exact pixels or a percentage, keep the aspect ratio and batch JPG, PNG and WebP. Private, no upload.' },
@@ -422,7 +423,7 @@ const h1Overrides: Record<string, string> = {
   'electricity-cost-calculator/washing-machine': 'Washing Machine Cost per Load Calculator',
   'percentage-change-calculator': 'Percentage Increase Calculator',
   'serp-snippet-preview': 'SERP Preview Tool',
-  'body-fat-calculator': 'Body Fat Calculator – US Navy Method',
+  'body-fat-calculator': 'Navy Body Fat Calculator (US Navy Method)',
   'gravel-calculator': 'Gravel Calculator (Tons & Cubic Yards)',
 };
 for (const [slug, h1] of Object.entries(h1Overrides)) toolSeo[slug].h1 = h1;
