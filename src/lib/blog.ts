@@ -405,6 +405,45 @@ ${table(['Energy per cycle', 'Per load', 'Per month (30 loads)', 'Per year (365 
       { q: 'Is it cheaper to run a dishwasher at night?', a: 'Only if your electricity tariff is cheaper at night. The energy used is the same; the price per kWh changes.' },
     ],
   },
+  {
+    slug: 'how-to-calculate-days-between-two-dates',
+    title: 'How to Calculate Days Between Two Dates (+ Excel)',
+    metaDescription: 'How to calculate days between two dates by hand or in Excel and Google Sheets: inclusive vs exclusive counts, weekdays, leap years and DATEDIF.',
+    focusKeyword: 'calculate days between two dates',
+    h1: 'How to calculate the days between two dates',
+    published: '2026-10-29', updated: '2026-10-29',
+    tools: ['date-difference-calculator', 'age-calculator', 'unix-timestamp-converter'],
+    summary: 'Subtract the start date from the end date. That standard count leaves out the end date, so 1 June to 5 June is 4 days; add 1 if both the first and last day should count (5 days). In Excel or Google Sheets, =B2-A2 or =DAYS(B2,A2) gives the same standard count.',
+    body: [
+      { h2: 'The basic method', html: `<p>The number of days between two dates is simply the <strong>end date minus the start date</strong>. Doing that by hand is easiest in three pieces:</p>
+<ol><li>Count the days left in the start month after the start date.</li><li>Add the full lengths of every month in between.</li><li>Add the day number of the end date.</li></ol>
+<p><strong>Example: 14 March to 2 June 2026.</strong> March has 31 days, so 31 − 14 = 17 days remain after the 14th. April adds 30 and May adds 31. Then 2 days of June. Total: 17 + 30 + 31 + 2 = <strong>80 days</strong> — or 11 weeks and 3 days.</p>
+<p>The month lengths are the part people get wrong. The knuckle trick still works: make two fists, and every knuckle is a 31-day month, every dip between knuckles a shorter one (January on the first knuckle, February in the first dip, and so on, with July and August both landing on knuckles).</p>
+${table(['Days in the month', 'Months'], [['31', 'January, March, May, July, August, October, December'], ['30', 'April, June, September, November'], ['28 or 29', 'February (29 in a leap year)']])}
+<p>The ${L('date-difference-calculator', 'days between dates calculator')} does this from the real calendar, so you never have to count months yourself.</p>` },
+      { h2: 'Inclusive or exclusive: should you count the end date?', html: `<p>This is the question behind most “off by one” mistakes. Subtraction gives the <strong>exclusive</strong> count — the time that passes from one date to the other. From Monday to Friday, four days pass, so the answer is 4.</p>
+<p>Sometimes both the first and the last day are part of what you are counting: a festival that runs 1–5 June, a five-day course, or leave that starts and ends on given days. Then you want the <strong>inclusive</strong> count, which is the exclusive count + 1.</p>
+${table(['Situation', 'Example', 'Count', 'Days'], [['Time between two dates', '1 Jun → 5 Jun', 'Exclusive', '4'], ['An event on every day of a range', 'Festival 1–5 Jun', 'Inclusive', '5'], ['Hotel stay', 'Check in 1 Jun, out 5 Jun', 'Nights (exclusive)', '4'], ['Whole calendar year', '1 Jan → 31 Dec 2026', 'Inclusive', '365'], ['Countdown', 'Today → 25 Dec', 'Exclusive', 'Days still to go']])}
+<p>A useful test: if the start and end were the same day, would you say 0 days or 1 day? Zero means exclusive; one means inclusive. Contracts and official deadlines can define this precisely, so for anything legal or financial check the wording rather than assuming.</p>` },
+      { h2: 'Counting weekdays and working days', html: `<p>Weekdays are harder to do in your head, because they depend on which day of the week the range starts on. A reliable shortcut: every full 7-day week contains exactly 5 weekdays. Count the full weeks, multiply by 5, then count the leftover days one by one.</p>
+<p><strong>Example: Monday 2 November to Friday 27 November 2026, both days included.</strong> That is 26 calendar days: 3 full weeks (15 weekdays) plus 5 leftover days, Monday 23 to Friday 27, which are all weekdays. Total: <strong>20 weekdays</strong>. US Thanksgiving falls on Thursday 26 November in 2026, so a US office would have <strong>19 working days</strong> in that period.</p>
+<p>Public holidays differ by country and region, which is why most calculators — including ours — count Monday to Friday and leave holidays for you to subtract. With “include end date” switched on, the ${L('date-difference-calculator', 'date difference calculator')} counts weekdays the same way as Excel’s NETWORKDAYS.</p>` },
+      { h2: 'Days between dates in Excel and Google Sheets', html: `<p>Spreadsheets store dates as serial numbers (whole days counted from a fixed starting date), so the difference between two dates is just a subtraction. With the start date in A2 and the end date in B2:</p>
+${table(['Formula', 'What it returns', '14 Mar → 2 Jun 2026'], [['=B2-A2', 'Days, end date excluded', '80'], ['=DAYS(B2,A2)', 'Same, end date first', '80'], ['=B2-A2+1', 'Days, both dates included', '81'], ['=DATEDIF(A2,B2,"m")', 'Complete months', '2'], ['=DATEDIF(A2,B2,"md")', 'Days left over after whole months', '19'], ['=NETWORKDAYS(A2,B2)', 'Mon–Fri, both dates included', '57'], ['=NETWORKDAYS(A2,B2,H2:H10)', 'Same, minus holidays listed in H2:H10', '—']])}
+<p>A few things to watch:</p>
+<ul><li>If =B2-A2 shows a date instead of a number, change the cell format to <em>Number</em> or <em>General</em>.</li><li>DATEDIF needs the earlier date first, otherwise it returns an error. Microsoft also notes that the "md" unit can give wrong results in some cases, so double-check month-and-day answers that look odd.</li><li>NETWORKDAYS.INTL lets you choose a different weekend, such as Friday–Saturday.</li><li>Dates typed as text (for example pasted from another system) will not subtract. Convert them with DATEVALUE first.</li></ul>` },
+      { h2: 'Leap years and longer ranges', html: `<p>A leap year has 366 days because February gets a 29th day. The rule: a year divisible by 4 is a leap year, except century years, which must also be divisible by 400. So 2028 is a leap year, 2100 will not be, and 2000 was.</p>
+<p>For ranges that cross a February, this matters: 1 February to 1 March is 28 days in 2027 but 29 days in 2028. Counting by hand across several years, the safest approach is to count whole years first (365 or 366 each), then handle the remaining part with the month method above.</p>
+<p>If you need someone’s exact age rather than a raw day count, the ${L('age-calculator', 'age calculator')} gives years, months and days. For time stamps from software and logs, the ${L('unix-timestamp-converter', 'Unix timestamp converter')} turns seconds since 1970 into dates you can compare.</p>` },
+      { h2: 'Adding days to a date', html: `<p>The reverse question — “what date is 90 days from now?” — uses the same arithmetic. Add the days month by month: from 29 October 2026, 90 days later is <strong>Wednesday 27 January 2027</strong> (2 days to the end of October, 30 in November, 31 in December, 27 into January).</p>
+<p>In a spreadsheet, =A2+90 does it, and =WORKDAY(A2,10) gives the date 10 working days later. To express how far through a period you are, divide the days passed by the total length: 29 October is 301 days after 1 January in a 365-day year, which is 82.5% of the year — the same method as any ${L('blog/how-to-calculate-percentage-increase', 'percentage calculation')}.</p>` },
+    ],
+    faqs: [
+      { q: 'How do I calculate the number of days between two dates?', a: 'Subtract the start date from the end date. By hand, count the days left in the first month, add the full months in between, then add the day number of the end date. Add 1 if both dates should be counted.' },
+      { q: 'Does “days between” include the start and end date?', a: 'The standard count includes the start but not the end, so Monday to Friday is 4 days. If both days count, as with an event running Monday to Friday, add 1 for 5 days.' },
+      { q: 'What is the Excel formula for days between two dates?', a: 'Use =B2-A2 or =DAYS(B2,A2) for calendar days, and =NETWORKDAYS(A2,B2) for weekdays with both dates included. Add a range of holiday dates as a third argument to exclude them.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

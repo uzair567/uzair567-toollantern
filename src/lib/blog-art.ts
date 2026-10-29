@@ -217,6 +217,27 @@ function dishwasher() {
     `<path d="M1000 380 L960 470 L995 470 L975 560 L1050 440 L1012 440 L1035 380 Z" fill="${AMBER}" ${S}/>`);
 }
 
+function dateDiff() {
+  // calendar grid with a start and end day circled, linked by an arc; hourglass at the side
+  let cells = '';
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 7; c++) {
+    const x = 330 + c * 66, y = 250 + r * 54, idx = r * 7 + c;
+    const inRange = idx >= 9 && idx <= 25, weekend = c >= 5;
+    cells += `<rect x="${x}" y="${y}" width="54" height="42" rx="10" fill="${inRange ? (weekend ? '#ffe2b0' : '#ffd48a') : weekend ? '#eef1f5' : '#fff'}" stroke="${INK}" stroke-width="3"/>`;
+  }
+  const ring = (idx: number) => { const x = 330 + (idx % 7) * 66 + 27, y = 250 + Math.floor(idx / 7) * 54 + 21; return `<circle cx="${x}" cy="${y}" r="34" fill="none" stroke="${BLUE}" stroke-width="7"/>`; };
+  return wrap('#ffe9d6',
+    `<ellipse cx="600" cy="560" rx="380" ry="22" fill="${INK}" opacity=".08"/>` +
+    `<rect x="300" y="130" width="520" height="410" rx="34" fill="#fff" ${S}/>` +
+    `<path d="M300 210 L300 164 Q300 130 334 130 L786 130 Q820 130 820 164 L820 210 Z" fill="#ff7a59" ${S}/>` +
+    `<rect x="380" y="96" width="22" height="70" rx="11" fill="${INK}"/><rect x="718" y="96" width="22" height="70" rx="11" fill="${INK}"/>` +
+    cells + ring(9) + ring(25) +
+    `<path d="M905 140 L1015 140 M905 380 L1015 380" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>` +
+    `<path d="M915 145 Q915 230 960 260 Q1005 230 1005 145 Z M915 375 Q915 290 960 260 Q1005 290 1005 375 Z" fill="${CREAM}" ${S}/>` +
+    `<path d="M935 175 Q960 215 985 175 Z" fill="${AMBER}"/><path d="M925 370 Q960 320 995 370 Z" fill="${AMBER}"/><path d="M960 262 L960 340" stroke="${AMBER}" stroke-width="5"/>` +
+    `<g transform="translate(150 330)"><circle cx="0" cy="0" r="70" fill="${AMBER}" ${S}/><circle cx="0" cy="0" r="52" fill="#fff" stroke="${INK}" stroke-width="4"/><path d="M0 0 L0 -34 M0 0 L26 14" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><circle cx="0" cy="0" r="7" fill="${INK}"/></g>`);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -231,6 +252,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-does-it-cost-to-run-a-space-heater': { svg: spaceHeater, alt: 'Illustration of an oil-filled space heater giving off heat beside a thermometer and a coin' },
   'how-much-topsoil-do-i-need': { svg: topsoil, alt: 'Illustration of a wheelbarrow full of topsoil next to a raised bed with seedlings' },
   'how-to-calculate-tdee': { svg: tdee, alt: 'Illustration of a calorie gauge with a flame, an apple and a dumbbell' },
+  'how-to-calculate-days-between-two-dates': { svg: dateDiff, alt: 'Illustration of a calendar page with a start and end date circled and the days between them highlighted, next to a clock and an hourglass' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -322,6 +344,9 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-to-calculate-tdee': {
     'Step 2: multiply by your activity level': { svg: barChart([{ label: 'Sedentary ×1.2', value: 2091, text: '2,091' }, { label: 'Light ×1.375', value: 2396, text: '2,396' }, { label: 'Moderate ×1.55', value: 2701, text: '2,701' }, { label: 'Very active ×1.725', value: 3006, text: '3,006' }], ' kcal'), caption: 'TDEE for the example man (BMR 1,743 kcal) at each activity level.', alt: 'Bar chart of TDEE by activity level from 2,091 to 3,006 kcal' },
+  },
+  'how-to-calculate-days-between-two-dates': {
+    'Days between dates in Excel and Google Sheets': { svg: barChart([{ label: 'Days, end excluded', value: 80, text: '80' }, { label: 'Days, both included', value: 81, text: '81' }, { label: 'Weekdays (Mon–Fri)', value: 57, text: '57' }], ' days'), caption: '14 March to 2 June 2026 counted three ways. The weekday count includes both dates, like NETWORKDAYS.', alt: 'Bar chart: 80 days with the end date excluded, 81 with both dates included, 57 weekdays' },
   },
   'how-much-electricity-does-a-dishwasher-use': {
     'What each load costs': { svg: barChart([{ label: '3 loads a week', value: 2.39, text: '$2.39' }, { label: '5 loads a week', value: 3.98, text: '$3.98' }, { label: '7 loads a week', value: 5.57, text: '$5.57' }], ' /mo'), caption: 'Monthly cost at 1.08 kWh per cycle and $0.17/kWh.', alt: 'Bar chart of dishwasher monthly cost: $2.39, $3.98 and $5.57' },

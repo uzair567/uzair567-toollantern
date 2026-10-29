@@ -36,7 +36,7 @@ for (const p of posts) {
   if (!p.metaDescription.toLowerCase().includes(kw)) bad(`blog ${p.slug}: keyword missing from meta`);
   if (titles.has(p.title)) bad(`blog ${p.slug}: duplicate title`); titles.set(p.title, p.slug);
   for (const t of p.tools) if (!slugs.has(t)) bad(`blog ${p.slug}: unknown tool ${t}`);
-  for (const s of p.body) for (const [, href] of s.html.matchAll(/href="\/([^"]+)\/"/g)) if (!slugs.has(href)) bad(`blog ${p.slug}: links to missing /${href}/`);
+  for (const s of p.body) for (const [, href] of s.html.matchAll(/href="\/([^"]+)\/"/g)) if (!slugs.has(href) && !(href.startsWith('blog/') && posts.some((q) => `blog/${q.slug}` === href))) bad(`blog ${p.slug}: links to missing /${href}/`);
 }
 console.log(fail ? `${fail} SEO problems` : `SEO data OK for ${tools.length} tools`);
 process.exit(fail ? 1 : 0);
