@@ -444,6 +444,48 @@ ${table(['Formula', 'What it returns', '14 Mar → 2 Jun 2026'], [['=B2-A2', 'Da
       { q: 'What is the Excel formula for days between two dates?', a: 'Use =B2-A2 or =DAYS(B2,A2) for calendar days, and =NETWORKDAYS(A2,B2) for weekdays with both dates included. Add a range of holiday dates as a third argument to exclude them.' },
     ],
   },
+  {
+    slug: 'how-much-flooring-do-i-need',
+    title: 'How Much Flooring Do I Need? Square Feet, Boxes & Cost',
+    metaDescription: 'How much flooring do I need: measure the area, add 5–15% waste for your layout, round up to whole boxes and price it. Worked examples and tables.',
+    focusKeyword: 'how much flooring do i need',
+    h1: 'How much flooring do I need?',
+    published: '2026-10-30', updated: '2026-10-30',
+    tools: ['flooring-calculator', 'tile-calculator', 'paint-calculator'],
+    summary: 'Multiply the length by the width of each room to get square feet, add the areas together, then add about 10% for cuts and waste (5–7% for a plain rectangle, 15% or more for diagonal or herringbone). Divide by the coverage on the box and round up. A 15 × 12 ft room needs 198 sq ft with 10% waste — 10 boxes of 20 sq ft.',
+    body: [
+      { h2: 'The four-step method', html: `<p>Flooring is sold by the <strong>box</strong>, but every box is labelled with the area it covers, so the whole job comes down to square footage. Work through it in this order:</p>
+<ol><li><strong>Measure</strong> each room (length × width) in feet, at the widest points, and add the areas together.</li><li><strong>Add waste</strong> for cutting, offcuts that are too short to reuse, and the odd damaged board — usually 10%.</li><li><strong>Divide by the box coverage</strong> printed on the packaging and <strong>round up</strong> to a whole box.</li><li><strong>Price it</strong> using the area you actually buy (boxes × coverage), not the room area.</li></ol>
+<p><strong>Example:</strong> a 15 ft × 12 ft living room is 180 sq ft. With 10% waste that is 180 × 1.10 = 198 sq ft. At 20 sq ft per box, 198 ÷ 20 = 9.9, so you buy <strong>10 boxes</strong> (200 sq ft).</p>
+<p>The ${L('flooring-calculator', 'flooring calculator')} runs these four steps at once and works in square feet or square metres.</p>` },
+      { h2: 'Measuring rooms that are not rectangles', html: `<p>Very few floors are a single neat rectangle. Split the floor into rectangles, work out each one and add them up. Include every area that will get the same floor: closets, the space under a built-in desk if it is open, and the doorway up to the middle of the door when the closed door sits over the new floor.</p>
+<p><strong>Example: an L-shaped room.</strong> The main part is 15 × 12 ft = 180 sq ft, and an alcove off one side is 6 × 5 ft = 30 sq ft. Total: <strong>210 sq ft</strong>.</p>
+<p>A few habits that save a second trip to the store:</p>
+<ul><li>Measure to the wall, not to the skirting board — the gap at the edge is hidden by trim, but the boards still run under where you measured.</li><li>Round each measurement up to the next half foot rather than down.</li><li>Do not subtract kitchen islands or fitted cabinets unless you are sure the floor will stop at them; many floating floors cannot go under heavy fixed units, but it is easier to have a spare box than to be one short.</li><li>Sketch the room with the measurements on paper — it makes the rectangles obvious and gives you something to check against at the store.</li></ul>` },
+      { h2: 'How much extra flooring to buy', html: `<p>The waste allowance depends mostly on the <strong>layout</strong> and how many corners and doorways the room has. Every row ends in a cut, and the offcut from one row can only start the next row if it is long enough for the stagger the manufacturer asks for.</p>
+${table(['Layout or room', 'Typical waste', '210 sq ft room becomes'], [['Simple rectangle, straight boards', '5–7%', '221–225 sq ft'], ['Most rooms (a few corners, a doorway or two)', '10%', '231 sq ft'], ['Diagonal layout or many angles', '15%', '242 sq ft'], ['Herringbone or chevron', '15–20%', '242–252 sq ft']])}
+<p>Two more reasons to stay at 10% or above for most jobs:</p>
+<ul><li><strong>Batches differ.</strong> Colour and texture can vary between production runs, so buying a matching box later is not always possible.</li><li><strong>Spare boards are useful.</strong> A box left over after the job lets you replace a damaged plank years later with an exact match.</li></ul>
+<p>Waste is just a percentage increase on the area, so the same arithmetic as any ${L('blog/how-to-calculate-percentage-increase', 'percentage increase')} applies: multiply by 1.10 for 10%, 1.15 for 15%.</p>` },
+      { h2: 'From square feet to boxes', html: `<p>Box coverage varies a lot between products, even of the same type, because board width, length and thickness all change how many fit in a box. Always use the number on the label of the floor you are buying. Here is the same 210 sq ft room with 10% waste (231 sq ft) and different box sizes:</p>
+${table(['Coverage per box', 'Boxes needed', 'Area you actually buy'], [['18.5 sq ft', 13, '240.5 sq ft'], ['20 sq ft', 12, '240 sq ft'], ['22.5 sq ft', 11, '247.5 sq ft'], ['25 sq ft', 10, '250 sq ft']])}
+<p>Notice that rounding up to whole boxes already adds a little extra. With 20 sq ft boxes, the 210 sq ft room needs 12 boxes at both 5% and 10% waste, because 220.5 and 231 sq ft both round up to 240. So do not add an extra box on top “just in case” until you have checked what the rounding has already given you.</p>
+<p>Some stores sell flooring by the square foot and let you buy part boxes; most do not. Many accept unopened boxes back, so check the return policy before deciding how tight to cut it.</p>` },
+      { h2: 'What it will cost', html: `<p>Price your order on the boxes you buy. For the 210 sq ft room, 12 boxes of 20 sq ft is 240 sq ft, so the material cost at a few example prices per square foot is:</p>
+${table(['Price per sq ft', 'Cost for 240 sq ft (12 boxes)'], [['$2.00', '$480'], ['$3.50', '$840'], ['$5.00', '$1,200'], ['$8.00', '$1,920']])}
+<p>The floor itself is rarely the whole bill. Add:</p>
+<ul><li><strong>Underlayment</strong>, if it is not pre-attached — buy it for the room area (210 sq ft), not the area with waste. At 100 sq ft per roll that is 3 rolls.</li><li><strong>Trim</strong>: skirting or quarter-round, and a transition strip at each doorway where the floor meets a different one.</li><li><strong>Installation</strong>, if you are not fitting it yourself — usually quoted per square foot, and often with extra for removing the old floor.</li></ul>
+<p>Prices change by region and store, so treat the table as a way to set up your own sum rather than a guide to what flooring costs where you live.</p>` },
+      { h2: 'Working in square metres', html: `<p>The method is identical in metric. A 4.5 m × 3.6 m bedroom is 16.2 m². With 10% waste that is 17.82 m². At 2.2 m² per pack, 17.82 ÷ 2.2 = 8.1, so you need <strong>9 packs</strong> (19.8 m²). At 25 per m², the packs cost 19.8 × 25 = <strong>495</strong> in your local currency.</p>
+<p>If you have measured in feet and the product is labelled in metres (or the other way round), convert the area, not the lengths separately in your head: 1 m² = 10.764 sq ft. For individual lengths, the ${L('cm-to-inches', 'cm to inches converter')} helps.</p>
+<p>Doing the bathroom or kitchen in tile instead? The ${L('tile-calculator', 'tile calculator')} uses the same area-plus-waste idea, counted in tiles. Repainting while the room is empty is the usual next job — the ${L('paint-calculator', 'paint calculator')} works out the gallons.</p>` },
+    ],
+    faqs: [
+      { q: 'How do I calculate how much flooring I need?', a: 'Multiply the length by the width of each area in feet and add them up. Add 10% for waste (5–7% for simple rooms, 15% or more for diagonal or herringbone), then divide by the coverage per box and round up.' },
+      { q: 'How much extra flooring should I buy for waste?', a: 'About 10% for most rooms. A plain rectangle with straight boards can manage 5–7%; diagonal, herringbone and rooms with many angles need 15–20%.' },
+      { q: 'How many boxes of flooring do I need for 200 square feet?', a: 'With 10% waste you need 220 sq ft. That is 11 boxes at 20 sq ft per box, or 9 boxes at 25 sq ft per box (220 ÷ 25 = 8.8, rounded up).' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

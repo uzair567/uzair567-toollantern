@@ -4,7 +4,6 @@ Rules: one guide per day at most, each tied to an existing calculator, 900–1,3
 original cover + figure in src/lib/blog-art.ts. Remove a line once its guide is published. Skip any topic that an
 existing guide already covers (check src/lib/blog.ts first).
 
-- how much flooring do I need + price per square foot → flooring-calculator
 - how many tiles do I need (waste %, tile sizes) → tile-calculator
 - how much paint do I need for a room → paint-calculator
 - how much concrete do I need for a slab (bags vs yards) → concrete-calculator

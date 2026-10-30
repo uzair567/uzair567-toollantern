@@ -238,6 +238,33 @@ function dateDiff() {
     `<g transform="translate(150 330)"><circle cx="0" cy="0" r="70" fill="${AMBER}" ${S}/><circle cx="0" cy="0" r="52" fill="#fff" stroke="${INK}" stroke-width="4"/><path d="M0 0 L0 -34 M0 0 L26 14" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><circle cx="0" cy="0" r="7" fill="${INK}"/></g>`);
 }
 
+function flooring() {
+  // a floor of staggered planks, an open box of boards and a tape measure
+  const r = rand(23);
+  let planks = '';
+  const cols = ['#d9a066', '#c98d55', '#e4b07a', '#b97b45'];
+  for (let row = 0; row < 6; row++) {
+    const y = 300 + row * 40, off = (row * 137) % 220;
+    let x = 140 - off;
+    while (x < 1060) {
+      const w = 180 + Math.floor(r() * 120);
+      const x0 = Math.max(140, x), x1 = Math.min(1060, x + w);
+      if (x1 - x0 > 10) planks += `<rect x="${x0}" y="${y}" width="${x1 - x0}" height="40" fill="${cols[Math.floor(r() * 4)]}" stroke="${INK}" stroke-width="3"/>`;
+      x += w;
+    }
+  }
+  const box = `<g transform="translate(250 150)"><path d="M0 60 L170 60 L170 190 L0 190 Z" fill="${AMBER}" ${S}/><path d="M170 60 L230 30 L230 160 L170 190 Z" fill="#f59e0b" ${S}/>` +
+    `<rect x="20" y="10" width="180" height="22" rx="4" fill="#e4b07a" ${S} transform="rotate(-8 20 10)"/><rect x="40" y="-10" width="180" height="22" rx="4" fill="#c98d55" ${S} transform="rotate(-14 40 -10)"/>` +
+    `<path d="M0 60 L60 30 L230 30 L170 60 Z" fill="#ffd48a" ${S}/><rect x="30" y="105" width="110" height="34" rx="8" fill="#fff" stroke="${INK}" stroke-width="4"/></g>`;
+  const tape = `<g transform="translate(830 170)"><rect x="0" y="0" width="130" height="130" rx="30" fill="#ff7a59" ${S}/><circle cx="65" cy="65" r="30" fill="#fff" stroke="${INK}" stroke-width="5"/><circle cx="65" cy="65" r="8" fill="${INK}"/>` +
+    `<path d="M130 100 L250 100 L250 124 L130 124 Z" fill="#ffe26a" stroke="${INK}" stroke-width="4"/>` +
+    [150, 170, 190, 210, 230].map((x, i) => `<path d="M${x} 100 v${i % 2 ? 8 : 14}" stroke="${INK}" stroke-width="3"/>`).join('') + `<rect x="246" y="94" width="10" height="36" rx="3" fill="${INK}"/></g>`;
+  return wrap('#e8e1ff',
+    `<ellipse cx="600" cy="560" rx="500" ry="24" fill="${INK}" opacity=".08"/>` +
+    `<rect x="140" y="300" width="920" height="240" rx="6" fill="#d9a066" ${S}/>` + planks +
+    `<rect x="140" y="300" width="920" height="240" rx="6" fill="none" ${S}/>` + box + tape);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -253,6 +280,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-topsoil-do-i-need': { svg: topsoil, alt: 'Illustration of a wheelbarrow full of topsoil next to a raised bed with seedlings' },
   'how-to-calculate-tdee': { svg: tdee, alt: 'Illustration of a calorie gauge with a flame, an apple and a dumbbell' },
   'how-to-calculate-days-between-two-dates': { svg: dateDiff, alt: 'Illustration of a calendar page with a start and end date circled and the days between them highlighted, next to a clock and an hourglass' },
+  'how-much-flooring-do-i-need': { svg: flooring, alt: 'Illustration of a floor of staggered wooden planks with an open box of boards and a tape measure' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -350,5 +378,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-electricity-does-a-dishwasher-use': {
     'What each load costs': { svg: barChart([{ label: '3 loads a week', value: 2.39, text: '$2.39' }, { label: '5 loads a week', value: 3.98, text: '$3.98' }, { label: '7 loads a week', value: 5.57, text: '$5.57' }], ' /mo'), caption: 'Monthly cost at 1.08 kWh per cycle and $0.17/kWh.', alt: 'Bar chart of dishwasher monthly cost: $2.39, $3.98 and $5.57' },
+  },
+  'how-much-flooring-do-i-need': {
+    'How much extra flooring to buy': { svg: barChart([{ label: 'Room area only', value: 210, text: '210' }, { label: '+5% simple room', value: 220.5, text: '221' }, { label: '+10% most rooms', value: 231, text: '231' }, { label: '+15% diagonal', value: 241.5, text: '242' }, { label: '+20% herringbone', value: 252, text: '252' }], ' sq ft'), caption: 'Flooring to buy for a 210 sq ft room at each waste allowance, before rounding up to whole boxes.', alt: 'Bar chart: 210 sq ft room needs 221 sq ft at 5% waste, 231 at 10%, 242 at 15% and 252 at 20%' },
   },
 };
