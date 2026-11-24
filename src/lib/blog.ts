@@ -486,6 +486,47 @@ ${table(['Price per sq ft', 'Cost for 240 sq ft (12 boxes)'], [['$2.00', '$480']
       { q: 'How many boxes of flooring do I need for 200 square feet?', a: 'With 10% waste you need 220 sq ft. That is 11 boxes at 20 sq ft per box, or 9 boxes at 25 sq ft per box (220 ÷ 25 = 8.8, rounded up).' },
     ],
   },
+  {
+    slug: 'how-many-tiles-do-i-need',
+    title: 'How Many Tiles Do I Need? Floors, Walls, Boxes & Waste',
+    metaDescription: 'How many tiles do I need: area ÷ tile size including the grout joint, plus 10–15% waste, rounded up to boxes. Tables for common tile sizes and examples.',
+    focusKeyword: 'how many tiles do i need',
+    h1: 'How many tiles do I need?',
+    published: '2026-11-24', updated: '2026-11-24',
+    tools: ['tile-calculator', 'flooring-calculator', 'paint-calculator'],
+    summary: 'Work out the area in square feet, divide by the area one tile covers (including its grout joint), add 10% for cuts and breakage (15% for diagonal or herringbone) and round up to whole boxes. A 12 × 10 ft floor in 12 × 12 in tiles with a 1/8 in joint needs about 118 tiles, or 130 with 10% waste.',
+    body: [
+      { h2: 'The five-step method', html: `<p>Tiles are counted one by one but sold by the box, so the sum has five short steps:</p>
+<ol><li><strong>Measure the area</strong> in feet (length × width). Split L-shaped floors and walls into rectangles and add them up.</li><li><strong>Find the area of one tile</strong>, adding the grout joint to each side: (tile length + joint) × (tile width + joint), in inches, then divide by 144 to get square feet.</li><li><strong>Divide</strong> the area by the tile area.</li><li><strong>Add waste</strong> — usually 10% — and round up to a whole tile.</li><li><strong>Divide by the tiles per box</strong> and round up again.</li></ol>
+<p><strong>Example:</strong> a 12 × 10 ft kitchen is 120 sq ft. A 12 × 12 in tile with a 1/8 in joint covers 12.125 × 12.125 ÷ 144 = 1.021 sq ft. 120 ÷ 1.021 = 117.5 tiles. With 10% waste: 117.5 × 1.10 = 129.3, so you need <strong>130 tiles</strong>.</p>
+<p>The ${L('tile-calculator', 'tile calculator')} does these steps for you in feet and inches or metres and centimetres, and adds boxes and cost if you enter them.</p>` },
+      { h2: 'Tiles per square foot for common sizes', html: `<p>Once you know how many tiles one square foot takes, any area is a single multiplication. The figures below include the grout joint shown, before waste:</p>
+${table(['Tile size', 'Joint', 'Tiles per sq ft', 'Tiles per 100 sq ft'], [['3 × 6 in (subway)', '1/16 in', '7.76', 776], ['4 × 4 in', '1/8 in', '8.46', 846], ['6 × 6 in', '1/8 in', '3.84', 384], ['12 × 12 in', '1/8 in', '0.98', 98], ['6 × 24 in (plank)', '1/8 in', '0.97', 98], ['12 × 24 in', '1/8 in', '0.49', 49], ['18 × 18 in', '1/8 in', '0.44', 44], ['24 × 24 in', '1/8 in', '0.25', 25]])}
+<p>The joint makes the biggest difference with small tiles. A 4 × 4 in tile with no gap would be exactly 9 per square foot; with a 1/8 in joint it is 8.46, about 6% fewer. For a 12 × 12 in tile the joint saves only about 2%, so in the kitchen example ignoring it gives 132 tiles instead of 130 — harmless, just a couple of spares.</p>
+<p>Tile sizes are nominal. A “12 × 12” tile may measure 11.8 in, so check the actual size on the box when you want an exact count, especially for large orders of small tiles.</p>` },
+      { h2: 'How much extra tile to buy', html: `<p>Every row that meets a wall, a doorway or a toilet flange ends in a cut, and some offcuts are too small to use. Tiles also crack when cut or dropped. The waste allowance covers both, and it depends mostly on the pattern:</p>
+${table(['Layout', 'Waste', '120 sq ft in 12 × 24 in tiles'], [['Straight lay, simple room', '5–10%', '63–65 tiles'], ['Brick or offset pattern', '10%', '65 tiles'], ['Diagonal (45°) or herringbone', '15%', '68 tiles'], ['Large tiles in a small, busy room', '20%', '71 tiles']])}
+<p>Without waste the same floor needs 59.1 tiles, so the difference between 5% and 20% is eight tiles — often a single box. Adding waste is a simple percentage increase: multiply by 1.10 for 10% or 1.15 for 15%, the same arithmetic as in our guide to ${L('blog/how-to-calculate-percentage-increase', 'calculating a percentage increase')}.</p>
+<p>Keep the leftover tiles. Tiles from a later production run often differ slightly in shade, so a few spares from the original lot are the easiest way to repair a cracked tile years later.</p>` },
+      { h2: 'Wall tiles: backsplashes and showers', html: `<p>Walls work exactly like floors: measure each wall as width × height of the tiled part only.</p>
+<p><strong>Kitchen backsplash.</strong> A run of counter 15 ft long, tiled 18 in (1.5 ft) up to the wall cabinets, is 15 × 1.5 = 22.5 sq ft. In 3 × 6 in subway tile with a 1/16 in joint, each tile covers 0.129 sq ft, so 22.5 ÷ 0.129 = 174.5 tiles, and <strong>192 tiles</strong> with 10% waste. Leave the outlets in the count — the cut-outs produce waste, not savings.</p>
+<p><strong>Tub surround.</strong> A standard 5 ft tub has a back wall 5 ft wide and two end walls about 2.5 ft wide. Tiled 6 ft high, that is (5 + 2.5 + 2.5) × 6 = 60 sq ft. In 12 × 24 in tiles: 60 ÷ 2.03 = 29.5 tiles, and with 15% waste for the cuts around the valve, niche and corners, <strong>34 tiles</strong>.</p>
+<p>Subtract a window or a doorway only if it is large; small openings create as many cuts as they save. Trim pieces such as bullnose or edge profiles are sold by the linear foot, so measure the edges separately.</p>` },
+      { h2: 'From tiles to boxes and cost', html: `<p>Box sizes vary by product, so use the count on the label. For the kitchen floor (130 tiles of 12 × 12 in), with 15 tiles in a box: 130 ÷ 15 = 8.7, so you buy <strong>9 boxes</strong>, which is 135 tiles or 135 sq ft.</p>
+<p>Price the order on what you actually buy, not on the room area:</p>
+${table(['Tile price per sq ft', 'Cost of 9 boxes (135 sq ft)'], [['$1.50', '$202.50'], ['$3.00', '$405'], ['$5.00', '$675'], ['$8.00', '$1,080']])}
+<p>The tile is only part of the bill. Thinset mortar, grout, spacers, backer board or an uncoupling membrane, and edge trim are all extra, and each product lists its own coverage on the bag or roll. Installation is usually quoted per square foot. Prices vary by store and region, so use the table to set up your own sum.</p>
+<p>Laying planks or vinyl in the next room instead? Our guide to ${L('blog/how-much-flooring-do-i-need', 'how much flooring you need')} uses the same area-plus-waste method, counted in boxes of square feet.</p>` },
+      { h2: 'Working in square metres', html: `<p>In metric, measure in metres and the tile in centimetres. A 2.4 × 1.8 m bathroom floor is 4.32 m². A 30 × 30 cm tile with a 3 mm joint covers 0.303 × 0.303 = 0.0918 m², so 4.32 ÷ 0.0918 = 47.1 tiles and <strong>52 tiles</strong> with 10% waste. In packs of 11 that is 5 packs.</p>
+<p>The same floor in 60 × 60 cm tiles needs 4.32 ÷ 0.364 = 11.9 tiles, or <strong>14</strong> with waste — 4 packs of 4. Large tiles cut the count but not the waste: each cut piece is bigger, so add 15% in a small room.</p>
+<p>As a quick check, a square metre takes about 10.9 tiles of 30 × 30 cm or 2.75 tiles of 60 × 60 cm with a 3 mm joint. Mixing units? The ${L('cm-to-inches', 'cm to inches converter')} helps with tile sizes. Repainting the walls once the tiling is done? The ${L('paint-calculator', 'paint calculator')} works out the gallons or litres.</p>` },
+    ],
+    faqs: [
+      { q: 'How do I calculate how many tiles I need?', a: 'Multiply the length by the width of the area, divide by the area of one tile including the grout joint, then add 10% for waste (15% for diagonal or herringbone). Round up to whole tiles and then to whole boxes.' },
+      { q: 'How many 12 × 12 tiles do I need for 100 square feet?', a: 'About 98 tiles with a 1/8 in grout joint, or 100 if you ignore the joint. With 10% waste, buy 108 tiles.' },
+      { q: 'How much extra tile should I buy?', a: 'Add 10% for a straight or offset layout, 15% for diagonal or herringbone, and up to 20% for large tiles in a small room with many cuts. Keep the spare tiles for future repairs.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

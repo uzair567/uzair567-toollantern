@@ -265,6 +265,27 @@ function flooring() {
     `<rect x="140" y="300" width="920" height="240" rx="6" fill="none" ${S}/>` + box + tape);
 }
 
+function tiles() {
+  // a tiled floor with grout lines, a stack of spare tiles, a notched trowel and tile spacers
+  const r = rand(31);
+  const cols = ['#9fd8d0', '#7cc4ba', '#bfe6e0', '#5bb0a5'];
+  let grid = '';
+  for (let row = 0; row < 4; row++) for (let col = 0; col < 9; col++) {
+    const x = 150 + col * 100, y = 330 + row * 52;
+    grid += `<rect x="${x + 5}" y="${y + 4}" width="90" height="44" rx="4" fill="${cols[Math.floor(r() * 4)]}" stroke="${INK}" stroke-width="3"/>`;
+  }
+  const stack = `<g transform="translate(230 150)">` + [0, 1, 2, 3].map((i) => `<path d="M0 ${120 - i * 22} L120 ${90 - i * 22} L220 ${120 - i * 22} L100 ${150 - i * 22} Z" fill="${i % 2 ? '#bfe6e0' : '#9fd8d0'}" ${S}/><path d="M0 ${120 - i * 22} L100 ${150 - i * 22} L100 ${164 - i * 22} L0 ${134 - i * 22} Z" fill="#5bb0a5" ${S}/><path d="M100 ${150 - i * 22} L220 ${120 - i * 22} L220 ${134 - i * 22} L100 ${164 - i * 22} Z" fill="#7cc4ba" ${S}/>`).join('') + `</g>`;
+  const trowel = `<g transform="translate(760 120) rotate(12)"><path d="M0 60 L200 60 L200 150 L0 150 Z" fill="#c3c9cf" ${S}/>` +
+    [20, 50, 80, 110, 140, 170].map((x) => `<path d="M${x} 150 l12 0 l-6 12 z" fill="${INK}"/>`).join('') +
+    `<path d="M100 60 L100 30" stroke="${INK}" stroke-width="10" stroke-linecap="round"/><rect x="40" y="0" width="120" height="34" rx="17" fill="${AMBER}" ${S}/></g>`;
+  const spacer = (x: number, y: number) => `<path d="M${x - 6} ${y - 20} h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 v-12 h14 z" fill="#fff" stroke="${INK}" stroke-width="3"/>`;
+  return wrap('#ffe9d6',
+    `<ellipse cx="600" cy="565" rx="500" ry="22" fill="${INK}" opacity=".08"/>` +
+    `<rect x="150" y="330" width="900" height="208" rx="6" fill="#fff" ${S}/>` + grid +
+    `<rect x="150" y="330" width="900" height="208" rx="6" fill="none" ${S}/>` + stack + trowel +
+    spacer(640, 250) + spacer(690, 285) + spacer(600, 300));
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -281,6 +302,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-to-calculate-tdee': { svg: tdee, alt: 'Illustration of a calorie gauge with a flame, an apple and a dumbbell' },
   'how-to-calculate-days-between-two-dates': { svg: dateDiff, alt: 'Illustration of a calendar page with a start and end date circled and the days between them highlighted, next to a clock and an hourglass' },
   'how-much-flooring-do-i-need': { svg: flooring, alt: 'Illustration of a floor of staggered wooden planks with an open box of boards and a tape measure' },
+  'how-many-tiles-do-i-need': { svg: tiles, alt: 'Illustration of a tiled floor with grout lines, a stack of spare tiles, a notched trowel and tile spacers' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -378,6 +400,9 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-electricity-does-a-dishwasher-use': {
     'What each load costs': { svg: barChart([{ label: '3 loads a week', value: 2.39, text: '$2.39' }, { label: '5 loads a week', value: 3.98, text: '$3.98' }, { label: '7 loads a week', value: 5.57, text: '$5.57' }], ' /mo'), caption: 'Monthly cost at 1.08 kWh per cycle and $0.17/kWh.', alt: 'Bar chart of dishwasher monthly cost: $2.39, $3.98 and $5.57' },
+  },
+  'how-many-tiles-do-i-need': {
+    'Tiles per square foot for common sizes': { svg: barChart([{ label: '24 × 24 in', value: 25, text: '25' }, { label: '12 × 24 in', value: 49, text: '49' }, { label: '12 × 12 in', value: 98, text: '98' }, { label: '6 × 6 in', value: 384, text: '384' }, { label: '4 × 4 in', value: 846, text: '846' }], ' tiles'), caption: 'Tiles needed for 100 sq ft with a 1/8 in grout joint, before adding waste.', alt: 'Bar chart of tiles per 100 sq ft: 25 for 24 × 24 in, 49 for 12 × 24 in, 98 for 12 × 12 in, 384 for 6 × 6 in and 846 for 4 × 4 in' },
   },
   'how-much-flooring-do-i-need': {
     'How much extra flooring to buy': { svg: barChart([{ label: 'Room area only', value: 210, text: '210' }, { label: '+5% simple room', value: 220.5, text: '221' }, { label: '+10% most rooms', value: 231, text: '231' }, { label: '+15% diagonal', value: 241.5, text: '242' }, { label: '+20% herringbone', value: 252, text: '252' }], ' sq ft'), caption: 'Flooring to buy for a 210 sq ft room at each waste allowance, before rounding up to whole boxes.', alt: 'Bar chart: 210 sq ft room needs 221 sq ft at 5% waste, 231 at 10%, 242 at 15% and 252 at 20%' },
