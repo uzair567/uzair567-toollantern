@@ -527,6 +527,45 @@ ${table(['Tile price per sq ft', 'Cost of 9 boxes (135 sq ft)'], [['$1.50', '$20
       { q: 'How much extra tile should I buy?', a: 'Add 10% for a straight or offset layout, 15% for diagonal or herringbone, and up to 20% for large tiles in a small room with many cuts. Keep the spare tiles for future repairs.' },
     ],
   },
+  {
+    slug: 'how-much-paint-do-i-need',
+    title: 'How Much Paint Do I Need? Gallons for Walls & Ceilings',
+    metaDescription: 'How much paint do I need: wall area minus doors and windows, times coats, divided by coverage. Gallons for common room sizes, ceilings, trim and litres.',
+    focusKeyword: 'how much paint do i need',
+    h1: 'How much paint do I need?',
+    published: '2026-11-25', updated: '2026-11-25',
+    tools: ['paint-calculator', 'flooring-calculator', 'tile-calculator'],
+    summary: 'Add up the wall lengths, multiply by the wall height, subtract about 21 sq ft per door and 15 sq ft per window, multiply by the number of coats and divide by the coverage on the can (about 350 sq ft per gallon). A 12 × 12 ft room with 8 ft walls, one door and one window needs about 2 gallons for two coats.',
+    body: [
+      { h2: 'The four-step method', html: `<p>Paint is bought by the can, but every can tells you how much area it covers per coat, so the job comes down to working out the area you are painting:</p>
+<ol><li><strong>Measure the walls.</strong> Add the lengths of all the walls (the perimeter of the room) and multiply by the wall height, in feet.</li><li><strong>Subtract the openings.</strong> Take off about 21 sq ft for each standard door and 15 sq ft for each window.</li><li><strong>Multiply by the number of coats</strong> — two for a colour change or fresh walls.</li><li><strong>Divide by the coverage</strong> printed on the can. About 350 sq ft per US gallon is a fair figure for smooth, sound walls.</li></ol>
+<p><strong>Example:</strong> a 12 × 12 ft bedroom with 8 ft walls has a perimeter of 48 ft, so the walls are 48 × 8 = 384 sq ft. Take off one door and one window: 384 − 21 − 15 = 348 sq ft. Two coats is 696 sq ft of painting, and 696 ÷ 350 = 1.99, so <strong>2 gallons</strong> does the walls.</p>
+<p>The ${L('paint-calculator', 'paint calculator')} runs the same steps in feet or metres, and adds the ceiling if you tick it.</p>` },
+      { h2: 'Paint for common room sizes', html: `<p>Here is the same sum for a few typical rooms, with 8 ft walls, two coats and 350 sq ft per gallon. “To buy” rounds up to the cans you can actually get, using a quart (a quarter gallon) where it is enough to close the gap:</p>
+${table(['Room', 'Doors / windows', 'Wall area to paint', 'Gallons (2 coats)', 'To buy'], [['10 × 10 ft', '1 / 1', '284 sq ft', '1.62', '2 gallons'], ['12 × 12 ft', '1 / 1', '348 sq ft', '1.99', '2 gallons'], ['14 × 12 ft', '1 / 2', '365 sq ft', '2.09', '2 gallons + 1 quart'], ['16 × 12 ft', '1 / 2', '397 sq ft', '2.27', '3 gallons'], ['20 × 15 ft', '2 / 3', '473 sq ft', '2.70', '3 gallons']])}
+<p>Ceiling height matters more than most people expect. The 12 × 12 ft room with 9 ft walls has 396 sq ft to paint instead of 348 and needs 2.26 gallons — one extra foot of height adds 48 sq ft, the same as the perimeter.</p>
+<p>The figures assume one colour on every wall. For an accent wall, work it out on its own: a 12 ft wall at 8 ft high is 96 sq ft, or 192 sq ft for two coats, so a single gallon is plenty and a quart (about 87 sq ft per coat) is not.</p>` },
+      { h2: 'How far a gallon really goes', html: `<p>The coverage on the label is measured on smooth, primed, non-porous surfaces. Real walls are often rougher or thirstier, and the coverage you get can drop by a quarter or more. This is how the 348 sq ft bedroom changes with the surface:</p>
+${table(['Surface', 'Coverage per gallon', 'Gallons for 348 sq ft, 2 coats'], [['Smooth, previously painted', '400 sq ft', '1.74'], ['Typical walls (label figure)', '350 sq ft', '1.99'], ['Light texture, patched areas', '300 sq ft', '2.32'], ['Heavy texture, bare plaster, rough wood', '250 sq ft', '2.78']])}
+<p>Rollers with a thicker nap hold more paint for textured walls, which also lowers the coverage. If you are unsure, use 300 sq ft per gallon for planning; any paint you do not open can usually be returned, and a part-used can is useful for touch-ups.</p>
+<p>In metric, the label usually gives 10–12 m² per litre per coat. Use the lower number unless the walls are smooth and already painted.</p>` },
+      { h2: 'Ceilings, trim and doors', html: `<p><strong>Ceilings</strong> are just length × width. The 12 × 12 ft room has a 144 sq ft ceiling, which is 288 sq ft for two coats, or 0.82 gallons — buy one gallon. Ceiling paint often lists slightly lower coverage than wall paint because it is thicker, so check the can.</p>
+<p><strong>Trim</strong> is usually painted in a different sheen, so it needs its own can. Estimate it as length × height in feet:</p>
+<ul><li>Baseboard: 48 ft of 5 in board is 48 × 5 ÷ 12 = 20 sq ft.</li><li>Door casing: about 17 ft of 3.5 in casing, roughly 5 sq ft per side.</li><li>Window casing: about 14 ft of 3.5 in casing, roughly 4 sq ft.</li></ul>
+<p>That is about 29 sq ft, or 58 sq ft for two coats, so <strong>one quart</strong> covers the trim of a typical bedroom. Painting the door itself as well adds about 21 sq ft per side per coat; doing both sides with two coats is 84 sq ft, which takes the total to about 142 sq ft — more than one quart covers — so buy two quarts, or a gallon if you are doing several doors.</p>` },
+      { h2: 'Primer and the number of coats', html: `<p><strong>One coat</strong> is enough only when you are refreshing the same colour with a good paint over sound walls. <strong>Two coats</strong> is the normal plan for any colour change and gives the even finish the manufacturer’s colour card shows. Plan on <strong>three</strong> when going from a dark colour to a light one without primer, or when using some bright reds and yellows that cover poorly.</p>
+<p>Use a <strong>primer</strong> on new drywall, fresh plaster, bare wood, water stains, or when making a big jump in colour. Count primer as its own coat with its own coverage figure from its label, and then usually two coats of paint on top. For the 348 sq ft bedroom, one coat of primer at 300 sq ft per gallon is 1.16 gallons, so you would buy primer separately — two gallons, or one gallon and a quart.</p>
+<p>“Paint and primer in one” products still need two coats on bare surfaces; they save a step on previously painted walls, not on new drywall.</p>` },
+      { h2: 'Buying the right cans, and working in litres', html: `<p>Paint usually comes in quarts, gallons and 5-gallon buckets. A quart costs more per gallon than a gallon can, so it only makes sense to close a small gap. If you need more than about four gallons of one colour, a 5-gallon bucket is normally cheaper, and it also avoids small colour differences between cans. If you do buy several gallons, mix them together in a bucket before you start (painters call this “boxing” the paint) so every wall matches.</p>
+<p><strong>In metric</strong>, measure in metres. A 4 × 3.5 m room with 2.5 m walls has a perimeter of 15 m, so the walls are 37.5 m². Subtract a door (about 1.9 m²) and a window (about 1.4 m²) to get 34.2 m². Two coats at 10 m² per litre is 6.84 litres — <strong>a 5 litre and a 2.5 litre tin</strong> (7.5 litres). The ceiling is 14 m², which is 2.8 litres for two coats, so a 2.5 litre tin is not quite enough and a second small tin or a 5 litre tin is needed.</p>
+<p>Painting is often one part of a bigger refresh. If the floor is next, our guide to ${L('blog/how-much-flooring-do-i-need', 'how much flooring you need')} uses the same measure-and-round-up approach, and so does the guide to ${L('blog/how-many-tiles-do-i-need', 'how many tiles you need')} for a kitchen or bathroom.</p>` },
+    ],
+    faqs: [
+      { q: 'How much paint do I need for a 12 × 12 room?', a: 'With 8 ft walls, one door and one window, the walls are about 348 sq ft. Two coats at 350 sq ft per gallon is 1.99 gallons, so buy 2 gallons. Add one more gallon if you are painting the ceiling.' },
+      { q: 'How many square feet does a gallon of paint cover?', a: 'Most interior paint covers 350–400 sq ft per gallon per coat on smooth, primed walls. Textured, patched or porous walls can bring that down to 250–300 sq ft.' },
+      { q: 'How many gallons of paint do I need for 1,000 square feet?', a: 'For 1,000 sq ft of wall with two coats, you are painting 2,000 sq ft. At 350 sq ft per gallon that is 5.7 gallons, so buy 6 gallons, or a 5-gallon bucket plus one gallon.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

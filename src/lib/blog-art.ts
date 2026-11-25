@@ -286,6 +286,29 @@ function tiles() {
     spacer(640, 250) + spacer(690, 285) + spacer(600, 300));
 }
 
+function paint() {
+  // a wall half-painted in a fresh colour, an open paint can, a roller and a tray
+  const wall = `<rect x="150" y="90" width="900" height="400" rx="8" fill="#fff" ${S}/>` +
+    `<path d="M150 98 Q150 90 158 90 L640 90 L640 490 L158 490 Q150 490 150 482 Z" fill="#7cc4ba"/>` +
+    `<path d="M640 90 L640 470 q-14 18 -28 0 L612 490" fill="none"/>` +
+    `<path d="M640 90 L655 90 L655 300 q0 22 -8 22 q-7 0 -7 -22 Z" fill="#7cc4ba"/><path d="M640 90 L640 410 q0 26 9 26 q9 0 9 -26 L658 330" fill="#7cc4ba"/>` +
+    `<rect x="150" y="90" width="900" height="400" rx="8" fill="none" ${S}/>` +
+    `<rect x="150" y="470" width="900" height="20" fill="#e8e1ff" ${S}/>`;
+  const roller = `<g transform="translate(720 150) rotate(-12)"><rect x="0" y="0" width="190" height="62" rx="20" fill="#7cc4ba" ${S}/>` +
+    `<path d="M190 31 L230 31 L230 120 L120 120 L120 200" fill="none" stroke="${INK}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>` +
+    `<rect x="104" y="196" width="32" height="110" rx="14" fill="${AMBER}" ${S}/></g>`;
+  const can = `<g transform="translate(250 330)"><ellipse cx="100" cy="30" rx="100" ry="28" fill="#5bb0a5" ${S}/>` +
+    `<path d="M0 30 L0 190 Q100 226 200 190 L200 30 Q100 58 0 30 Z" fill="#c3c9cf" ${S}/>` +
+    `<path d="M0 80 Q100 108 200 80 L200 150 Q100 178 0 150 Z" fill="${AMBER}" ${S}/>` +
+    `<ellipse cx="100" cy="30" rx="80" ry="18" fill="#7cc4ba" stroke="${INK}" stroke-width="4"/>` +
+    `<path d="M10 40 q4 40 14 40 q10 0 10 -30" fill="#7cc4ba" stroke="${INK}" stroke-width="4"/>` +
+    `<path d="M0 30 Q-30 -60 100 -70 Q230 -60 200 30" fill="none" stroke="${INK}" stroke-width="5"/></g>`;
+  const tray = `<g transform="translate(560 470)"><path d="M0 0 L260 0 L230 70 L40 70 Z" fill="#9aa3ad" ${S}/><path d="M20 12 L150 12 L140 52 L46 52 Z" fill="#7cc4ba" stroke="${INK}" stroke-width="4"/>` +
+    [170, 195, 220].map((x) => `<path d="M${x} 10 l-14 50" stroke="${INK}" stroke-width="3" opacity=".5"/>`).join('') + `</g>`;
+  return wrap('#fff1c9',
+    `<ellipse cx="600" cy="575" rx="520" ry="22" fill="${INK}" opacity=".08"/>` + wall + can + tray + roller);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -303,6 +326,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-to-calculate-days-between-two-dates': { svg: dateDiff, alt: 'Illustration of a calendar page with a start and end date circled and the days between them highlighted, next to a clock and an hourglass' },
   'how-much-flooring-do-i-need': { svg: flooring, alt: 'Illustration of a floor of staggered wooden planks with an open box of boards and a tape measure' },
   'how-many-tiles-do-i-need': { svg: tiles, alt: 'Illustration of a tiled floor with grout lines, a stack of spare tiles, a notched trowel and tile spacers' },
+  'how-much-paint-do-i-need': { svg: paint, alt: 'Illustration of a wall half painted in a fresh teal colour with an open paint can, a roller and a paint tray' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -406,5 +430,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-flooring-do-i-need': {
     'How much extra flooring to buy': { svg: barChart([{ label: 'Room area only', value: 210, text: '210' }, { label: '+5% simple room', value: 220.5, text: '221' }, { label: '+10% most rooms', value: 231, text: '231' }, { label: '+15% diagonal', value: 241.5, text: '242' }, { label: '+20% herringbone', value: 252, text: '252' }], ' sq ft'), caption: 'Flooring to buy for a 210 sq ft room at each waste allowance, before rounding up to whole boxes.', alt: 'Bar chart: 210 sq ft room needs 221 sq ft at 5% waste, 231 at 10%, 242 at 15% and 252 at 20%' },
+  },
+  'how-much-paint-do-i-need': {
+    'Paint for common room sizes': { svg: barChart([{ label: '10 × 10 ft', value: 1.62, text: '1.62' }, { label: '12 × 12 ft', value: 1.99, text: '1.99' }, { label: '14 × 12 ft', value: 2.09, text: '2.09' }, { label: '16 × 12 ft', value: 2.27, text: '2.27' }, { label: '20 × 15 ft', value: 2.7, text: '2.70' }], ' gal'), caption: 'Wall paint for two coats at 350 sq ft per gallon, 8 ft walls, doors and windows subtracted.', alt: 'Bar chart of gallons of wall paint for two coats: 1.62 for a 10 × 10 ft room, 1.99 for 12 × 12, 2.09 for 14 × 12, 2.27 for 16 × 12 and 2.70 for 20 × 15' },
   },
 };
