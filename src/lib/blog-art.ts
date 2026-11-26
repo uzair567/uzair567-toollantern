@@ -309,6 +309,27 @@ function paint() {
     `<ellipse cx="600" cy="575" rx="520" ry="22" fill="${INK}" opacity=".08"/>` + wall + can + tray + roller);
 }
 
+function concrete() {
+  // a fresh slab inside wooden forms with a bull float, a stack of premix bags and a wheelbarrow of wet concrete
+  const r = rand(43);
+  let speckle = '';
+  for (let i = 0; i < 60; i++) {
+    const x = 250 + r() * 560, y = 345 + r() * 120;
+    speckle += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(2 + r() * 3).toFixed(1)}" fill="${INK}" opacity=".14"/>`;
+  }
+  const slab = `<path d="M200 330 L860 330 L940 480 L120 480 Z" fill="#c3c9cf" ${S}/>` +
+    `<path d="M120 480 L940 480 L940 510 L120 510 Z" fill="#d9a066" ${S}/><path d="M200 330 L860 330 L860 312 L200 312 Z" fill="#e3b27c" ${S}/>` +
+    `<path d="M200 312 L120 480 L104 480 L186 312 Z" fill="#e3b27c" ${S}/><path d="M860 312 L940 480 L956 480 L874 312 Z" fill="#e3b27c" ${S}/>` +
+    speckle + `<path d="M300 380 Q420 360 540 380 M480 430 Q620 410 760 430" fill="none" stroke="#fff" stroke-width="6" opacity=".6" stroke-linecap="round"/>`;
+  const flt = `<g transform="translate(520 360) rotate(-8)"><rect x="-90" y="0" width="180" height="26" rx="8" fill="#9aa3ad" ${S}/><path d="M0 0 L130 -230" stroke="${INK}" stroke-width="10" stroke-linecap="round"/><path d="M0 0 L130 -230" stroke="${AMBER}" stroke-width="4" stroke-linecap="round"/></g>`;
+  const bag = (x: number, y: number) => `<g transform="translate(${x} ${y})"><path d="M0 14 Q0 0 14 0 L156 0 Q170 0 170 14 L174 64 Q174 78 160 78 L10 78 Q-4 78 -4 64 Z" fill="#fff" ${S}/><rect x="0" y="26" width="170" height="26" fill="${AMBER}" stroke="${INK}" stroke-width="4"/><circle cx="85" cy="39" r="7" fill="${INK}"/></g>`;
+  const bags = bag(985, 432) + bag(995, 356) + bag(980, 280);
+  const barrow = `<g transform="translate(170 96)"><path d="M0 40 L230 40 L190 130 L40 130 Z" fill="${BLUE}" ${S}/><path d="M10 40 Q115 0 220 40 Z" fill="#9aa3ad" ${S}/>` +
+    `<circle cx="70" cy="160" r="30" fill="${INK}"/><circle cx="70" cy="160" r="12" fill="#c3c9cf"/><path d="M190 130 L260 160 M40 130 L20 170" stroke="${INK}" stroke-width="9" stroke-linecap="round"/></g>`;
+  return wrap('#e4ecf7',
+    `<ellipse cx="560" cy="560" rx="520" ry="26" fill="${INK}" opacity=".08"/>` + slab + flt + bags + barrow);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -327,6 +348,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-flooring-do-i-need': { svg: flooring, alt: 'Illustration of a floor of staggered wooden planks with an open box of boards and a tape measure' },
   'how-many-tiles-do-i-need': { svg: tiles, alt: 'Illustration of a tiled floor with grout lines, a stack of spare tiles, a notched trowel and tile spacers' },
   'how-much-paint-do-i-need': { svg: paint, alt: 'Illustration of a wall half painted in a fresh teal colour with an open paint can, a roller and a paint tray' },
+  'how-much-concrete-do-i-need': { svg: concrete, alt: 'Illustration of a freshly poured concrete slab in wooden forms with a bull float, a stack of premix bags and a wheelbarrow' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -433,5 +455,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-paint-do-i-need': {
     'Paint for common room sizes': { svg: barChart([{ label: '10 × 10 ft', value: 1.62, text: '1.62' }, { label: '12 × 12 ft', value: 1.99, text: '1.99' }, { label: '14 × 12 ft', value: 2.09, text: '2.09' }, { label: '16 × 12 ft', value: 2.27, text: '2.27' }, { label: '20 × 15 ft', value: 2.7, text: '2.70' }], ' gal'), caption: 'Wall paint for two coats at 350 sq ft per gallon, 8 ft walls, doors and windows subtracted.', alt: 'Bar chart of gallons of wall paint for two coats: 1.62 for a 10 × 10 ft room, 1.99 for 12 × 12, 2.09 for 14 × 12, 2.27 for 16 × 12 and 2.70 for 20 × 15' },
+  },
+  'how-much-concrete-do-i-need': {
+    'How thickness changes the amount': { svg: barChart([{ label: '3.5 inches', value: 54, text: '54' }, { label: '4 inches', value: 62, text: '62' }, { label: '5 inches', value: 77, text: '77' }, { label: '6 inches', value: 92, text: '92' }, { label: '8 inches', value: 123, text: '123' }], ' bags'), caption: '80 lb bags for a 10 × 10 ft slab at each thickness, including 10% extra.', alt: 'Bar chart of 80 lb concrete bags for a 10 by 10 ft slab: 54 at 3.5 inches, 62 at 4, 77 at 5, 92 at 6 and 123 at 8 inches' },
   },
 };

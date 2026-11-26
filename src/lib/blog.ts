@@ -566,6 +566,43 @@ ${table(['Surface', 'Coverage per gallon', 'Gallons for 348 sq ft, 2 coats'], [[
       { q: 'How many gallons of paint do I need for 1,000 square feet?', a: 'For 1,000 sq ft of wall with two coats, you are painting 2,000 sq ft. At 350 sq ft per gallon that is 5.7 gallons, so buy 6 gallons, or a 5-gallon bucket plus one gallon.' },
     ],
   },
+  {
+    slug: 'how-much-concrete-do-i-need',
+    title: 'How Much Concrete Do I Need? Slab Bags vs Cubic Yards',
+    metaDescription: 'How much concrete do I need for a slab: length × width × thickness in cubic yards, plus 80 lb and 60 lb bag counts for common slab sizes and thicknesses.',
+    focusKeyword: 'how much concrete do i need',
+    h1: 'How much concrete do I need for a slab?',
+    published: '2026-11-26', updated: '2026-11-26',
+    tools: ['concrete-calculator', 'gravel-calculator'],
+    summary: 'Multiply length × width in feet by the thickness in inches ÷ 12 to get cubic feet, then divide by 27 for cubic yards and add 10% extra. A 10 × 10 ft slab 4 inches thick is 33.3 cu ft, or 1.23 cubic yards — about 1.36 yards with extra, which is 62 bags of 80 lb premix or 82 bags of 60 lb.',
+    body: [
+      { h2: 'The slab formula', html: `<p>Concrete is ordered by volume, so every slab, patio or shed base comes down to one sum:</p>
+<ol><li><strong>Volume in cubic feet</strong> = length (ft) × width (ft) × thickness (in) ÷ 12.</li><li><strong>Cubic yards</strong> = cubic feet ÷ 27, because a cubic yard is 3 × 3 × 3 ft.</li><li><strong>Add extra</strong> — 10% is a safe default — for an uneven base, forms that bow slightly and what stays in the mixer or wheelbarrow.</li><li><strong>Bags</strong> = cubic feet (with the extra) ÷ the yield printed on the bag, rounded up.</li></ol>
+<p><strong>Example:</strong> a 10 × 10 ft patio, 4 inches thick, is 10 × 10 × 4 ÷ 12 = 33.3 cu ft. That is 33.3 ÷ 27 = 1.23 cubic yards. With 10% extra it is 36.7 cu ft, or 1.36 cubic yards. At 0.60 cu ft per 80 lb bag, 36.7 ÷ 0.60 = 61.1, so you need <strong>62 bags</strong>.</p>
+<p>The ${L('concrete-calculator', 'concrete calculator')} does the same steps in feet or metres and gives cubic yards, cubic metres and 80 lb, 60 lb and 25 kg bag counts at once.</p>` },
+      { h2: 'How many bags make a cubic yard', html: `<p>Premix bags are sold by weight, but what matters is the volume of concrete each bag makes once mixed with water. The yields below are the typical figures printed on standard concrete mix; check your bag, as high-strength and fast-setting mixes can differ slightly.</p>
+${table(['Bag size', 'Yield per bag', 'Bags per cubic yard', 'Bags per cubic metre'], [['40 lb', '0.30 cu ft', '90', 'about 118'], ['60 lb', '0.45 cu ft', '60', 'about 79'], ['80 lb', '0.60 cu ft', '45', 'about 59'], ['25 kg', 'about 0.012 m³', 'about 64', 'about 84']])}
+<p>A cubic yard made from 80 lb bags means lifting 45 × 80 = 3,600 lb of dry mix. That is why most people stop using bags at around one cubic yard: beyond that, the mixing becomes the hardest part of the job, and each batch needs to join the last one before it starts to set.</p>` },
+      { h2: 'Concrete for common slab sizes', html: `<p>Here is the sum for typical projects, with 10% extra included in the cubic yards to order and in the bag counts:</p>
+${table(['Slab', 'Thickness', 'Exact volume', 'Order (with 10%)', '80 lb bags', '60 lb bags'], [['4 × 4 ft pad', '4 in', '5.3 cu ft', '0.22 yd³', 10, 14], ['10 × 10 ft patio', '4 in', '33.3 cu ft', '1.36 yd³', 62, 82], ['12 × 12 ft shed base', '4 in', '48 cu ft', '1.96 yd³', 89, 118], ['10 × 20 ft patio', '4 in', '66.7 cu ft', '2.72 yd³', 123, 163], ['12 × 24 ft parking pad', '5 in', '120 cu ft', '4.89 yd³', 220, 294], ['24 × 24 ft garage', '6 in', '288 cu ft', '11.73 yd³', 528, 704]])}
+<p>A useful shortcut: at 4 inches thick, <strong>one cubic yard covers 81 sq ft</strong>. Divide the slab area by 81 and you have the cubic yards before the extra — 100 sq ft ÷ 81 = 1.23, matching the example above.</p>` },
+      { h2: 'How thickness changes the amount', html: `<p>Thickness has a bigger effect than most people expect, because every extra inch adds the full area again. For the same 10 × 10 ft slab:</p>
+${table(['Thickness', 'Typical use', 'Cubic yards (exact)', 'Area per cubic yard', '80 lb bags (with 10%)'], [['3.5 in', 'Light paths (the actual depth of a 2×4 form)', '1.08', '92.6 sq ft', 54], ['4 in', 'Patios, walkways, shed bases', '1.23', '81 sq ft', 62], ['5 in', 'Car parking pads', '1.54', '64.8 sq ft', 77], ['6 in', 'Driveways, garages, hot tub pads', '1.85', '54 sq ft', 92], ['8 in', 'Heavy vehicles, some footings', '2.47', '40.5 sq ft', 123]])}
+<p>Going from 4 to 6 inches uses 50% more concrete. Follow local code or the shed, hot tub or garage maker’s instructions for thickness and reinforcement rather than thinning the slab to save bags.</p>
+<p>Also measure the real depth of your forms. A 2×4 laid on edge is 3.5 inches, not 4, and a base that dips in the middle can add a quarter-inch or more across the whole slab — one more reason to keep the 10% extra.</p>` },
+      { h2: 'Bags or ready-mix?', html: `<p>There is no single crossover point, but these rules of thumb hold for most jobs:</p>
+<ul><li><strong>Under about 1 cubic yard</strong> (fence posts, small pads, steps): bags, mixed in a wheelbarrow or a rented drum mixer.</li><li><strong>About 1–2 cubic yards</strong>: either works. Bags mean 45–90 lifts of 80 lb and steady mixing; some suppliers rent a towable mixer trailer, and many ready-mix plants will deliver a small load for an extra short-load fee.</li><li><strong>More than about 2 cubic yards</strong>: order ready-mix. The whole slab is poured at once, so there are no weak joints between batches.</li></ul>
+<p>Prices vary a lot by region, so compare the bag count × your local bag price with a delivered quote that includes any short-load and delivery fees. When ordering ready-mix, round up to the supplier’s increment (often a quarter or half yard) and tell them the slab size and thickness so they can check your number.</p>` },
+      { h2: 'Metric, post holes and the gravel base', html: `<p><strong>In metric</strong>, work in metres: length × width × thickness in cm ÷ 100. A 3 × 3 m patio at 10 cm is 0.9 m³; with 10% extra it is 0.99 m³, or <strong>83 bags of 25 kg</strong> at about 0.012 m³ each. Ready-mix is ordered in cubic metres, usually in steps of 0.5 m³ or less.</p>
+<p><strong>Post holes</strong> are cylinders: π × radius² × depth. A 10 in wide hole 3 ft deep is 3.14 × (5 ÷ 12)² × 3 = 1.64 cu ft. A 4×4 post (3.5 × 3.5 in) takes up about 0.26 cu ft, leaving 1.38 cu ft, which is 2.3 bags of 80 lb — so allow <strong>3 bags per post</strong>.</p>
+<p><strong>The base:</strong> most slabs sit on about 4 inches of compacted gravel. For the 10 × 10 ft patio that is another 1.23 cubic yards of stone, or about 1.7 tons at 1.4 tons per yard — the ${L('gravel-calculator', 'gravel calculator')} converts it for you. Our guides to ${L('blog/how-many-tons-of-gravel-in-a-yard', 'how many tons of gravel are in a yard')} and ${L('blog/how-much-gravel-for-a-driveway', 'how much gravel a driveway needs')} explain the base layer in more detail.</p>` },
+    ],
+    faqs: [
+      { q: 'How many bags of concrete do I need for a 10 × 10 slab?', a: 'At 4 inches thick, a 10 × 10 ft slab is 33.3 cu ft. With 10% extra that is 36.7 cu ft, so you need 62 bags of 80 lb (0.60 cu ft each) or 82 bags of 60 lb (0.45 cu ft each).' },
+      { q: 'How many square feet does a yard of concrete cover?', a: 'One cubic yard covers 81 sq ft at 4 inches thick, 64.8 sq ft at 5 inches and 54 sq ft at 6 inches. Divide 324 by the thickness in inches to get the area for any depth.' },
+      { q: 'How many 80 lb bags of concrete are in a yard?', a: 'About 45, because a cubic yard is 27 cu ft and each 80 lb bag makes about 0.60 cu ft. You need about 60 bags of 60 lb or 90 bags of 40 lb for the same yard.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

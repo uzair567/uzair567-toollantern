@@ -12,6 +12,8 @@ Drafts are created in Gmail and sent by Uzair. Never contact the same address tw
 | 2026-10-30 | Renewable Energy Alaska Project (REAP) library | https://alaskarenewableenergy.org/library/appliance-energy-calculator/ | info@realaska.org | A current appliance cost calculator for your "Appliance Energy Calculator" library entry |
 | 2026-11-24 | New Jersey State Library — Ready Reference Guide (H. Husted) | https://libguides.njstatelib.org/ready_reference/calculators | hhusted@njstatelib.org | A suggestion for the Ready Reference "Calculators & Converters" page |
 | 2026-11-24 | University of the Fraser Valley Library — Electronic Reference Collection | https://libguides.ufv.ca/ElectronicReferenceCollection/conversion | refabby@ufv.ca | Unit converters for the "Conversion Tools" reference page |
+| 2026-11-26 | Florida Institute of Technology — Evans Library, Construction Management guide | https://libguides.lib.fit.edu/CON/internet_sources | library-reference@fit.edu | Free concrete and gravel calculators for the Construction Management "Internet Sources" guide |
+| 2026-11-26 | San Diego State University Library — Reference/Find Facts "Weights and Measures" | https://libguides.sdsu.edu/find-facts/weights | kjeffery@sdsu.edu | Unit converters for the "Weights and Measures" Find Facts page |
 
 Prospects with contact forms only (Uzair can paste a message himself):
 - Iowa State Yard and Garden — https://yardandgarden.extension.iastate.edu/how-to/how-determine-amount-mulch-needed-garden-bed (links to two small mulch calculators; "Ask a Question" form)
