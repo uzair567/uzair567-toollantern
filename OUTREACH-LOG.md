@@ -14,8 +14,11 @@ Drafts are created in Gmail and sent by Uzair. Never contact the same address tw
 | 2026-11-24 | University of the Fraser Valley Library — Electronic Reference Collection | https://libguides.ufv.ca/ElectronicReferenceCollection/conversion | refabby@ufv.ca | Unit converters for the "Conversion Tools" reference page |
 | 2026-11-26 | Florida Institute of Technology — Evans Library, Construction Management guide | https://libguides.lib.fit.edu/CON/internet_sources | library-reference@fit.edu | Free concrete and gravel calculators for the Construction Management "Internet Sources" guide |
 | 2026-11-26 | San Diego State University Library — Reference/Find Facts "Weights and Measures" | https://libguides.sdsu.edu/find-facts/weights | kjeffery@sdsu.edu | Unit converters for the "Weights and Measures" Find Facts page |
+| 2026-11-27 | Mount Allison University Libraries — "Currency, Time & Scientific Converters" | https://libraryguides.mta.ca/find_information/online_reference/converters | infodesk@mta.ca | Unit converters for the "Currency, Time & Scientific Converters" guide |
+| 2026-11-27 | ECPI University — Culinary Arts LibGuide (Shannon Simmons) | https://ecpi.libguides.com/Culinary | ssimmons@ecpi.edu | Oven temperature and weight converters for the Culinary Arts guide |
 
 Prospects with contact forms only (Uzair can paste a message himself):
+- Cleveland State University Michael Schwartz Library "Virtual Reference Desk: Converters & Calculators" — https://library.csuohio.edu/research/vrd/converters.html (no email on the page)
 - Iowa State Yard and Garden — https://yardandgarden.extension.iastate.edu/how-to/how-determine-amount-mulch-needed-garden-bed (links to two small mulch calculators; "Ask a Question" form)
 - IU Indianapolis Library — https://iu.libguides.com/factsandfigures/factsandfigures_calculators (Calculators & Converters guide; phone/contact page only, no email)
 - Auburn University Libraries "Calculations and Conversion Tools" — https://libguides.auburn.edu/conversions (has a Suggestions/Feedback form: aub.ie/lib-suggestions)

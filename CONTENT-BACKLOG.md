@@ -4,7 +4,6 @@ Rules: one guide per day at most, each tied to an existing calculator, 900–1,3
 original cover + figure in src/lib/blog-art.ts. Remove a line once its guide is published. Skip any topic that an
 existing guide already covers (check src/lib/blog.ts first).
 
-- how much does it cost to run a refrigerator → electricity-cost-calculator/refrigerator
 - how much does it cost to run a TV → electricity-cost-calculator/tv
 - how much does it cost to run a ceiling fan → electricity-cost-calculator/ceiling-fan
 - how much does it cost to run a washing machine → electricity-cost-calculator/washing-machine

@@ -330,6 +330,29 @@ function concrete() {
     `<ellipse cx="560" cy="560" rx="520" ry="26" fill="${INK}" opacity=".08"/>` + slab + flt + bags + barrow);
 }
 
+function refrigerator() {
+  const flake = (x: number, y: number, r: number) => [0, 60, 120].map((a) => { const t = (a * Math.PI) / 180, dx = Math.cos(t) * r, dy = Math.sin(t) * r; return `<path d="M${(x - dx).toFixed(1)} ${(y - dy).toFixed(1)} L${(x + dx).toFixed(1)} ${(y + dy).toFixed(1)}" stroke="${BLUE}" stroke-width="6" stroke-linecap="round"/>`; }).join('');
+  return wrap('#dff1ec',
+    `<ellipse cx="560" cy="575" rx="260" ry="20" fill="${INK}" opacity=".08"/>` +
+    `<rect x="420" y="70" width="280" height="495" rx="30" fill="#fff" ${S}/>` +
+    `<path d="M420 235 L700 235" ${S}/>` +
+    `<rect x="455" y="110" width="14" height="90" rx="7" fill="${INK}"/><rect x="455" y="270" width="14" height="140" rx="7" fill="${INK}"/>` +
+    `<rect x="560" y="120" width="100" height="70" rx="12" fill="#e8efff" stroke="${INK}" stroke-width="4"/>` + flake(610, 155, 22) +
+    `<rect x="440" y="560" width="30" height="14" rx="4" fill="${INK}"/><rect x="650" y="560" width="30" height="14" rx="4" fill="${INK}"/>` +
+    // open-door glimpse: shelf contents on the right
+    `<path d="M700 235 L860 270 L860 540 L700 565 Z" fill="${CREAM}" ${S}/>` +
+    `<path d="M715 330 L845 320 M715 430 L845 425" stroke="${INK}" stroke-width="5" opacity=".35"/>` +
+    `<rect x="735" y="275" width="26" height="48" rx="8" fill="${AMBER}" stroke="${INK}" stroke-width="4"/><rect x="775" y="285" width="44" height="34" rx="8" fill="#9ad4c2" stroke="${INK}" stroke-width="4"/>` +
+    `<circle cx="750" cy="405" r="18" fill="#ff8a65" stroke="${INK}" stroke-width="4"/><rect x="785" y="378" width="40" height="44" rx="6" fill="#fff" stroke="${INK}" stroke-width="4"/>` +
+    // plug and cord
+    `<path d="M420 500 Q330 520 300 470 Q270 420 230 430" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>` +
+    `<rect x="190" y="410" width="44" height="40" rx="8" fill="${AMBER}" ${S}/><path d="M190 420 L170 420 M190 440 L170 440" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>` +
+    // energy meter / coin
+    `<circle cx="260" cy="250" r="70" fill="${AMBER}" ${S}/><circle cx="260" cy="250" r="46" fill="none" stroke="${INK}" stroke-width="5" opacity=".35"/>` +
+    `<path d="M1000 210 L960 300 L995 300 L975 390 L1050 270 L1012 270 L1035 210 Z" fill="${AMBER}" ${S}/>` +
+    flake(960, 470, 26) + flake(320, 120, 16));
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -349,6 +372,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-tiles-do-i-need': { svg: tiles, alt: 'Illustration of a tiled floor with grout lines, a stack of spare tiles, a notched trowel and tile spacers' },
   'how-much-paint-do-i-need': { svg: paint, alt: 'Illustration of a wall half painted in a fresh teal colour with an open paint can, a roller and a paint tray' },
   'how-much-concrete-do-i-need': { svg: concrete, alt: 'Illustration of a freshly poured concrete slab in wooden forms with a bull float, a stack of premix bags and a wheelbarrow' },
+  'how-much-does-it-cost-to-run-a-refrigerator': { svg: refrigerator, alt: 'Illustration of a fridge-freezer with its door open to shelves of food, a plug, a coin, snowflakes and an electricity bolt' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -458,5 +482,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-concrete-do-i-need': {
     'How thickness changes the amount': { svg: barChart([{ label: '3.5 inches', value: 54, text: '54' }, { label: '4 inches', value: 62, text: '62' }, { label: '5 inches', value: 77, text: '77' }, { label: '6 inches', value: 92, text: '92' }, { label: '8 inches', value: 123, text: '123' }], ' bags'), caption: '80 lb bags for a 10 × 10 ft slab at each thickness, including 10% extra.', alt: 'Bar chart of 80 lb concrete bags for a 10 by 10 ft slab: 54 at 3.5 inches, 62 at 4, 77 at 5, 92 at 6 and 123 at 8 inches' },
+  },
+  'how-much-does-it-cost-to-run-a-refrigerator': {
+    'What different fridges cost to run': { svg: barChart([{ label: 'Mini fridge', value: 42.5, text: '$43' }, { label: 'Top-freezer 18 cu ft', value: 68, text: '$68' }, { label: 'Bottom-freezer', value: 93.5, text: '$94' }, { label: 'Side-by-side', value: 110.5, text: '$111' }, { label: '20-year-old fridge', value: 187, text: '$187' }], ' /yr'), caption: 'Yearly running cost at $0.17/kWh, using typical label kWh for each fridge type.', alt: 'Bar chart of yearly fridge running cost: $43 mini fridge, $68 top-freezer, $94 bottom-freezer, $111 side-by-side and $187 for a 20-year-old fridge' },
   },
 };

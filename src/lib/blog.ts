@@ -603,6 +603,43 @@ ${table(['Thickness', 'Typical use', 'Cubic yards (exact)', 'Area per cubic yard
       { q: 'How many 80 lb bags of concrete are in a yard?', a: 'About 45, because a cubic yard is 27 cu ft and each 80 lb bag makes about 0.60 cu ft. You need about 60 bags of 60 lb or 90 bags of 40 lb for the same yard.' },
     ],
   },
+  {
+    slug: 'how-much-does-it-cost-to-run-a-refrigerator',
+    title: 'How Much Does It Cost to Run a Refrigerator?',
+    metaDescription: 'How much does it cost to run a refrigerator per day, month and year? kWh by fridge type, the label method, old vs new fridges and easy savings.',
+    focusKeyword: 'cost to run a refrigerator',
+    h1: 'How much does it cost to run a refrigerator?',
+    published: '2026-11-27', updated: '2026-11-27',
+    tools: ['electricity-cost-calculator/refrigerator', 'electricity-cost-calculator/freezer', 'electricity-cost-calculator'],
+    summary: 'A typical modern fridge-freezer uses about 400–650 kWh a year, which is $68–111 a year or roughly $6–9 a month at $0.17/kWh. A 150 W fridge whose compressor runs 35% of the time uses 1.26 kWh a day — about 21¢ a day, $6.50 a month and $78 a year.',
+    body: [
+      { h2: 'The quickest method: read the energy label', html: `<p>A fridge is the one appliance that never switches off, so its cost is easiest to work out per year. Most fridges sold in the US carry a yellow EnergyGuide label (other countries have similar energy labels) that states the estimated <strong>kWh per year</strong> under standard test conditions. Turn that into money with one sum:</p>
+<p class="formula">Yearly cost = kWh per year × price per kWh</p>
+<p><strong>Example:</strong> a label of 450 kWh/year at $0.17/kWh is 450 × 0.17 = <strong>$76.50 a year</strong>. Divide by 12 for about $6.38 a month, or by 365 for about 21¢ a day.</p>
+<p>If the label is gone, look up the model number (usually on a sticker inside the fridge compartment) on the maker’s website or in an energy database. The label figure is a test-lab estimate; a fridge in a hot kitchen or one that is opened constantly will use somewhat more.</p>` },
+      { h2: 'The watts method: compressor duty cycle', html: `<p>Without a label, start from the running wattage on the rating plate. The catch is that the compressor does not run all day — it switches on when the inside warms up and off when it reaches the set temperature. The share of time it runs is the <strong>duty cycle</strong>, commonly 30–40% in a room-temperature kitchen.</p>
+<p class="formula">kWh per day = watts × 24 × duty cycle ÷ 1,000</p>
+<p><strong>Example:</strong> a 150 W fridge running 35% of the time uses 150 × 24 × 0.35 ÷ 1,000 = 1.26 kWh a day. That is 1.26 × 365 = 460 kWh a year, and 460 × $0.17 = <strong>about $78 a year</strong>.</p>
+${table(['Duty cycle', 'Where you might see it', 'kWh per year', 'Cost per year'], [['30%', 'Cool kitchen, door rarely opened', '394', '$67'], ['35%', 'Typical kitchen', '460', '$78'], ['40%', 'Warm kitchen, busy family', '526', '$89'], ['50%', 'Hot room or worn door seal', '657', '$112'], ['60%', 'Summer garage', '788', '$134']])}
+<p>All for a 150 W fridge at $0.17/kWh. Don’t multiply the wattage by 24 hours at full power: that gives 1,314 kWh a year and overstates the cost almost threefold. The ${L('electricity-cost-calculator/refrigerator', 'refrigerator electricity cost calculator')} includes the duty cycle so the answer matches real use.</p>` },
+      { h2: 'What different fridges cost to run', html: `<p>Size and layout matter more than brand. Freezer compartments, through-the-door ice and water dispensers and side-by-side designs all add to the yearly kWh. These are typical label figures for current models; yours may be higher or lower, so check its own label where you can.</p>
+${table(['Fridge type', 'Typical kWh per year', 'kWh per day', 'Per month', 'Per year'], [['Mini fridge (3–4 cu ft)', '250', '0.68', '$3.54', '$42.50'], ['Top-freezer (18 cu ft)', '400', '1.10', '$5.67', '$68.00'], ['Top-freezer (21 cu ft)', '450', '1.23', '$6.38', '$76.50'], ['Bottom-freezer (22 cu ft)', '550', '1.51', '$7.79', '$93.50'], ['Side-by-side or French door (25–26 cu ft)', '650', '1.78', '$9.21', '$110.50'], ['20-year-old full-size fridge', 'about 1,100', '3.01', '$15.58', '$187.00']])}
+<p>All at $0.17/kWh. Small mini fridges are not always the bargain they look: per cubic foot of space they often use more energy than a full-size model, because cheaper units have thinner insulation.</p>` },
+      { h2: 'How your electricity rate changes the answer', html: `<p>Because a fridge runs every day of the year, your price per kWh has a big effect. For a 450 kWh/year fridge:</p>
+${table(['Price per kWh', 'Per month', 'Per year'], [['$0.12', '$4.50', '$54.00'], ['$0.17', '$6.38', '$76.50'], ['$0.25', '$9.38', '$112.50'], ['$0.35', '$13.13', '$157.50']])}
+<p>Find your rate on your bill: divide the energy charge by the kWh used, or use the all-in figure (total bill ÷ total kWh) if you want taxes and delivery charges included. On a time-of-use tariff, a fridge’s use is spread fairly evenly across the day, so a 24-hour average rate is a fair estimate.</p>` },
+      { h2: 'Is it worth replacing an old fridge?', html: `<p>Fridges have become much more efficient, so a very old one can cost noticeably more. Swapping a 20-year-old fridge using about 1,100 kWh a year for a new 450 kWh model saves 650 kWh — about <strong>$110 a year</strong> at $0.17/kWh. A new fridge costing $900 would take around eight years to pay for itself on energy alone, so replacement usually makes sense when the old fridge is failing anyway, not just to save power.</p>
+<p>The worst case is the old fridge moved to the garage as a “beer fridge”. It keeps using its full share of electricity — more in summer heat — on top of the new one in the kitchen. Unplugging a spare fridge you don’t really need is often the single biggest fridge saving.</p>
+<p>To know rather than guess, plug the fridge into an inexpensive plug-in energy meter for a full week, then multiply the kWh by 52 for a yearly total. A week captures defrost cycles and busy days that a few hours would miss.</p>` },
+      { h2: 'How to make a fridge cost less to run', html: `<ul><li><strong>Set sensible temperatures:</strong> about 37–40 °F (3–4 °C) for the fridge and 0 °F (−18 °C) for the freezer.</li><li><strong>Check the door seal:</strong> close the door on a sheet of paper; if it slides out easily, the gasket may need cleaning or replacing.</li><li><strong>Give it room to breathe:</strong> leave a gap behind and above so the coils can shed heat, and keep it away from the oven and direct sun.</li><li><strong>Vacuum the condenser coils</strong> (behind or under the fridge) once or twice a year.</li><li><strong>Let hot food cool</strong> a little before putting it in, and cover liquids to reduce frost.</li><li><strong>Defrost manual freezers</strong> before the ice builds up past about a quarter of an inch.</li></ul>
+<p>A separate chest or upright freezer adds its own cost — size it with the ${L('electricity-cost-calculator/freezer', 'freezer electricity cost calculator')}. To see how the fridge compares with the rest of the kitchen, our guide to ${L('blog/how-much-electricity-does-a-dishwasher-use', 'how much electricity a dishwasher uses')} works through the same per-kWh method, and the ${L('blog/how-much-does-it-cost-to-run-an-air-conditioner', 'air conditioner running cost guide')} shows a much bigger seasonal load. Any other appliance can be checked with the ${L('electricity-cost-calculator', 'electricity cost calculator')}.</p>` },
+    ],
+    faqs: [
+      { q: 'How much does it cost to run a fridge per day?', a: 'Most modern fridge-freezers use about 1.1–1.8 kWh a day, which is roughly 19–31¢ a day at $0.17/kWh. A mini fridge is nearer 12¢ a day.' },
+      { q: 'How many watts does a refrigerator use?', a: 'Usually about 100–250 W while the compressor runs, with a short spike when it starts. Because the compressor cycles on and off, the average draw over a day is closer to 45–75 W.' },
+      { q: 'Does a fridge use more electricity in summer?', a: 'Yes. A warmer room makes the compressor run longer, so the duty cycle rises. A fridge in a hot garage can use 50% or more extra compared with the same fridge in a cool kitchen.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));
