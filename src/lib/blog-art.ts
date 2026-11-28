@@ -353,6 +353,32 @@ function refrigerator() {
     flake(960, 470, 26) + flake(320, 120, 16));
 }
 
+function tv() {
+  return wrap('#e6e9ff',
+    `<ellipse cx="600" cy="560" rx="300" ry="20" fill="${INK}" opacity=".08"/>` +
+    // stand / console
+    `<rect x="330" y="470" width="540" height="80" rx="16" fill="#c9b18f" ${S}/><path d="M600 480 L600 540" ${S}/>` +
+    `<circle cx="580" cy="510" r="6" fill="${INK}"/><circle cx="620" cy="510" r="6" fill="${INK}"/>` +
+    // TV
+    `<path d="M560 440 L540 470 M640 440 L660 470" ${S}/>` +
+    `<rect x="300" y="110" width="600" height="335" rx="22" fill="${INK}" ${S}/>` +
+    `<rect x="322" y="130" width="556" height="292" rx="10" fill="#8fc6ff"/>` +
+    // landscape scene on screen
+    `<circle cx="760" cy="200" r="34" fill="${AMBER}"/>` +
+    `<path d="M322 360 L430 260 L520 330 L620 230 L760 350 L878 290 L878 422 L322 422 Z" fill="#6fbf8f"/>` +
+    `<path d="M322 395 Q500 360 650 395 T878 385 L878 422 L322 422 Z" fill="#3f9a6a"/>` +
+    `<path d="M440 175 q15 -15 30 0 q15 -15 30 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>` +
+    // remote
+    `<rect x="900" y="470" width="44" height="120" rx="16" fill="#fff" ${S} transform="rotate(-18 922 530)"/>` +
+    `<circle cx="915" cy="495" r="8" fill="#ff8a65" transform="rotate(-18 922 530)"/>` +
+    // plug and cord
+    `<path d="M330 520 Q250 540 230 490 Q210 440 170 450" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>` +
+    `<rect x="130" y="430" width="44" height="40" rx="8" fill="${AMBER}" ${S}/><path d="M130 440 L110 440 M130 460 L110 460" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>` +
+    // coin and bolt
+    `<circle cx="180" cy="270" r="66" fill="${AMBER}" ${S}/><circle cx="180" cy="270" r="42" fill="none" stroke="${INK}" stroke-width="5" opacity=".35"/>` +
+    `<path d="M1040 150 L1000 240 L1035 240 L1015 330 L1090 210 L1052 210 L1075 150 Z" fill="${AMBER}" ${S}/>`);
+}
+
 export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-many-bags-of-mulch-in-a-yard': { svg: mulch, alt: 'Illustration of a mulch pile next to 2 and 3 cubic foot mulch bags and a one-cubic-yard cube' },
   'how-many-tons-of-gravel-in-a-yard': { svg: gravel, alt: 'Illustration of a dump truck carrying gravel beside a small gravel pile' },
@@ -373,6 +399,7 @@ export const covers: Record<string, { svg: () => string; alt: string }> = {
   'how-much-paint-do-i-need': { svg: paint, alt: 'Illustration of a wall half painted in a fresh teal colour with an open paint can, a roller and a paint tray' },
   'how-much-concrete-do-i-need': { svg: concrete, alt: 'Illustration of a freshly poured concrete slab in wooden forms with a bull float, a stack of premix bags and a wheelbarrow' },
   'how-much-does-it-cost-to-run-a-refrigerator': { svg: refrigerator, alt: 'Illustration of a fridge-freezer with its door open to shelves of food, a plug, a coin, snowflakes and an electricity bolt' },
+  'how-much-does-it-cost-to-run-a-tv': { svg: tv, alt: 'Illustration of a flat-screen TV showing a sunny landscape on a media stand, with a remote, a plug, a coin and an electricity bolt' },
   'how-much-electricity-does-a-dishwasher-use': { svg: dishwasher, alt: 'Illustration of an open dishwasher with plates in the rack, bubbles and an electricity bolt' },
 };
 
@@ -485,5 +512,8 @@ export const figures: Record<string, Record<string, { svg: string; caption: stri
   },
   'how-much-does-it-cost-to-run-a-refrigerator': {
     'What different fridges cost to run': { svg: barChart([{ label: 'Mini fridge', value: 42.5, text: '$43' }, { label: 'Top-freezer 18 cu ft', value: 68, text: '$68' }, { label: 'Bottom-freezer', value: 93.5, text: '$94' }, { label: 'Side-by-side', value: 110.5, text: '$111' }, { label: '20-year-old fridge', value: 187, text: '$187' }], ' /yr'), caption: 'Yearly running cost at $0.17/kWh, using typical label kWh for each fridge type.', alt: 'Bar chart of yearly fridge running cost: $43 mini fridge, $68 top-freezer, $94 bottom-freezer, $111 side-by-side and $187 for a 20-year-old fridge' },
+  },
+  'how-much-does-it-cost-to-run-a-tv': {
+    'How many watts does a TV use by screen size?': { svg: barChart([{ label: '32 inch', value: 9.31, text: '$9' }, { label: '43 inch', value: 17.06, text: '$17' }, { label: '55 inch', value: 27.92, text: '$28' }, { label: '65 inch', value: 37.23, text: '$37' }, { label: '75 inch', value: 49.64, text: '$50' }, { label: '85 inch', value: 65.15, text: '$65' }], ' /yr'), caption: 'Yearly cost of typical LED TVs at 5 hours a day and $0.17/kWh.', alt: 'Bar chart of yearly TV running cost: $9 for 32 inch, $17 for 43, $28 for 55, $37 for 65, $50 for 75 and $65 for 85 inch' },
   },
 };

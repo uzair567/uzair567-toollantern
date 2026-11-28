@@ -640,6 +640,47 @@ ${table(['Price per kWh', 'Per month', 'Per year'], [['$0.12', '$4.50', '$54.00'
       { q: 'Does a fridge use more electricity in summer?', a: 'Yes. A warmer room makes the compressor run longer, so the duty cycle rises. A fridge in a hot garage can use 50% or more extra compared with the same fridge in a cool kitchen.' },
     ],
   },
+  {
+    slug: 'how-much-does-it-cost-to-run-a-tv',
+    title: 'How Much Does It Cost to Run a TV? (By Screen Size)',
+    metaDescription: 'How much does it cost to run a TV per hour, month and year? Watts by screen size, LED vs OLED, picture modes, standby and gaming consoles.',
+    focusKeyword: 'cost to run a TV',
+    h1: 'How much does it cost to run a TV?',
+    published: '2026-11-28', updated: '2026-11-28',
+    tools: ['electricity-cost-calculator/tv', 'electricity-cost-calculator'],
+    summary: 'A typical 55-inch LED TV draws about 90 W, so 5 hours a day uses 0.45 kWh — about 8¢ a day, $2.33 a month and $28 a year at $0.17/kWh. Most TVs cost $10–65 a year to run, depending mainly on screen size, brightness and how many hours they are on.',
+    body: [
+      { h2: 'The formula for TV running cost', html: `<p>A TV’s cost depends on three numbers: how many watts it draws while on, how many hours a day it is on, and what you pay per kilowatt-hour (kWh). Unlike a fridge, a TV draws roughly steady power whenever it is switched on, so there is no duty cycle to account for.</p>
+<p class="formula">Cost per day = watts × hours ÷ 1,000 × price per kWh</p>
+<p><strong>Example:</strong> a 90 W TV watched 5 hours a day uses 90 × 5 = 450 Wh, which is 0.45 kWh. At $0.17/kWh that is 0.45 × 0.17 = <strong>7.7¢ a day</strong>. Over a year it is 0.45 × 365 = 164 kWh, or <strong>about $28</strong> — roughly $2.33 a month.</p>
+<p>Per hour, the same TV costs 0.09 kWh × $0.17 = about 1.5¢. Put your own wattage, hours and rate into the ${L('electricity-cost-calculator/tv', 'TV electricity cost calculator')} to get daily, monthly and yearly figures in one go.</p>` },
+      { h2: 'How many watts does a TV use by screen size?', html: `<p>Power rises roughly with screen area, so a bigger set costs more even at the same brightness. These are typical on-mode figures for current LED-LCD TVs in a standard picture mode; check your own model’s label or spec sheet, because two TVs of the same size can differ by 50% or more.</p>
+${table(['Screen size', 'Typical watts', 'kWh per year', 'Per month', 'Per year'], [['32 inch', '30', '55', '$0.78', '$9.31'], ['43 inch', '55', '100', '$1.42', '$17.06'], ['50 inch', '70', '128', '$1.81', '$21.72'], ['55 inch', '90', '164', '$2.33', '$27.92'], ['65 inch', '120', '219', '$3.10', '$37.23'], ['75 inch', '160', '292', '$4.14', '$49.64'], ['85 inch', '210', '383', '$5.43', '$65.15']])}
+<p>All at 5 hours a day and $0.17/kWh. Even the largest set in the table costs less to run than a typical fridge, but a big TV that is on all evening in a busy household can still add up to a noticeable share of a monthly bill.</p>` },
+      { h2: 'LED, OLED, QLED and old plasma TVs', html: `<p>The panel type changes how the power is used rather than following a simple ranking:</p>
+<ul><li><strong>LED-LCD and QLED:</strong> a backlight shines through the whole screen, so power depends mostly on the backlight setting. Mini-LED sets can get very bright and draw more in HDR.</li>
+<li><strong>OLED:</strong> each pixel makes its own light, so dark scenes use little power and bright, mostly white scenes use more. Over mixed viewing, a 55–65 inch OLED usually lands in a similar range to an LED set of the same size.</li>
+<li><strong>Plasma (pre-2015):</strong> much hungrier — often 300–400 W for a 50–60 inch screen. A 350 W plasma on 5 hours a day uses 639 kWh a year, about <strong>$109</strong> at $0.17/kWh, roughly four times a modern 55 inch LED.</li></ul>
+<p>If you still use an old plasma or a first-generation LCD as the main TV, replacing it is one of the few cases where a new TV noticeably lowers the electricity bill.</p>` },
+      { h2: 'Picture mode, HDR and hours watched', html: `<p>Brightness is the setting that moves the cost most. “Vivid”, “Dynamic” or store-demo modes push the backlight near maximum, and HDR content raises peak brightness further. A 55 inch TV that uses 90 W in standard mode can easily draw 150 W in vivid mode; at 5 hours a day that is about <strong>$47 a year</strong> instead of $28.</p>
+<p>Viewing time scales the cost in a straight line. For the same 90 W TV at $0.17/kWh:</p>
+${table(['Hours a day', 'kWh per year', 'Per month', 'Per year'], [['2', '66', '$0.93', '$11.17'], ['4', '131', '$1.86', '$22.34'], ['5', '164', '$2.33', '$27.92'], ['6', '197', '$2.79', '$33.51'], ['8', '263', '$3.72', '$44.68']])}
+<p>A TV left on as background noise all day is the most common reason a TV costs more than expected.</p>` },
+      { h2: 'Standby, consoles and soundbars', html: `<p><strong>Standby</strong> is small on modern sets — usually 0.5 W or less. Even if a TV sat in standby all year (8,760 hours) at 0.5 W, that is 4.4 kWh, or about <strong>74¢ a year</strong>. Features like “quick start” or always-listening voice assistants can raise standby a little, so check the settings if you want to trim it.</p>
+<p><strong>Games consoles</strong> often cost more than the TV. A current console drawing about 200 W while gaming, used 2 hours a day, uses 0.4 kWh a day — about <strong>$25 a year</strong>. A gaming PC can draw far more; our guide to ${L('blog/how-much-electricity-does-a-gaming-pc-use', 'how much electricity a gaming PC uses')} works through those numbers.</p>
+<p><strong>Soundbars and streaming boxes</strong> are lighter: a 30 W soundbar on for the same 5 hours a day adds about $9 a year. Add every device in your setup together for the true cost of your TV corner.</p>` },
+      { h2: 'How your electricity rate changes the answer', html: `<p>Rates vary widely between regions and tariffs. For a 90 W TV on 5 hours a day:</p>
+${table(['Price per kWh', 'Per month', 'Per year'], [['$0.12', '$1.64', '$19.71'], ['$0.17', '$2.33', '$27.92'], ['$0.25', '$3.42', '$41.06'], ['$0.35', '$4.79', '$57.49']])}
+<p>Find your rate by dividing the energy charge on your bill by the kWh used. On a time-of-use plan, most TV watching happens in the evening peak, so use the peak rate rather than a 24-hour average for a more accurate estimate.</p>` },
+      { h2: 'How to make your TV cheaper to run', html: `<ul><li><strong>Switch to a standard, eco or calibrated picture mode</strong> instead of vivid or dynamic.</li><li><strong>Turn on the ambient light sensor</strong> so the screen dims in a dark room.</li><li><strong>Lower the backlight</strong> (or OLED light) a few steps — most people barely notice the change.</li><li><strong>Use the sleep timer or auto power-off</strong> so the TV doesn’t run for hours after everyone has left the room.</li><li><strong>Turn off the console’s rest mode</strong> if it keeps downloading in the background and you don’t need that.</li></ul>
+<p>To check a real number instead of a typical one, plug the TV into an inexpensive plug-in energy meter for a week and multiply the kWh by 52. For comparison with other always-on appliances, see our guide to ${L('blog/how-much-does-it-cost-to-run-a-refrigerator', 'what a refrigerator costs to run')}, and check anything else in the house with the ${L('electricity-cost-calculator', 'electricity cost calculator')}.</p>` },
+    ],
+    faqs: [
+      { q: 'How much does it cost to run a TV for an hour?', a: 'Usually 0.5–3.5¢ at $0.17/kWh. A 90 W 55-inch LED TV uses 0.09 kWh an hour, which is about 1.5¢; an 85-inch set at 210 W is about 3.6¢.' },
+      { q: 'Does a TV use a lot of electricity?', a: 'Not compared with heating, cooling or a fridge. Most modern TVs cost about $10–65 a year to run at 5 hours a day. Old plasma sets, very bright picture modes and long viewing hours are what push the cost up.' },
+      { q: 'Is it cheaper to leave a TV on standby or turn it off at the wall?', a: 'Turning it off at the wall saves only the standby power, usually under 0.5 W — less than $1 a year. It is fine to do, but the bigger savings come from the picture mode and switching the TV off when nobody is watching.' },
+    ],
+  },
 ];
 
 export const postBySlug = new Map(posts.map((p) => [p.slug, p]));

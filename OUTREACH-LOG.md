@@ -16,6 +16,8 @@ Drafts are created in Gmail and sent by Uzair. Never contact the same address tw
 | 2026-11-26 | San Diego State University Library — Reference/Find Facts "Weights and Measures" | https://libguides.sdsu.edu/find-facts/weights | kjeffery@sdsu.edu | Unit converters for the "Weights and Measures" Find Facts page |
 | 2026-11-27 | Mount Allison University Libraries — "Currency, Time & Scientific Converters" | https://libraryguides.mta.ca/find_information/online_reference/converters | infodesk@mta.ca | Unit converters for the "Currency, Time & Scientific Converters" guide |
 | 2026-11-27 | ECPI University — Culinary Arts LibGuide (Shannon Simmons) | https://ecpi.libguides.com/Culinary | ssimmons@ecpi.edu | Oven temperature and weight converters for the Culinary Arts guide |
+| 2026-11-28 | University of Alaska Fairbanks Cooperative Extension Service | https://uaf.edu/ces/publications/database/energy/calculating-appliance-energy.php | ces@alaska.edu | A free calculator to go with "Calculating Appliance Energy Costs in Alaska" |
+| 2026-11-28 | Virginia Cooperative Extension — Home Energy (John Ignosh) | https://ext.vt.edu/natural-resources/energy/home-energy.html | jignosh@vt.edu | An appliance running-cost calculator for the "Home Energy" resources page |
 
 Prospects with contact forms only (Uzair can paste a message himself):
 - Cleveland State University Michael Schwartz Library "Virtual Reference Desk: Converters & Calculators" — https://library.csuohio.edu/research/vrd/converters.html (no email on the page)
